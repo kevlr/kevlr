@@ -1,0 +1,158 @@
+html {
+  font-size: 62.5%;
+  font-family: sans-serif; }
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto; }
+
+.column {
+  float: left; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.wide-1 {
+  width: 8.33333%; }
+
+.wide-2 {
+  width: 16.66667%; }
+
+.wide-3 {
+  width: 25%; }
+
+.wide-4 {
+  width: 33.33333%; }
+
+.wide-5 {
+  width: 41.66667%; }
+
+.wide-6 {
+  width: 50%; }
+
+.wide-7 {
+  width: 58.33333%; }
+
+.wide-8 {
+  width: 66.66667%; }
+
+.wide-9 {
+  width: 75%; }
+
+.wide-10 {
+  width: 83.33333%; }
+
+.wide-11 {
+  width: 91.66667%; }
+
+.wide-12 {
+  width: 100%; }
+
+@media only screen and (min-width: 481px) and (max-width: 780px) {
+  .tablet-1 {
+    width: 12.5%; }
+
+  .tablet-2 {
+    width: 25%; }
+
+  .tablet-3 {
+    width: 37.5%; }
+
+  .tablet-4 {
+    width: 50%; }
+
+  .tablet-5 {
+    width: 62.5%; }
+
+  .tablet-6 {
+    width: 75%; }
+
+  .tablet-7 {
+    width: 87.5%; }
+
+  .tablet-8 {
+    width: 100%; } }
+@media only screen and (max-width: 480px) {
+  .wrapper {
+    width: 320px; }
+
+  .mobile-1 {
+    width: 25%; }
+
+  .mobile-2 {
+    width: 50%; }
+
+  .mobile-3 {
+    width: 75%; }
+
+  .mobile-4 {
+    width: 100%; } }
+p {
+  font-size: 18px;
+  font-size: 1.8rem; }
+
+h1 {
+  font-size: 60px;
+  font-size: 6rem; }
+
+h2 {
+  font-size: 51px;
+  font-size: 5.1rem; }
+
+h3 {
+  font-size: 42px;
+  font-size: 4.2rem; }
+
+h4 {
+  font-size: 36px;
+  font-size: 3.6rem; }
+
+h5 {
+  font-size: 30px;
+  font-size: 3rem; }
+
+h6 {
+  font-size: 24px;
+  font-size: 2.4rem; }
+
+@media only screen and (max-width: 480px) {
+  p {
+    font-size: 16px;
+    font-size: 1.6rem; }
+
+  h1 {
+    font-size: 44px;
+    font-size: 4.4rem; }
+
+  h2 {
+    font-size: 38px;
+    font-size: 3.8rem; }
+
+  h3 {
+    font-size: 32px;
+    font-size: 3.2rem; }
+
+  h4 {
+    font-size: 28px;
+    font-size: 2.8rem; }
+
+  h5 {
+    font-size: 24px;
+    font-size: 2.4rem; }
+
+  h6 {
+    font-size: 20px;
+    font-size: 2rem; } }
+.button {
+  display: block;
+  line-height: 1.2;
+  font-size: 18px;
+  font-size: 1.8rem;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 9.2px;
+  text-decoration: none; }
