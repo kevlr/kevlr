@@ -1,0 +1,22 @@
+$secondary-bg-color: #000;
+$secondary-color: #fff;
+
+// Button
+$button-padding: 5px 10px 4px;
+$button-line-height: 1.2;
+$button-font-size: nth($body-copy-size, 1);
+@mixin button-style {
+	background: $secondary-bg-color;
+	color: $secondary-color;
+	text-align: center;
+	text-decoration: none;
+}
+
+
+.button {
+	display: block;
+	line-height: $button-line-height;
+	@include rem(font-size, $button-font-size);
+	@include button-style;
+	padding: $button-padding;
+}

@@ -9,6 +9,17 @@ html {
 .column {
   float: left; }
 
+.column-style {
+  padding: 20px, 20px, 20px, 20px; }
+
+.h-padding {
+  padding-left: 20px;
+  padding-right: 20px; }
+
+.v-padding {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
 .left {
   float: left; }
 
@@ -154,5 +165,5 @@ h6 {
   background: black;
   color: white;
   text-align: center;
-  padding: 9.2px;
-  text-decoration: none; }
+  text-decoration: none;
+  padding: 5px 10px 4px; }

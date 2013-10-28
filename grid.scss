@@ -1,0 +1,110 @@
+// Grid System
+$mobile-first: false; // true or false
+$wrapper-max-width: 960px;
+$wrapper-align: center; // center, left or right
+$columns-number: 12;
+
+$layouts-names: 'tablet', 'mobile'; // ascending if mobile first or descending if not mobile-first / null if not responsive
+$layouts-breakpoints: 780px, 480px;
+$min-and-max-width: true, false;
+$layout-wrapper-width: null, 320px; // null if fluid
+$layout-columns-number: 8, 4;
+
+// Column style
+
+$padding: 20px, 20px;
+$margin: 20px, 20px, 20px, 20px;
+$border-width: 1px;
+$border-style: solid;
+$border-color: #000;
+
+@if length($padding) == 1 {
+	$padding: nth($padding, 1), nth($padding, 1), nth($padding, 1), nth($padding, 1);
+} @else if length($padding) == 2 {
+	$padding: nth($padding, 1), nth($padding, 2), nth($padding, 1), nth($padding, 2);
+} @else if length($padding) == 3 {
+	$padding: nth($padding, 1), nth($padding, 2), nth($padding, 3), nth($padding, 2);
+} @else if length($padding) == 4 {
+	$padding: nth($padding, 1), nth($padding, 2), nth($padding, 3), nth($padding, 4);
+}
+
+html {
+	font-size: 62.5%;
+	font-family: sans-serif;
+}
+
+.wrapper {
+	@if $layouts-names {
+	max-width: $wrapper-max-width;
+	} @else {
+	width: $wrapper-max-width;
+	}
+	@if $wrapper-align == center {
+	margin: 0 auto;
+	} @else if $wrapper-align == right {
+	margin: 0 0 0 auto;
+	}
+}
+
+.column {
+	float: left;
+}
+
+.column-style {
+	padding: $padding;
+}
+
+.h-padding {
+	padding-left: nth($padding, 4);
+	padding-right: nth($padding, 2);
+}
+
+.v-padding {
+	padding-top: nth($padding, 1);
+	padding-bottom: nth($padding, 3);
+}
+
+@if $mobile-first == false {
+	$first-layout: 'wide';
+} @else {
+	$first-layout: 'mobile';
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+@for $i from 1 through $columns-number {
+	.#{$first-layout + '-' + $i} {
+		width: 100% / $columns-number * $i;
+	}
+}
+@if $layouts-names {
+	@for $i from 1 through length($layouts-names) {
+		@if ($mobile-first == false and nth($min-and-max-width, $i) == false) or $i == length($layouts-names) {
+			$media-queries: '(max-width:' + nth($layouts-breakpoints, $i)	+ ')';
+		} @else if $mobile-first == false and nth($min-and-max-width, $i) == true {
+			$media-queries: '(min-width:' + (nth($layouts-breakpoints, $i + 1) + 1) + ') and (max-width:' + nth($layouts-breakpoints, $i) + ')';
+		} @else if ($mobile-first == true and nth($min-and-max-width, $i) == false) or $i == length($layouts-names) {
+			$media-queries: '(min-width:' + nth($layouts-breakpoints, $i) + ')';
+		} @else if $mobile-first == true and nth($min-and-max-width, $i) == true {
+			$media-queries: '(min-width:' + (nth($layouts-breakpoints, $i)) + ') and (max-width:' + (nth($layouts-breakpoints, $i + 1) - 1) + ')';
+		}
+		@media only screen and #{$media-queries} {
+			@if nth($layout-wrapper-width, $i) {
+				.wrapper {
+					width: nth($layout-wrapper-width, $i);
+				}
+			}
+			@for $j from 1 through nth($layout-columns-number, $i) {
+				.#{nth($layouts-names, $i) + '-' + $j} {
+					width: 100% / nth($layout-columns-number, $i) * $j;
+				}
+			}
+		}
+	}
+}
