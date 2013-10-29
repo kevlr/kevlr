@@ -502,8 +502,12 @@ h6 {
   h6 {
     font-size: 20px;
     font-size: 2rem; } }
+/* ----- Button ----- */
 .button {
   display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   line-height: 1.2;
   font-size: 18px;
   font-size: 1.8rem;
