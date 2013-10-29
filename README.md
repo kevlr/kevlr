@@ -1,5 +1,5 @@
-## My framework CSS
+# My framework CSS
 
-### In construction
+## In construction
 
 Framework CSS in progress
