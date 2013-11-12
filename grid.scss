@@ -66,6 +66,8 @@ html {
 	border-left: $border-left;
 }
 
+// Padding
+
 .h-padding {
 	padding-left: nth($padding, 4);
 	padding-right: nth($padding, 2);
@@ -74,6 +76,78 @@ html {
 .v-padding {
 	padding-top: nth($padding, 1);
 	padding-bottom: nth($padding, 3);
+}
+
+.top-padding {
+	padding-top: nth($padding, 1);
+}
+
+.right-padding {
+	padding-right: nth($padding, 2);
+}
+
+.bottom-padding {
+	padding-bottom: nth($padding, 3);
+}
+
+.left-padding {
+	padding-left: nth($padding, 4);
+}
+
+// Margin
+
+.h-margin {
+	margin-left: nth($padding, 4);
+	margin-right: nth($padding, 2);
+}
+
+.v-margin {
+	margin-top: nth($padding, 1);
+	margin-bottom: nth($padding, 3);
+}
+
+.top-margin {
+	margin-top: nth($padding, 1);
+}
+
+.right-margin {
+	margin-right: nth($padding, 2);
+}
+
+.bottom-margin {
+	margin-bottom: nth($padding, 3);
+}
+
+.left-margin {
+	margin-left: nth($padding, 4);
+}
+
+// Border
+
+.h-border {
+	border-left: $border-left;
+	border-right: $border-right;
+}
+
+.v-border {
+	border-top: $border-top;
+	border-bottom: $border-bottom;
+}
+
+.top-border {
+	border-top: $border-top;
+}
+
+.right-border {
+	border-right: $border-right;
+}
+
+.bottom-border {
+	border-bottom: $border-bottom;
+}
+
+.left-border {
+	border-left: $border-left;
 }
 
 @if $mobile-first == false {

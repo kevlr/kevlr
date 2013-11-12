@@ -365,6 +365,58 @@ html {
   padding-top: 20px;
   padding-bottom: 20px; }
 
+.top-padding {
+  padding-top: 20px; }
+
+.right-padding {
+  padding-right: 20px; }
+
+.bottom-padding {
+  padding-bottom: 20px; }
+
+.left-padding {
+  padding-left: 20px; }
+
+.h-margin {
+  margin-left: 20px;
+  margin-right: 20px; }
+
+.v-margin {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.top-margin {
+  margin-top: 20px; }
+
+.right-margin {
+  margin-right: 20px; }
+
+.bottom-margin {
+  margin-bottom: 20px; }
+
+.left-margin {
+  margin-left: 20px; }
+
+.h-border {
+  border-left: 1px solid black;
+  border-right: 1px solid black; }
+
+.v-border {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+.top-border {
+  border-top: 1px solid black; }
+
+.right-border {
+  border-right: 1px solid black; }
+
+.bottom-border {
+  border-bottom: 1px solid black; }
+
+.left-border {
+  border-left: 1px solid black; }
+
 .left {
   float: left; }
 
