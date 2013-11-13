@@ -1,6 +1,7 @@
 // Grid System
 $mobile-first: false; // true or false
 $wrapper-max-width: 960px;
+$wrapper-min-width: 320px;
 $wrapper-align: center; // center, left or right
 $columns-number: 12;
 
@@ -12,8 +13,8 @@ $layout-columns-number: 12, 12;
 
 // Column style
 
-$padding: 20px 20px;
-$margin: 20px 20px 20px 20px;
+$padding: 20px 10px;
+$margin: 10px;
 $border-top: 1px solid #000;
 $border-right: 1px solid #000;
 $border-bottom: 1px solid #000;
@@ -55,6 +56,7 @@ html {
 .wrapper {
 	@if $layouts-names {
 	max-width: $wrapper-max-width;
+	min-width: $wrapper-min-width;
 	} @else {
 	width: $wrapper-max-width;
 	}
@@ -92,6 +94,10 @@ html {
 
 // Padding
 
+.base-padding {
+	padding: $padding;
+}
+
 .h-padding {
 	padding-left: nth($padding, 4);
 	padding-right: nth($padding, 2);
@@ -120,6 +126,10 @@ html {
 
 // Margin
 
+.base-margin {
+	margin: $margin;
+}
+
 .h-margin {
 	margin-left: nth($padding, 4);
 	margin-right: nth($padding, 2);
@@ -147,6 +157,13 @@ html {
 }
 
 // Border
+
+.base-border {
+	border-top: $border-top;
+	border-right: $border-right;
+	border-bottom: $border-bottom;
+	border-left: $border-left;
+}
 
 .h-border {
 	border-left: $border-left;
@@ -190,7 +207,7 @@ html {
 
 @for $i from 1 through $columns-number {
 	.#{$first-layout + '-' + $i} {
-		width: 100% / $columns-number * $i;
+		width: (100% / $columns-number * $i) + 0.00001;
 	}
 }
 @if $layouts-names {
@@ -212,7 +229,7 @@ html {
 			}
 			@for $j from 1 through nth($layout-columns-number, $i) {
 				.#{nth($layouts-names, $i) + '-' + $j} {
-					width: 100% / nth($layout-columns-number, $i) * $j;
+					width: (100% / nth($layout-columns-number, $i) * $j) + 0.00001;
 				}
 			}
 		}
