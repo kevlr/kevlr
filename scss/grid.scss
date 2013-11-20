@@ -8,18 +8,18 @@ $columns-number: 12;
 $layouts-names: 'tablet', 'mobile'; // ascending if mobile first or descending if not mobile-first / null if not responsive
 $layouts-breakpoints: 780px, 480px;
 $min-and-max-width: true, false;
-$layout-wrapper-width: null, 320px; // null if fluid
+$layout-wrapper-width: null, 320px; // in pixels / null if fluid
 $layout-columns-number: 12, 12;
 
 // Column style
 
 $padding: 20px 10px;
 $margin: 10px;
-$border-top: 1px solid #000;
-$border-right: 1px solid #000;
-$border-bottom: 1px solid #000;
-$border-left: 1px solid #000;
-$column-bg: #fff;
+$border-top: 1px solid #000; // null if none
+$border-right: 1px solid #000; // null if none
+$border-bottom: 1px solid #000; // null if none
+$border-left: 1px solid #000; // null if none
+$column-bg: null; // null if none
 
 @if length($padding) == 1 {
 	$padding: nth($padding, 1), nth($padding, 1), nth($padding, 1), nth($padding, 1);
@@ -85,11 +85,21 @@ html {
 .column-style {
 	padding: nth($padding, 1) nth($padding, 2) nth($padding, 3) nth($padding, 4);
 	margin: nth($margin, 1) nth($margin, 2) nth($margin, 3) nth($margin, 2);
-	border-top: $border-top;
-	border-right: $border-right;
-	border-bottom: $border-bottom;
-	border-left: $border-left;
-	background: $column-bg;
+    @if $border-top {
+		border-top: $border-top;
+	}
+	@if $border-right {
+		border-right: $border-right;
+	}
+	@if $border-bottom {
+		border-bottom: $border-bottom;
+	}
+	@if $border-left {
+		border-left: $border-left;
+	}
+	@if $column-bg {
+		background: $column-bg;
+	}
 }
 
 // Padding
