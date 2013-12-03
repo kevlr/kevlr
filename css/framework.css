@@ -1952,7 +1952,7 @@ h6 {
     font-size: 2rem; } }
 /* ----- Button ----- */
 .button {
-  display: block;
+  display: inline-block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1963,4 +1963,4 @@ h6 {
   color: white;
   text-align: center;
   text-decoration: none;
-  padding: 5px 10px 4px; }
+  padding: 7px 40px 8px; }

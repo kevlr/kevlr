@@ -5,7 +5,7 @@ $secondary-color: #fff;
 
 // Variables
 
-$button-padding: 5px 10px 4px;
+$button-padding: 7px 40px 8px;
 $button-line-height: 1.2;
 $button-font-size: nth($body-copy-size, 1);
 @mixin button-style {
@@ -18,7 +18,7 @@ $button-font-size: nth($body-copy-size, 1);
 // Dev
 
 .button {
-	display: block;
+	display: inline-block;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
