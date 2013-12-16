@@ -1854,7 +1854,16 @@ html {
     width: 91.66668%; }
 
   .tablet-12 {
-    width: 100.00001%; } }
+    width: 100.00001%; }
+
+  .tablet-left {
+    float: left; }
+
+  .tablet-right {
+    float: right; }
+
+  .tablet-clear {
+    clear: both; } }
 @media only screen and (max-width: 480px) {
   .wrapper {
     width: 320px; }
@@ -1893,7 +1902,16 @@ html {
     width: 91.66668%; }
 
   .mobile-12 {
-    width: 100.00001%; } }
+    width: 100.00001%; }
+
+  .mobile-left {
+    float: left; }
+
+  .mobile-right {
+    float: right; }
+
+  .mobile-clear {
+    clear: both; } }
 p {
   font-size: 18px;
   font-size: 1.8rem; }

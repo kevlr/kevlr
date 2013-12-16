@@ -242,6 +242,15 @@ html {
 					width: (100% / nth($layout-columns-number, $i) * $j) + 0.00001;
 				}
 			}
+            .#{nth($layouts-names, $i)}-left {
+              float: left;
+            }
+            .#{nth($layouts-names, $i)}-right {
+              float: right;
+            }
+            .#{nth($layouts-names, $i)}-clear {
+              clear: both;
+            }
 		}
 	}
 }
