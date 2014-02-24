@@ -313,3 +313,21 @@ h6 {
   text-align: center;
   text-decoration: none;
   padding: 7px 40px 8px; }
+
+@media (min-width: 1200) {
+  .width--xl {
+    width: 0; } }
+@media (min-width: 960) {
+  .width--lg {
+    width: 0; } }
+@media (false -width: false) {
+  .width--md {
+    width: 0; } }
+@media (max-width: 767) {
+  .width--sm {
+    width: 0; } }
+@media (max-width: 480) {
+  .width--xs {
+    width: 0; } }
+body:before {
+  content: "'\"xl\" \"min\" 1200, \"lg\" \"min\" 960, \"md\" false false, \"sm\" \"max\" 767, \"xs\" \"max\" 480'"; }

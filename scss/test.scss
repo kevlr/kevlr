@@ -1,7 +1,26 @@
+//class names
+
 $width: 'width';
 $visible: 'visible';
+
+//variables
 
 $layout-name: 'xl', 'lg', 'md', 'sm', 'xs';
 
 $main-layout: 'md';
-$break-points: 'min' 1200, 'min' 960, false, 'max' 767, 'max' 480;
+$break-points: 'min' 1200, 'min' 960, false false, 'max' 767, 'max' 480;
+
+$mix: zip($layout-name, $break-points);
+
+@each $a in $mix {
+  $media-queries: '(' + nth(nth($a, 2),1) +'-width:' + nth(nth($a, 2),2)	+ ')';
+    @media #{$media-queries} {
+    .#{$width}--#{nth($a, 1)} {
+      width: 0;
+    }
+  }
+}
+
+body:before {
+  content: "'" + $mix + "'";
+}
