@@ -3,6 +3,7 @@
 // only one value
 $width: '.width';
 $hidden: '.hidden';
+$column: '.column';
 
 // can put several values
 
@@ -10,7 +11,7 @@ $hidden: '.hidden';
 
 $ie7-support: false;
 $ie8-support: true;
-$ie9-support: true;
+$noflexwrap-support: true;
 $box-sizing-border-box-on-every-element: true;
 
 // ===== variables =====
@@ -18,17 +19,14 @@ $box-sizing-border-box-on-every-element: true;
 
 $main-layout:     'md';
 $columns-number:  12;
+$container-width: 'width: 960px';
 
 $other-layouts-name:             'xl',                     'lg',                    'sm',                    'xs';
 $other-layouts-media-queries:    '(min-width: 1200px)',    '(min-width: 960px)',    '(max-width: 767px)',    '(max-width: 480px)';
 $other-layouts-columns-number:   12,                       12,                      12,                      12;
+$other-layouts-container-width:  'max-width: 1600px',      'max-width: 1200px',     'max-width: 960px',      'max-width: 767px';
 
 // ===== grid system =====
-
-$mq-width: $width;
-@if $ie9-support == true {
-  $mq-width: '.gt-ie9 ' + $width;
-}
 
 @if $box-sizing-border-box-on-every-element == true {
   *, *:before, *:after {
@@ -40,6 +38,12 @@ $mq-width: $width;
 
 $other-layouts: zip($other-layouts-name, $other-layouts-media-queries, $other-layouts-columns-number);
 
+#{$column} {
+  @if $noflexwrap-support == true {
+  float: left;
+  }
+}
+
 @for $i from 1 through $columns-number {
   #{$width}#{$i}of#{$columns-number}--#{$main-layout} {
     width: 100% / $columns-number * $i;
@@ -49,7 +53,7 @@ $other-layouts: zip($other-layouts-name, $other-layouts-media-queries, $other-la
 @each $layout in $other-layouts {
   @media only screen and #{nth($layout, 2)} {
     @for $i from 1 through nth($layout, 3) {
-      #{$mq-width}#{$i}of#{nth($layout, 3)}--#{nth($layout, 1)} {
+      #{$width}#{$i}of#{nth($layout, 3)}--#{nth($layout, 1)} {
         width: 100% / nth($layout, 3) * $i;
       }
     }

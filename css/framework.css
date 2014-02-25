@@ -3,6 +3,9 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+.column {
+  float: left; }
+
 .width1of12--md {
   width: 8.33333%; }
 
@@ -40,157 +43,157 @@
   width: 100%; }
 
 @media only screen and (min-width: 1200px) {
-  .gt-ie9 .width1of12--xl {
+  .width1of12--xl {
     width: 8.33333%; }
 
-  .gt-ie9 .width2of12--xl {
+  .width2of12--xl {
     width: 16.66667%; }
 
-  .gt-ie9 .width3of12--xl {
+  .width3of12--xl {
     width: 25%; }
 
-  .gt-ie9 .width4of12--xl {
+  .width4of12--xl {
     width: 33.33333%; }
 
-  .gt-ie9 .width5of12--xl {
+  .width5of12--xl {
     width: 41.66667%; }
 
-  .gt-ie9 .width6of12--xl {
+  .width6of12--xl {
     width: 50%; }
 
-  .gt-ie9 .width7of12--xl {
+  .width7of12--xl {
     width: 58.33333%; }
 
-  .gt-ie9 .width8of12--xl {
+  .width8of12--xl {
     width: 66.66667%; }
 
-  .gt-ie9 .width9of12--xl {
+  .width9of12--xl {
     width: 75%; }
 
-  .gt-ie9 .width10of12--xl {
+  .width10of12--xl {
     width: 83.33333%; }
 
-  .gt-ie9 .width11of12--xl {
+  .width11of12--xl {
     width: 91.66667%; }
 
-  .gt-ie9 .width12of12--xl {
+  .width12of12--xl {
     width: 100%; }
 
   .hidden--xl {
     display: none; } }
 @media only screen and (min-width: 960px) {
-  .gt-ie9 .width1of12--lg {
+  .width1of12--lg {
     width: 8.33333%; }
 
-  .gt-ie9 .width2of12--lg {
+  .width2of12--lg {
     width: 16.66667%; }
 
-  .gt-ie9 .width3of12--lg {
+  .width3of12--lg {
     width: 25%; }
 
-  .gt-ie9 .width4of12--lg {
+  .width4of12--lg {
     width: 33.33333%; }
 
-  .gt-ie9 .width5of12--lg {
+  .width5of12--lg {
     width: 41.66667%; }
 
-  .gt-ie9 .width6of12--lg {
+  .width6of12--lg {
     width: 50%; }
 
-  .gt-ie9 .width7of12--lg {
+  .width7of12--lg {
     width: 58.33333%; }
 
-  .gt-ie9 .width8of12--lg {
+  .width8of12--lg {
     width: 66.66667%; }
 
-  .gt-ie9 .width9of12--lg {
+  .width9of12--lg {
     width: 75%; }
 
-  .gt-ie9 .width10of12--lg {
+  .width10of12--lg {
     width: 83.33333%; }
 
-  .gt-ie9 .width11of12--lg {
+  .width11of12--lg {
     width: 91.66667%; }
 
-  .gt-ie9 .width12of12--lg {
+  .width12of12--lg {
     width: 100%; }
 
   .hidden--lg {
     display: none; } }
 @media only screen and (max-width: 767px) {
-  .gt-ie9 .width1of12--sm {
+  .width1of12--sm {
     width: 8.33333%; }
 
-  .gt-ie9 .width2of12--sm {
+  .width2of12--sm {
     width: 16.66667%; }
 
-  .gt-ie9 .width3of12--sm {
+  .width3of12--sm {
     width: 25%; }
 
-  .gt-ie9 .width4of12--sm {
+  .width4of12--sm {
     width: 33.33333%; }
 
-  .gt-ie9 .width5of12--sm {
+  .width5of12--sm {
     width: 41.66667%; }
 
-  .gt-ie9 .width6of12--sm {
+  .width6of12--sm {
     width: 50%; }
 
-  .gt-ie9 .width7of12--sm {
+  .width7of12--sm {
     width: 58.33333%; }
 
-  .gt-ie9 .width8of12--sm {
+  .width8of12--sm {
     width: 66.66667%; }
 
-  .gt-ie9 .width9of12--sm {
+  .width9of12--sm {
     width: 75%; }
 
-  .gt-ie9 .width10of12--sm {
+  .width10of12--sm {
     width: 83.33333%; }
 
-  .gt-ie9 .width11of12--sm {
+  .width11of12--sm {
     width: 91.66667%; }
 
-  .gt-ie9 .width12of12--sm {
+  .width12of12--sm {
     width: 100%; }
 
   .hidden--sm {
     display: none; } }
 @media only screen and (max-width: 480px) {
-  .gt-ie9 .width1of12--xs {
+  .width1of12--xs {
     width: 8.33333%; }
 
-  .gt-ie9 .width2of12--xs {
+  .width2of12--xs {
     width: 16.66667%; }
 
-  .gt-ie9 .width3of12--xs {
+  .width3of12--xs {
     width: 25%; }
 
-  .gt-ie9 .width4of12--xs {
+  .width4of12--xs {
     width: 33.33333%; }
 
-  .gt-ie9 .width5of12--xs {
+  .width5of12--xs {
     width: 41.66667%; }
 
-  .gt-ie9 .width6of12--xs {
+  .width6of12--xs {
     width: 50%; }
 
-  .gt-ie9 .width7of12--xs {
+  .width7of12--xs {
     width: 58.33333%; }
 
-  .gt-ie9 .width8of12--xs {
+  .width8of12--xs {
     width: 66.66667%; }
 
-  .gt-ie9 .width9of12--xs {
+  .width9of12--xs {
     width: 75%; }
 
-  .gt-ie9 .width10of12--xs {
+  .width10of12--xs {
     width: 83.33333%; }
 
-  .gt-ie9 .width11of12--xs {
+  .width11of12--xs {
     width: 91.66667%; }
 
-  .gt-ie9 .width12of12--xs {
+  .width12of12--xs {
     width: 100%; }
 
   .hidden--xs {
