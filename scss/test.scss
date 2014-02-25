@@ -1,26 +1,59 @@
-//class names
+// ===== class names =====
 
-$width: 'width';
-$visible: 'visible';
+// only one value
+$width: '.width';
+$hidden: '.hidden';
 
-//variables
+// can put several values
 
-$layout-name: 'xl', 'lg', 'md', 'sm', 'xs';
+// ===== Options =====
 
-$main-layout: 'md';
-$break-points: 'min' 1200, 'min' 960, false false, 'max' 767, 'max' 480;
+$box-sizing-border-box-on-every-element: true;
 
-$mix: zip($layout-name, $break-points);
+// ===== variables =====
 
-@each $a in $mix {
-  $media-queries: '(' + nth(nth($a, 2),1) +'-width:' + nth(nth($a, 2),2)	+ ')';
-    @media #{$media-queries} {
-    .#{$width}--#{nth($a, 1)} {
-      width: 0;
+
+$main-layout:     'md';
+$columns-number:  12;
+
+$other-layouts-name:             'xl',                     'lg',                    'sm',                    'xs';
+$other-layouts-media-queries:    '(min-width: 1200px)',    '(min-width: 960px)',    '(max-width: 767px)',    '(max-width: 480px)';
+$other-layouts-columns-number:   12,                       12,                      12,                      12;
+
+
+
+// ===== grid system =====
+
+@if $box-sizing-border-box-on-every-element == true {
+  *, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+$other-layouts: zip($other-layouts-name, $other-layouts-media-queries, $other-layouts-columns-number);
+
+@for $i from 1 through $columns-number {
+  #{$width}#{$i}of#{$columns-number}--#{$main-layout} {
+    width: 100% / $columns-number * $i;
+  }
+}
+
+@each $layout in $other-layouts {
+  @media only screen and #{nth($layout, 2)} {
+    @for $i from 1 through nth($layout, 3) {
+      #{$width}#{$i}of#{nth($layout, 3)}--#{nth($layout, 1)} {
+        width: 100% / nth($layout, 3) * $i;
+      }
+    }
+    
+    #{$hidden}--#{nth($layout, 1)} {
+      display: none;
     }
   }
 }
 
 body:before {
-  content: "'" + $mix + "'";
+  content: '"' + $other-layouts + '"';
 }
