@@ -6,8 +6,11 @@ $hidden: '.hidden';
 
 // can put several values
 
-// ===== Options =====
+// ===== options =====
 
+$ie7-support: false;
+$ie8-support: true;
+$ie9-support: true;
 $box-sizing-border-box-on-every-element: true;
 
 // ===== variables =====
@@ -20,9 +23,12 @@ $other-layouts-name:             'xl',                     'lg',                
 $other-layouts-media-queries:    '(min-width: 1200px)',    '(min-width: 960px)',    '(max-width: 767px)',    '(max-width: 480px)';
 $other-layouts-columns-number:   12,                       12,                      12,                      12;
 
-
-
 // ===== grid system =====
+
+$mq-width: $width;
+@if $ie9-support == true {
+  $mq-width: '.gt-ie9 ' + $width;
+}
 
 @if $box-sizing-border-box-on-every-element == true {
   *, *:before, *:after {
@@ -43,7 +49,7 @@ $other-layouts: zip($other-layouts-name, $other-layouts-media-queries, $other-la
 @each $layout in $other-layouts {
   @media only screen and #{nth($layout, 2)} {
     @for $i from 1 through nth($layout, 3) {
-      #{$width}#{$i}of#{nth($layout, 3)}--#{nth($layout, 1)} {
+      #{$mq-width}#{$i}of#{nth($layout, 3)}--#{nth($layout, 1)} {
         width: 100% / nth($layout, 3) * $i;
       }
     }
