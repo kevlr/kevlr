@@ -1,9 +1,32 @@
+.column-style {
+  border: 2px solid lightblue;
+  background: aliceblue;
+  height: 100px; }
+
+.column {
+  padding-bottom: 20px; }
+
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+.container {
+  max-width: 960px;
+  margin: 0 auto; }
+
+.row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
 .column {
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 1px;
   float: left; }
 
 .width1of12--md {
