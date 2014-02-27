@@ -7,6 +7,7 @@ $hidden: '.hidden';
 // can put several values
 $container: '.container';
 $row: '.row';
+$external-gutter: '.external-gutter';
 $column: '.column';
 
 // ===== options =====
@@ -60,6 +61,14 @@ $other-layouts: zip($other-layouts-name, $other-layouts-media-queries, $other-la
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  
+  margin-left: - $column-gutter / 2;
+  margin-right: - $column-gutter / 2;
+}
+
+#{$external-gutter} {
+  margin-left: $column-gutter / 2;
+  margin-right: $column-gutter / 2;
 }
 
 #{$column} {
