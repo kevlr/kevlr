@@ -1,16 +1,9 @@
-body {
-  margin: 0; }
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
-.column-style {
-  border: 2px solid lightblue;
-  background: aliceblue;
-  height: 100px; }
-
-.column {
-  margin-top: 20px;
-  margin-bottom: 20px; }
-
-*, *:before, *:after {
+*:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -75,48 +68,6 @@ body {
 .width12of12--md {
   width: 100%; }
 
-@media only screen and (min-width: 1200px) {
-  .container {
-    max-width: 1600px; }
-
-  .width1of12--xl {
-    width: 8.33333%; }
-
-  .width2of12--xl {
-    width: 16.66667%; }
-
-  .width3of12--xl {
-    width: 25%; }
-
-  .width4of12--xl {
-    width: 33.33333%; }
-
-  .width5of12--xl {
-    width: 41.66667%; }
-
-  .width6of12--xl {
-    width: 50%; }
-
-  .width7of12--xl {
-    width: 58.33333%; }
-
-  .width8of12--xl {
-    width: 66.66667%; }
-
-  .width9of12--xl {
-    width: 75%; }
-
-  .width10of12--xl {
-    width: 83.33333%; }
-
-  .width11of12--xl {
-    width: 91.66667%; }
-
-  .width12of12--xl {
-    width: 100%; }
-
-  .hidden--xl {
-    display: none; } }
 @media only screen and (min-width: 1024px) {
   .container {
     max-width: 1100px; }
@@ -158,6 +109,48 @@ body {
     width: 100%; }
 
   .hidden--lg {
+    display: none; } }
+@media only screen and (min-width: 1200px) {
+  .container {
+    max-width: 1600px; }
+
+  .width1of12--xl {
+    width: 8.33333%; }
+
+  .width2of12--xl {
+    width: 16.66667%; }
+
+  .width3of12--xl {
+    width: 25%; }
+
+  .width4of12--xl {
+    width: 33.33333%; }
+
+  .width5of12--xl {
+    width: 41.66667%; }
+
+  .width6of12--xl {
+    width: 50%; }
+
+  .width7of12--xl {
+    width: 58.33333%; }
+
+  .width8of12--xl {
+    width: 66.66667%; }
+
+  .width9of12--xl {
+    width: 75%; }
+
+  .width10of12--xl {
+    width: 83.33333%; }
+
+  .width11of12--xl {
+    width: 91.66667%; }
+
+  .width12of12--xl {
+    width: 100%; }
+
+  .hidden--xl {
     display: none; } }
 @media only screen and (max-width: 767px) {
   .container {
@@ -248,3 +241,14 @@ body:before {
   content: '"' + $other-layouts + '"';
 }
 */
+body {
+  margin: 0; }
+
+.column-style {
+  border: 2px solid lightblue;
+  background: aliceblue;
+  height: 100px; }
+
+.column {
+  margin-top: 20px;
+  margin-bottom: 20px; }
