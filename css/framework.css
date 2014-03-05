@@ -22,6 +22,9 @@
   margin-left: -20px;
   margin-right: -20px; }
 
+.no-flexbox .row {
+  display: block; }
+
 .external-gutter {
   margin-left: 20px;
   margin-right: 20px; }
@@ -70,7 +73,7 @@
 
 @media only screen and (min-width: 1024px) {
   .container {
-    max-width: 1100px; }
+    max-width: 1600px; }
 
   .width1of12--lg {
     width: 8.33333%; }
@@ -112,7 +115,7 @@
     display: none; } }
 @media only screen and (min-width: 1200px) {
   .container {
-    max-width: 1600px; }
+    max-width: 1100px; }
 
   .width1of12--xl {
     width: 8.33333%; }
@@ -237,7 +240,7 @@
   .hidden--xs {
     display: none; } }
 body:before {
-  content: '""lg" "(min-width: 1024px)" 12 40px 1100px, "xl" "(min-width: 1200px)" 12 40px 1600px, "sm" "(max-width: 767px)" 12 40px 960px, "xs" "(max-width: 480px)" 12 40px 767px"'; }
+  content: '""lg" "(min-width: 1024px)" 12 40px 1600px "xl" "(min-width: 1200px)" 12 40px 1100px "sm" "(max-width: 767px)" 12 40px 960px "xs" "(max-width: 480px)" 12 40px 767px"'; }
 
 body {
   margin: 0; }
@@ -250,3 +253,16 @@ body {
 .column {
   margin-top: 20px;
   margin-bottom: 20px; }
+
+@media only screen and (min-width: 1024px) {
+  .column-style {
+    background: green; } }
+@media only screen and (min-width: 1200px) {
+  .column-style {
+    background: red; } }
+@media only screen and (max-width: 767px) {
+  .column-style {
+    background: yellow; } }
+@media only screen and (max-width: 480px) {
+  .column-style {
+    background: blue; } }

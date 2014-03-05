@@ -12,3 +12,27 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+@media only screen and #{nth($media-queries, 2)} {
+  .column-style {
+    background: green;
+  }
+}
+
+@media only screen and #{nth($media-queries, 1)} {
+  .column-style {
+    background: red;
+  }
+}
+
+@media only screen and #{nth($media-queries, 3)} {
+  .column-style {
+    background: yellow;
+  }
+}
+
+@media only screen and #{nth($media-queries, 4)} {
+  .column-style {
+    background: blue;
+  }
+}

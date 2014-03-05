@@ -12,9 +12,11 @@ $column: '.column';
 
 // ===== options =====
 
-$ie7-support: false;
-$ie8-support: true;
-$noflexwrap-support: true;
+// Support
+$ie8-9-support: true;
+$moz-lt-27-support: true; //  /!\ need modernizr with flexbox detection /!\
+
+// CSS options
 $box-sizing-border-box-on-every-element: true;
 
 // ===== variables =====
@@ -26,8 +28,8 @@ $column-gutter: 40px;
 $container-max-width: 960px;
 $container-align: center; // center, left or right
 
-$bigger-layouts-name:                 'lg',                     'xl';//ascending order
-$bigger-layouts-media-queries:        '(min-width: 1024px)',    '(min-width: 1200px)';
+$bigger-layouts-name:                 'xl',                     'lg';//descending order
+$bigger-layouts-media-queries:        '(min-width: 1200px)',    '(min-width: 1024px)';
 $bigger-layouts-columns-number:       12,                       12;
 $bigger-layouts-column-gutter:        40px,                     40px;
 $bigger-layouts-container-max-width:  1100px,                   1600px;
@@ -56,7 +58,9 @@ $smaller-layouts-container-max-width:  960px,                   767px;
 $bigger-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-layouts-columns-number, $bigger-layouts-column-gutter, $bigger-layouts-container-max-width);
 $smaller-layouts: zip($smaller-layouts-name, $smaller-layouts-media-queries, $smaller-layouts-columns-number, $smaller-layouts-column-gutter, $smaller-layouts-container-max-width);
 
-$all-layouts: join($bigger-layouts, $smaller-layouts);
+$all-layouts: join(reverse($bigger-layouts), $smaller-layouts);
+
+$media-queries: join($bigger-layouts-media-queries, $smaller-layouts-media-queries);
 
 #{$container} {
   max-width: $container-max-width;
@@ -80,6 +84,12 @@ $all-layouts: join($bigger-layouts, $smaller-layouts);
   margin-right: - $column-gutter / 2;
 }
 
+@if $moz-lt-27-support {
+  .no-flexbox #{$row} {
+    display: block;
+  }
+}
+
 #{$external-gutter} {
   margin-left: $column-gutter / 2;
   margin-right: $column-gutter / 2;
@@ -88,7 +98,7 @@ $all-layouts: join($bigger-layouts, $smaller-layouts);
 #{$column} {
   padding-left: $column-gutter / 2;
   padding-right: $column-gutter / 2;
-  @if $noflexwrap-support == true {
+  @if $moz-lt-27-support or $ie8-9-support {
   min-height: 1px;
   float: left;
   }
