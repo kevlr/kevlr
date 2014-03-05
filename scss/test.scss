@@ -73,6 +73,8 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
 $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-queries );
 
+// ========== clearfix ==========
+
 @if $moz-lt-27-support or $ie8-9-support {
   #{$clearfix} {
     &:before,
@@ -90,6 +92,8 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
   }
 }
 
+// ========== main layout container ==========
+
 #{$container} {
   max-width: $container-max-width;
   @if $container-align == center {
@@ -100,6 +104,8 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
   padding-left: $column-gutter / 2;
   padding-right: $column-gutter / 2;
 }
+
+// ========== main layout row ==========
 
 #{$row} {
   display: -webkit-flex;
@@ -129,6 +135,8 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
   margin-right: $column-gutter / 2;
 }
 
+// ========== main layout columns ==========
+
 #{$column} {
   padding-left: $column-gutter / 2;
   padding-right: $column-gutter / 2;
@@ -143,17 +151,23 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
   }
 }
 
+// width
+
 @for $i from 1 through $columns-number {
   #{$width}#{$i}of#{$columns-number}--#{$main-layout} {
     width: 100% / $columns-number * $i;
   }
 }
 
+// ========== flex order ==========
+
 @for $i from 1 through $how-many-elements-to-order {
   #{$order}#{$i}--#{$main-layout} {
     order: #{$i};
   }
 }
+
+// ========== media queries ==========
 
 @each $layout in $all-layouts {
   
