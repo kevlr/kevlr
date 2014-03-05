@@ -1,4 +1,6 @@
-// ===== class names =====
+// =====================================================
+// ==================== class names ====================
+// =====================================================
 
 // only one value
 $width: '.width';
@@ -9,8 +11,12 @@ $container: '.container';
 $row: '.row';
 $external-gutter: '.external-gutter';
 $column: '.column';
+$clearfix: '.clearfix';
+$order: '.order';
 
-// ===== options =====
+// =====================================================
+// ====================== options ======================
+// =====================================================
 
 // Support
 $ie8-9-support: true;
@@ -19,28 +25,33 @@ $moz-lt-27-support: true; //  /!\ need modernizr with flexbox detection /!\
 // CSS options
 $box-sizing-border-box-on-every-element: true;
 
-// ===== variables =====
+// =====================================================
+// ===================== variables =====================
+// =====================================================
 
 
-$main-layout:     'md';
-$columns-number:  12;
-$column-gutter: 40px;
+$main-layout: 'md';
+$columns-number: 12;
+$column-gutter: 20px;
 $container-max-width: 960px;
 $container-align: center; // center, left or right
+$how-many-elements-to-order: 5; // order propriety for flex display
 
-$bigger-layouts-name:                 'xl',                     'lg';//descending order
-$bigger-layouts-media-queries:        '(min-width: 1200px)',    '(min-width: 1024px)';
+$bigger-layouts-name:                 'lg',                     'xl';// ascending order
+$bigger-layouts-media-queries:        '(min-width: 1024px)',    '(min-width: 1200px)';
 $bigger-layouts-columns-number:       12,                       12;
-$bigger-layouts-column-gutter:        40px,                     40px;
+$bigger-layouts-column-gutter:        20px,                     40px;
 $bigger-layouts-container-max-width:  1100px,                   1600px;
 
-$smaller-layouts-name:                 'sm',                    'xs';//descending order
-$smaller-layouts-media-queries:        '(max-width: 767px)',    '(max-width: 480px)';
+$smaller-layouts-name:                 'xs',                    'sm';// ascending order
+$smaller-layouts-media-queries:        '(max-width: 480px)',    '(max-width: 767px)';
 $smaller-layouts-columns-number:       12,                      12;
-$smaller-layouts-column-gutter:        40px,                    40px;
-$smaller-layouts-container-max-width:  960px,                   767px;
+$smaller-layouts-column-gutter:        10px,                    20px;
+$smaller-layouts-container-max-width:  767px,                   960px;
 
-// ===== grid system =====
+// =====================================================
+// ==================== grid system ====================
+// =====================================================
 
 @if $box-sizing-border-box-on-every-element == true {
   * {
@@ -58,9 +69,26 @@ $smaller-layouts-container-max-width:  960px,                   767px;
 $bigger-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-layouts-columns-number, $bigger-layouts-column-gutter, $bigger-layouts-container-max-width);
 $smaller-layouts: zip($smaller-layouts-name, $smaller-layouts-media-queries, $smaller-layouts-columns-number, $smaller-layouts-column-gutter, $smaller-layouts-container-max-width);
 
-$all-layouts: join(reverse($bigger-layouts), $smaller-layouts);
+$all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
-$media-queries: join($bigger-layouts-media-queries, $smaller-layouts-media-queries);
+$media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-queries );
+
+@if $moz-lt-27-support or $ie8-9-support {
+  #{$clearfix} {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    &:after {
+        clear: both;
+    }
+  }
+}
 
 #{$container} {
   max-width: $container-max-width;
@@ -69,6 +97,8 @@ $media-queries: join($bigger-layouts-media-queries, $smaller-layouts-media-queri
   } @else if $container-align == right {
   margin: 0 0 0 auto;
   }
+  padding-left: $column-gutter / 2;
+  padding-right: $column-gutter / 2;
 }
 
 #{$row} {
@@ -82,6 +112,10 @@ $media-queries: join($bigger-layouts-media-queries, $smaller-layouts-media-queri
   
   margin-left: - $column-gutter / 2;
   margin-right: - $column-gutter / 2;
+  
+  @if $moz-lt-27-support or $ie8-9-support {
+    @extend #{$clearfix};
+  }
 }
 
 @if $moz-lt-27-support {
@@ -115,27 +149,62 @@ $media-queries: join($bigger-layouts-media-queries, $smaller-layouts-media-queri
   }
 }
 
-@each $layout in $all-layouts {
-  
-  @media only screen and #{nth($layout, 2)} {
-    
-    #{$container} {
-      max-width: nth($layout, 5);
-    }
-    
-    @for $i from 1 through nth($layout, 3) {
-      #{$width}#{$i}of#{nth($layout, 3)}--#{nth($layout, 1)} {
-        width: 100% / nth($layout, 3) * $i;
-      }
-    }
-    
-    #{$hidden}--#{nth($layout, 1)} {
-      display: none;
-    }
+@for $i from 1 through $how-many-elements-to-order {
+  #{$order}#{$i}--#{$main-layout} {
+    order: #{$i};
   }
 }
 
+@each $layout in $all-layouts {
+  
+  @if (nth($layout, 1)) {
+  
+    @media only screen and #{nth($layout, 2)} {
 
-body:before {
-  content: '"' + $all-layouts + '"';
+      #{$container} {
+        max-width: nth($layout, 5);
+        padding-left: - (nth($layout, 4) / -2);
+        padding-right: - (nth($layout, 4) / -2);
+      }
+      
+      #{$row} {
+        margin-left: - (nth($layout, 4) / 2);
+        margin-right: - (nth($layout, 4) / 2);
+      }
+      
+      #{$external-gutter} {
+        margin-left: - (nth($layout, 4) / -2);
+        margin-right: - (nth($layout, 4) / -2);
+      }
+      
+      #{$column} {
+        padding-left: - (nth($layout, 4) / -2);
+        padding-right: - (nth($layout, 4) / -2);
+      }
+
+      @for $i from 1 through nth($layout, 3) {
+        #{$width}#{$i}of#{nth($layout, 3)}--#{nth($layout, 1)} {
+          width: 100% / nth($layout, 3) * $i;
+        }
+      }
+
+      @for $i from 1 through $how-many-elements-to-order {
+        .order#{$i}--#{nth($layout, 1)} {
+          order: #{$i};
+        }
+      }
+
+      #{$hidden}--#{nth($layout, 1)} {
+        display: none;
+      }
+    }
+
+  }
+
 }
+
+/*
+body:before {
+  content: '"' + $media-queries + '"';
+}
+*/
