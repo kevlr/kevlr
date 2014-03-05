@@ -236,11 +236,9 @@
 
   .hidden--xs {
     display: none; } }
-/*
 body:before {
-  content: '"' + $other-layouts + '"';
-}
-*/
+  content: '""lg" "(min-width: 1024px)" 12 40px 1100px, "xl" "(min-width: 1200px)" 12 40px 1600px, "sm" "(max-width: 767px)" 12 40px 960px, "xs" "(max-width: 480px)" 12 40px 767px"'; }
+
 body {
   margin: 0; }
 

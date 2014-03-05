@@ -26,11 +26,17 @@ $column-gutter: 40px;
 $container-max-width: 960px;
 $container-align: center; // center, left or right
 
-$other-layouts-name:                 'lg',                     'xl',                    'sm',                    'xs';
-$other-layouts-media-queries:        '(min-width: 1024px)',    '(min-width: 1200px)',   '(max-width: 767px)',    '(max-width: 480px)';
-$other-layouts-columns-number:       12,                       12,                      12,                      12;
-$other-layouts-column-gutter:        40px,                     40px,                    40px,                    40px;
-$other-layouts-container-max-width:  1100px,                   1600px,                  960px,                   767px;
+$bigger-layouts-name:                 'lg',                     'xl';//ascending order
+$bigger-layouts-media-queries:        '(min-width: 1024px)',    '(min-width: 1200px)';
+$bigger-layouts-columns-number:       12,                       12;
+$bigger-layouts-column-gutter:        40px,                     40px;
+$bigger-layouts-container-max-width:  1100px,                   1600px;
+
+$smaller-layouts-name:                 'sm',                    'xs';//descending order
+$smaller-layouts-media-queries:        '(max-width: 767px)',    '(max-width: 480px)';
+$smaller-layouts-columns-number:       12,                      12;
+$smaller-layouts-column-gutter:        40px,                    40px;
+$smaller-layouts-container-max-width:  960px,                   767px;
 
 // ===== grid system =====
 
@@ -47,7 +53,10 @@ $other-layouts-container-max-width:  1100px,                   1600px,          
   }
 }
 
-$other-layouts: zip($other-layouts-name, $other-layouts-media-queries, $other-layouts-columns-number, $other-layouts-column-gutter, $other-layouts-container-max-width);
+$bigger-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-layouts-columns-number, $bigger-layouts-column-gutter, $bigger-layouts-container-max-width);
+$smaller-layouts: zip($smaller-layouts-name, $smaller-layouts-media-queries, $smaller-layouts-columns-number, $smaller-layouts-column-gutter, $smaller-layouts-container-max-width);
+
+$all-layouts: join($bigger-layouts, $smaller-layouts);
 
 #{$container} {
   max-width: $container-max-width;
@@ -96,7 +105,7 @@ $other-layouts: zip($other-layouts-name, $other-layouts-media-queries, $other-la
   }
 }
 
-@each $layout in $other-layouts {
+@each $layout in $all-layouts {
   
   @media only screen and #{nth($layout, 2)} {
     
@@ -116,8 +125,7 @@ $other-layouts: zip($other-layouts-name, $other-layouts-media-queries, $other-la
   }
 }
 
-/*
+
 body:before {
-  content: '"' + $other-layouts + '"';
+  content: '"' + $all-layouts + '"';
 }
-*/
