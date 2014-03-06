@@ -1,11 +1,7 @@
-body {
-  margin: 0;
-}
-
 .column-style {
   border: 2px solid lightblue;
   background: aliceblue;
-  height: 100px;
+  min-height: 100px;
 }
 
 .column {
@@ -28,3 +24,9 @@ body {
 @media only screen and #{nth($media-queries, 4)} {
   
 }
+
+/*
+body:before {
+	content: '"' + $media-queries + '"';
+}
+*/
