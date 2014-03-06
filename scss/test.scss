@@ -1,22 +1,24 @@
-// =====================================================
-// ==================== class names ====================
-// =====================================================
+// ===============================================================
+// ========================= class names =========================
+// ===============================================================
 
 // only one value
 $width: '.width';
+$offset: '.offset';
+$order: '.order';
 $hidden: '.hidden';
+$visible: '.visible';
+$clearfix: '.clearfix';
 
 // can put several values
 $container: '.container';
 $row: '.row';
 $external-gutter: '.external-gutter';
 $column: '.column';
-$clearfix: '.clearfix';
-$order: '.order';
 
-// =====================================================
-// ====================== options ======================
-// =====================================================
+// ===============================================================
+// =========================== options ===========================
+// ===============================================================
 
 // Support
 $ie8-9-support: true;
@@ -25,9 +27,9 @@ $moz-lt-27-support: true; //  /!\ need modernizr with flexbox detection /!\
 // CSS options
 $box-sizing-border-box-on-every-element: true;
 
-// =====================================================
-// ===================== variables =====================
-// =====================================================
+// ===============================================================
+// ========================== variables ==========================
+// ===============================================================
 
 
 $main-layout: 'md';
@@ -49,9 +51,9 @@ $smaller-layouts-columns-number:       12,                      12;
 $smaller-layouts-column-gutter:        10px,                    20px;
 $smaller-layouts-container-max-width:  767px,                   960px;
 
-// =====================================================
-// ==================== grid system ====================
-// =====================================================
+// ===============================================================
+// ========================= grid system =========================
+// ===============================================================
 
 @if $box-sizing-border-box-on-every-element == true {
   * {
@@ -151,11 +153,19 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
   }
 }
 
-// width
+// columns width
 
 @for $i from 1 through $columns-number {
-  #{$width}#{$i}of#{$columns-number}--#{$main-layout} {
+  #{$width}#{$i}--#{$main-layout} {
     width: 100% / $columns-number * $i;
+  }
+}
+
+// columns offset
+
+@for $i from 1 through $columns-number {
+  #{$offset}#{$i}--#{$main-layout} {
+    margin-left: 100% / $columns-number * $i;
   }
 }
 
@@ -167,19 +177,25 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
   }
 }
 
+// ===================================
 // ========== media queries ==========
+// ===================================
 
 @each $layout in $all-layouts {
   
   @if (nth($layout, 1)) {
   
     @media only screen and #{nth($layout, 2)} {
-
+      
+      // ========== responsive container ==========
+      
       #{$container} {
         max-width: nth($layout, 5);
         padding-left: - (nth($layout, 4) / -2);
         padding-right: - (nth($layout, 4) / -2);
       }
+      
+      // ========== responsive row ==========
       
       #{$row} {
         margin-left: - (nth($layout, 4) / 2);
@@ -191,16 +207,30 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
         margin-right: - (nth($layout, 4) / -2);
       }
       
+      // ========== responsive columns ==========
+      
       #{$column} {
         padding-left: - (nth($layout, 4) / -2);
         padding-right: - (nth($layout, 4) / -2);
       }
+      
+      // columns width
 
       @for $i from 1 through nth($layout, 3) {
-        #{$width}#{$i}of#{nth($layout, 3)}--#{nth($layout, 1)} {
+        #{$width}#{$i}--#{nth($layout, 1)} {
           width: 100% / nth($layout, 3) * $i;
         }
       }
+
+      // columns offset
+
+      @for $i from 1 through nth($layout, 3) {
+        #{$offset}#{$i}--#{nth($layout, 1)} {
+          margin-left: 100% / nth($layout, 3) * $i;
+        }
+      }
+
+      // ========== responsive flex order ==========
 
       @for $i from 1 through $how-many-elements-to-order {
         .order#{$i}--#{nth($layout, 1)} {
@@ -208,8 +238,14 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
         }
       }
 
+      // ========== responsive visibility ==========
+
       #{$hidden}--#{nth($layout, 1)} {
         display: none;
+      }
+
+      #{$visible}--#{nth($layout, 1)} {
+        display: block;
       }
     }
 
