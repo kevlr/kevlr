@@ -15,6 +15,8 @@ $row: '.row';
 $external-gutter: '.external-gutter';
 $column: '.column';
 $clearfix: '.clearfix';
+$baseline-align: '.baseline-align';
+$equal-height: '.equal-height';
 
 // ===============================================================
 // =========================== options ===========================
@@ -124,6 +126,10 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	
 	margin-left: - $column-gutter / 2;
 	margin-right: - $column-gutter / 2;
 	
@@ -181,6 +187,22 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	#{$order}#{$i}--#{$main-layout} {
 		order: #{$i};
 	}
+}
+
+// ========== flex baseline align ==========
+
+#{$baseline-align} {
+	-webkit-align-items: baseline;
+	-ms-flex-align: baseline;
+	align-items: baseline;
+}
+
+// ========== flex equal height ==========
+
+#{$equal-height} {
+	-webkit-align-items: stretch;
+	-ms-flex-align: stretch;
+	align-items: stretch;
 }
 
 // ===================================
@@ -263,14 +285,12 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 // ============= mixins ==============
 // ===================================
 
-$media-test: null;
 @mixin media($layout-name) {
 	@each $layout in $all-layouts {
 		@if (nth($layout, 1) == $layout-name) {
-			$media-test: nth($layout, 2);
+			@media only screen and #{nth($layout, 2)} {
+				@content
+			}
 		}
-	}
-	@media only screen and #{$media-test} {
- 		@content
 	}
 }

@@ -1,5 +1,5 @@
 body {
-	background: yellow;
+	background: #eee;
 }
 
 .column-style {
@@ -15,25 +15,25 @@ body {
 
 @include media(sm) {
 	body {
-		background: #ffe200;
+		background: #e8e8e8;
 	}
 }
 
 @include media(xs) {
 	body {
-		background: #ffc400;
+		background: #ddd;
 	}
 }
 
 @include media(lg) {
 	body {
-		background: #c4ff00;
+		background: #f8f8f8;
 	}
 }
 
 @include media(xl) {
 	body {
-		background: #6cff00;
+		background: #fff;
 	}
 }
 
