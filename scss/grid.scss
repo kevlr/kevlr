@@ -1,256 +1,260 @@
-// Grid System
-$mobile-first: false; // true or false
-$wrapper-max-width: 960px;
-$wrapper-min-width: 320px;
-$wrapper-align: center; // center, left or right
+// ===============================================================
+// ========================= class names =========================
+// ===============================================================
+
+// only one value
+$width: '.width';
+$offset: '.offset';
+$order: '.order';
+$hidden: '.hidden';
+$visible: '.visible';
+
+// can put several values
+$container: '.container';
+$row: '.row';
+$external-gutter: '.external-gutter';
+$column: '.column';
+$clearfix: '.clearfix';
+
+// ===============================================================
+// =========================== options ===========================
+// ===============================================================
+
+// Support
+$ie8-9-support: true;
+$noflexbox-support: true; //  /!\ need modernizr with flexbox detection /!\
+
+// CSS options
+$box-sizing-border-box-on-every-element: true;
+
+// ===============================================================
+// ========================== variables ==========================
+// ===============================================================
+
+
+$main-layout: 'md';
 $columns-number: 12;
+$column-gutter: 20px;
+$container-max-width: 960px;
+$container-align: center; // center, left or right
+$how-many-elements-to-order: 5; // order propriety for flex display
 
-$layouts-names: 'tablet', 'mobile'; // ascending if mobile first or descending if not mobile-first / null if not responsive
-$layouts-breakpoints: 780px, 480px;
-$min-and-max-width: true, false;
-$layout-wrapper-width: null, 320px; // in pixels / null if fluid
-$layout-columns-number: 12, 12;
+$bigger-layouts-name:                 'lg',                     'xl';// ascending order
+$bigger-layouts-media-queries:        '(min-width: 1024px)',    '(min-width: 1200px)';
+$bigger-layouts-columns-number:       12,                       12;
+$bigger-layouts-column-gutter:        20px,                     40px;
+$bigger-layouts-container-max-width:  1100px,                   1600px;
 
-// Column style
+$smaller-layouts-name:                 'xs',                    'sm';// ascending order
+$smaller-layouts-media-queries:        '(max-width: 480px)',    '(max-width: 767px)';
+$smaller-layouts-columns-number:       12,                      12;
+$smaller-layouts-column-gutter:        10px,                    20px;
+$smaller-layouts-container-max-width:  767px,                   960px;
 
-$padding: 20px 10px;
-$margin: 10px;
-$border-top: 1px solid #000; // null if none
-$border-right: 1px solid #000; // null if none
-$border-bottom: 1px solid #000; // null if none
-$border-left: 1px solid #000; // null if none
-$column-bg: null; // null if none
+// ===============================================================
+// ========================= grid system =========================
+// ===============================================================
 
-@if length($padding) == 1 {
-	$padding: nth($padding, 1), nth($padding, 1), nth($padding, 1), nth($padding, 1);
-} @else if length($padding) == 2 {
-	$padding: nth($padding, 1), nth($padding, 2), nth($padding, 1), nth($padding, 2);
-} @else if length($padding) == 3 {
-	$padding: nth($padding, 1), nth($padding, 2), nth($padding, 3), nth($padding, 2);
+@if $box-sizing-border-box-on-every-element == true {
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
 }
 
-@if length($margin) == 1 {
-	$margin: nth($margin, 1), nth($margin, 1), nth($margin, 1), nth($margin, 1);
-} @else if length($margin) == 2 {
-	$margin: nth($margin, 1), nth($margin, 2), nth($margin, 1), nth($margin, 2);
-} @else if length($margin) == 3 {
-	$margin: nth($margin, 1), nth($margin, 2), nth($margin, 3), nth($margin, 2);
+$bigger-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-layouts-columns-number, $bigger-layouts-column-gutter, $bigger-layouts-container-max-width);
+$smaller-layouts: zip($smaller-layouts-name, $smaller-layouts-media-queries, $smaller-layouts-columns-number, $smaller-layouts-column-gutter, $smaller-layouts-container-max-width);
+
+$all-layouts: join($bigger-layouts, reverse($smaller-layouts));
+
+$media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-queries );
+
+// ========== clearfix ==========
+
+@if $noflexbox-support or $ie8-9-support {
+  #{$clearfix}, %clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    &:after {
+        clear: both;
+    }
+  }
 }
 
-html {
-	font-size: 62.5%;
-	font-family: sans-serif;
+// ========== main layout container ==========
+
+#{$container} {
+  max-width: $container-max-width;
+  @if $container-align == center {
+  margin: 0 auto;
+  } @else if $container-align == right {
+  margin: 0 0 0 auto;
+  }
+  padding-left: $column-gutter / 2;
+  padding-right: $column-gutter / 2;
 }
 
-/* Clearfix */
+// ========== main layout row ==========
 
-.clearfix:before,
-.clearfix:after {
-    content:"";
-    display:table;
-}
-.clearfix:after {
-    clear:both;
-}
-
-.wrapper {
-	@if $layouts-names {
-	max-width: $wrapper-max-width;
-	min-width: $wrapper-min-width;
-	} @else {
-	width: $wrapper-max-width;
-	}
-	@if $wrapper-align == center {
-	margin: 0 auto;
-	} @else if $wrapper-align == right {
-	margin: 0 0 0 auto;
-	}
+#{$row} {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  
+  margin-left: - $column-gutter / 2;
+  margin-right: - $column-gutter / 2;
+  
+  @if $noflexbox-support or $ie8-9-support {
+    @extend %clearfix;
+  }
 }
 
-/* Wrapper clearfix */
-
-.wrapper:before,
-.wrapper:after {
-    content:"";
-    display:table;
-}
-.wrapper:after {
-    clear:both;
+@if $noflexbox-support {
+  .no-flexbox #{$row} {
+    display: block;
+  }
 }
 
-.column {
-	float: left;
+#{$external-gutter} {
+  margin-left: $column-gutter / 2;
+  margin-right: $column-gutter / 2;
 }
 
-.column-style {
-	padding: nth($padding, 1) nth($padding, 2) nth($padding, 3) nth($padding, 4);
-	margin: nth($margin, 1) nth($margin, 2) nth($margin, 3) nth($margin, 2);
-    @if $border-top {
-		border-top: $border-top;
-	}
-	@if $border-right {
-		border-right: $border-right;
-	}
-	@if $border-bottom {
-		border-bottom: $border-bottom;
-	}
-	@if $border-left {
-		border-left: $border-left;
-	}
-	@if $column-bg {
-		background: $column-bg;
-	}
+// ========== main layout columns ==========
+
+#{$column} {
+  padding-left: $column-gutter / 2;
+  padding-right: $column-gutter / 2;
+  @if $noflexbox-support or $ie8-9-support {
+  min-height: 1px;
+  float: left;
+  }
+  @if $box-sizing-border-box-on-every-element == false {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
 }
 
-// Padding
-
-.base-padding {
-	padding: $padding;
-}
-
-.h-padding {
-	padding-left: nth($padding, 4);
-	padding-right: nth($padding, 2);
-}
-
-.v-padding {
-	padding-top: nth($padding, 1);
-	padding-bottom: nth($padding, 3);
-}
-
-.top-padding {
-	padding-top: nth($padding, 1);
-}
-
-.right-padding {
-	padding-right: nth($padding, 2);
-}
-
-.bottom-padding {
-	padding-bottom: nth($padding, 3);
-}
-
-.left-padding {
-	padding-left: nth($padding, 4);
-}
-
-// Margin
-
-.base-margin {
-	margin: $margin;
-}
-
-.h-margin {
-	margin-left: nth($padding, 4);
-	margin-right: nth($padding, 2);
-}
-
-.v-margin {
-	margin-top: nth($padding, 1);
-	margin-bottom: nth($padding, 3);
-}
-
-.top-margin {
-	margin-top: nth($padding, 1);
-}
-
-.right-margin {
-	margin-right: nth($padding, 2);
-}
-
-.bottom-margin {
-	margin-bottom: nth($padding, 3);
-}
-
-.left-margin {
-	margin-left: nth($padding, 4);
-}
-
-// Border
-
-.base-border {
-	border-top: $border-top;
-	border-right: $border-right;
-	border-bottom: $border-bottom;
-	border-left: $border-left;
-}
-
-.h-border {
-	border-left: $border-left;
-	border-right: $border-right;
-}
-
-.v-border {
-	border-top: $border-top;
-	border-bottom: $border-bottom;
-}
-
-.top-border {
-	border-top: $border-top;
-}
-
-.right-border {
-	border-right: $border-right;
-}
-
-.bottom-border {
-	border-bottom: $border-bottom;
-}
-
-.left-border {
-	border-left: $border-left;
-}
-
-@if $mobile-first == false {
-	$first-layout: 'wide';
-} @else {
-	$first-layout: 'mobile';
-}
-
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}
+// columns width
 
 @for $i from 1 through $columns-number {
-	.#{$first-layout + '-' + $i} {
-		width: (100% / $columns-number * $i) + 0.00001;
-	}
+  #{$width}#{$i}--#{$main-layout} {
+    width: 100% / $columns-number * $i;
+  }
 }
-@if $layouts-names {
-	@for $i from 1 through length($layouts-names) {
-		@if ($mobile-first == false and nth($min-and-max-width, $i) == false) or $i == length($layouts-names) {
-			$media-queries: '(max-width:' + nth($layouts-breakpoints, $i)	+ ')';
-		} @else if $mobile-first == false and nth($min-and-max-width, $i) == true {
-			$media-queries: '(min-width:' + (nth($layouts-breakpoints, $i + 1) + 1) + ') and (max-width:' + nth($layouts-breakpoints, $i) + ')';
-		} @else if ($mobile-first == true and nth($min-and-max-width, $i) == false) or $i == length($layouts-names) {
-			$media-queries: '(min-width:' + nth($layouts-breakpoints, $i) + ')';
-		} @else if $mobile-first == true and nth($min-and-max-width, $i) == true {
-			$media-queries: '(min-width:' + (nth($layouts-breakpoints, $i)) + ') and (max-width:' + (nth($layouts-breakpoints, $i + 1) - 1) + ')';
-		}
-		@media only screen and #{$media-queries} {
-			@if nth($layout-wrapper-width, $i) {
-				.wrapper {
-					width: nth($layout-wrapper-width, $i);
-				}
-			}
-			@for $j from 1 through nth($layout-columns-number, $i) {
-				.#{nth($layouts-names, $i) + '-' + $j} {
-					width: (100% / nth($layout-columns-number, $i) * $j) + 0.00001;
-				}
-			}
-            .#{nth($layouts-names, $i)}-left {
-              float: left;
-            }
-            .#{nth($layouts-names, $i)}-right {
-              float: right;
-            }
-            .#{nth($layouts-names, $i)}-clear {
-              clear: both;
-            }
-		}
-	}
+
+// columns offset
+
+@for $i from 1 through $columns-number {
+  #{$offset}#{$i}--#{$main-layout} {
+    margin-left: 100% / $columns-number * $i;
+  }
 }
+
+// ========== flex order ==========
+
+@for $i from 1 through $how-many-elements-to-order {
+  #{$order}#{$i}--#{$main-layout} {
+    order: #{$i};
+  }
+}
+
+// ===================================
+// ========== media queries ==========
+// ===================================
+
+@each $layout in $all-layouts {
+  
+  @if (nth($layout, 1)) {
+  
+    @media only screen and #{nth($layout, 2)} {
+      
+      // ========== responsive container ==========
+      
+      #{$container} {
+        max-width: nth($layout, 5);
+        padding-left: - (nth($layout, 4) / -2);
+        padding-right: - (nth($layout, 4) / -2);
+      }
+      
+      // ========== responsive row ==========
+      
+      #{$row} {
+        margin-left: - (nth($layout, 4) / 2);
+        margin-right: - (nth($layout, 4) / 2);
+      }
+      
+      #{$external-gutter} {
+        margin-left: - (nth($layout, 4) / -2);
+        margin-right: - (nth($layout, 4) / -2);
+      }
+      
+      // ========== responsive columns ==========
+      
+      #{$column} {
+        padding-left: - (nth($layout, 4) / -2);
+        padding-right: - (nth($layout, 4) / -2);
+      }
+      
+      // columns width
+
+      @for $i from 1 through nth($layout, 3) {
+        #{$width}#{$i}--#{nth($layout, 1)} {
+          width: 100% / nth($layout, 3) * $i;
+        }
+      }
+
+      // columns offset
+
+      @for $i from 1 through nth($layout, 3) {
+        #{$offset}#{$i}--#{nth($layout, 1)} {
+          margin-left: 100% / nth($layout, 3) * $i;
+        }
+      }
+
+      // ========== responsive flex order ==========
+
+      @for $i from 1 through $how-many-elements-to-order {
+        .order#{$i}--#{nth($layout, 1)} {
+          order: #{$i};
+        }
+      }
+
+      // ========== responsive visibility ==========
+
+      #{$hidden}--#{nth($layout, 1)} {
+        display: none;
+      }
+
+      #{$visible}--#{nth($layout, 1)} {
+        display: block;
+      }
+    }
+
+  }
+
+}
+
+/*
+body:before {
+  content: '"' + $media-queries + '"';
+}
+*/
