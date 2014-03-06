@@ -788,6 +788,9 @@ h6 {
   font-size: 24px;
   font-size: 1.5rem; }
 
+body {
+  background: yellow; }
+
 .column-style {
   border: 2px solid lightblue;
   background: aliceblue;
@@ -797,6 +800,18 @@ h6 {
   margin-top: 20px;
   margin-bottom: 20px; }
 
+@media only screen and (max-width: 767px) {
+  body {
+    background: #ffe200; } }
+@media only screen and (max-width: 480px) {
+  body {
+    background: #ffc400; } }
+@media only screen and (min-width: 1024px) {
+  body {
+    background: #c4ff00; } }
+@media only screen and (min-width: 1200px) {
+  body {
+    background: #6cff00; } }
 /*
 body:before {
 	content: '"' + $media-queries + '"';

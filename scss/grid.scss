@@ -39,13 +39,13 @@ $container-max-width: 960px;
 $container-align: center; // center, left or right
 $how-many-elements-to-order: 5; // order propriety for flex display
 
-$bigger-layouts-name:					'lg',						'xl';// ascending order
+$bigger-layouts-name:					'lg',						'xl'; // ascending order
 $bigger-layouts-media-queries:			'(min-width: 1024px)',		'(min-width: 1200px)';
 $bigger-layouts-columns-number:			12,							12;
 $bigger-layouts-column-gutter:			20px,						40px;
 $bigger-layouts-container-max-width:	1100px,						1600px;
 
-$smaller-layouts-name:						'xs',					'sm';// ascending order
+$smaller-layouts-name:						'xs',					'sm'; // ascending order
 $smaller-layouts-media-queries:				'(max-width: 480px)',	'(max-width: 767px)';
 $smaller-layouts-columns-number:			12,						12;
 $smaller-layouts-column-gutter:				10px,					20px;
@@ -63,7 +63,6 @@ $bigger-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigge
 $smaller-layouts: zip($smaller-layouts-name, $smaller-layouts-media-queries, $smaller-layouts-columns-number, $smaller-layouts-column-gutter, $smaller-layouts-container-max-width);
 $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
-$media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-queries );
 
 @if $box-sizing-border-box-on-every-element == true {
 	* {
@@ -258,4 +257,20 @@ $media-queries: join( $smaller-layouts-media-queries , $bigger-layouts-media-que
 
 	}
 
+}
+
+// ===================================
+// ============= mixins ==============
+// ===================================
+
+$media-test: null;
+@mixin media($layout-name) {
+	@each $layout in $all-layouts {
+		@if (nth($layout, 1) == $layout-name) {
+			$media-test: nth($layout, 2);
+		}
+	}
+	@media only screen and #{$media-test} {
+ 		@content
+	}
 }

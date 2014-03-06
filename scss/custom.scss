@@ -1,3 +1,7 @@
+body {
+	background: yellow;
+}
+
 .column-style {
   border: 2px solid lightblue;
   background: aliceblue;
@@ -9,20 +13,28 @@
   margin-bottom: 20px;
 }
 
-@media only screen and #{nth($media-queries, 2)} {
-  
+@include media(sm) {
+	body {
+		background: #ffe200;
+	}
 }
 
-@media only screen and #{nth($media-queries, 1)} {
-  
+@include media(xs) {
+	body {
+		background: #ffc400;
+	}
 }
 
-@media only screen and #{nth($media-queries, 3)} {
-  
+@include media(lg) {
+	body {
+		background: #c4ff00;
+	}
 }
 
-@media only screen and #{nth($media-queries, 4)} {
-  
+@include media(xl) {
+	body {
+		background: #6cff00;
+	}
 }
 
 /*
