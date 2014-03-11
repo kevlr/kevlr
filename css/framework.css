@@ -217,6 +217,9 @@ th {
   align-items: flex-start;
   margin-left: -10px;
   margin-right: -10px; }
+  @supports not (flex-wrap: wrap) {
+    .row {
+      display: block; } }
 
 .no-flexbox .row {
   display: block; }
