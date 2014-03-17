@@ -42,3 +42,10 @@ body:before {
 	content: '"' + $media-queries + '"';
 }
 */
+$pcolor: #333;
+p {
+  color: $pcolor;
+  &:hover {
+    color: luminus($pcolor, 30%);
+  }
+}

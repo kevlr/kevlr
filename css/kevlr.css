@@ -911,6 +911,13 @@ th {
 
   .visible--xs {
     display: block; } }
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 200; }
+
+h3, h1 {
+  font-weight: 300;
+  color: #4292aa; }
+
 body {
   font-size: 18px;
   font-size: 1.125rem;
@@ -973,3 +980,7 @@ body:before {
 	content: '"' + $media-queries + '"';
 }
 */
+p {
+  color: #333333; }
+  p:hover {
+    color: gray; }
