@@ -1,19 +1,55 @@
-$secondary-bg-color: #000;
-$secondary-color: #fff;
-
 /* ----- Button ----- */
+
+// Mixins
+
+@function fourvalues($values) {
+	@if length($values) == 1 {
+		@return nth($values, 1) nth($values, 1) nth($values, 1) nth($values, 1);
+	} @elseif length($values) == 2 {
+		@return nth($values, 1) nth($values, 2) nth($values, 1) nth($values, 2);
+	} @elseif length($values) == 3 {
+		@return nth($values, 1) nth($values, 2) nth($values, 3) nth($values, 2);
+	}
+	@return $values;
+}
+
+@function increase($values, $increaseby: 0 0 0 0, $top:0, $right:0, $bottom:0, $left:0) {
+	$values: fourvalues($values);
+	$increaseby: fourvalues($increaseby);
+	$top: nth($values, 1) + nth($increaseby, 1);
+	$right: nth($values, 2) + nth($increaseby, 2);
+	$bottom: nth($values, 3) + nth($increaseby, 3);
+	$left: nth($values, 4) + nth($increaseby, 4);
+	@if $top == $right and $top == $bottom and $top == $left {
+		@return $top;
+	} @elseif $top == $bottom and $right == $left {
+		@return $top $right;
+	} @elseif $right == $left {
+		@return $top $right $bottom;
+	} @else {
+		@return $top $right $bottom $left;
+	}
+}
 
 // Variables
 
 $button-padding: 7px 40px 8px;
 $button-line-height: 1.2;
-$button-font-size: nth($body-copy-size, 1);
-@mixin button-style {
+$button-font-size: 15px;
+$button-border-radius: 0;
+%button-style {
 	background: $secondary-bg-color;
 	color: $secondary-color;
 	text-align: center;
 	text-decoration: none;
 }
+
+// big buttons
+
+$big-button-padding: increase(5px, 5px);
+$big-button-line-height: $button-line-height;
+$big-button-font-size: $button-font-size + 5px;
+$big-button-border-radius: 0;
 
 // Dev
 
@@ -24,6 +60,9 @@ $button-font-size: nth($body-copy-size, 1);
 	box-sizing: border-box;
 	line-height: $button-line-height;
 	@include rem(font-size, $button-font-size);
-	@include button-style;
+	@extend %button-style;
 	padding: $button-padding;
+	@if $button-border-radius != 0 {
+		border-radius: $button-border-radius;
+	}
 }

@@ -911,8 +911,25 @@ th {
 
   .visible--xs {
     display: block; } }
+/* ----- Button ----- */
+.button {
+  background: #cccccc;
+  color: #333333;
+  text-align: center;
+  text-decoration: none; }
+
+.button {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 1.2;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  padding: 7px 40px 8px; }
+
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 200; }
+  font-weight: 400; }
 
 h3, h1 {
   font-weight: 300;
@@ -923,9 +940,6 @@ body {
   font-size: 1.125rem;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 400; }
 
 h1 {
   font-size: 60px;

@@ -1,3 +1,22 @@
-$media-queries: null;
-$first-layout: null;
-$layouts-name: null;
+// ===================================
+// ============= colors ==============
+// ===================================
+
+// basic colors
+$darkest-color: #333;
+$darker-color: lighten($darkest-color, 20%);
+$dark-color: lighten($darker-color, 20%);
+
+$lightest-color: #FFF;
+$lighter-color: darken($lightest-color, 20%);
+$light-color: darken($lighter-color, 20%);
+
+// text colors
+$primary-color: #4292aa;
+$secondary-color: $darkest-color;
+$inverse-color: $lightest-color;
+
+// background colors
+$primary-bg-color: $lightest-color;
+$secondary-bg-color: $lighter-color;
+$inverse-bg-color: #4292aa;

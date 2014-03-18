@@ -30,17 +30,25 @@
 // ========================== variables ==========================
 // ===============================================================
 
-$primary-color: #4292aa;
-
 $primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $secondary-font: "Georgia", "Lucida Bright", Times, TimesNewRoman, "Times New Roman", serif;
 $mono-font: "Andale Mono", AndaleMono, Consolas, "Courier New", Courier, monospace;
 
+//main font size
 $body-copy-size: 18px;
+$h1-size: $body-copy-size / 3 * 10;
+$h2-size: $body-copy-size / 3 * 8.5;
+$h3-size: $body-copy-size / 3 * 7;
+$h4-size: $body-copy-size / 3 * 6;
+$h5-size: $body-copy-size / 3 * 5;
+$h6-size: $body-copy-size / 3 * 4;
+
+
+//main font style
 $body-copy-weight: 300;
-$heading-weight: 400;
-%h-style {
-  font-weight: 200;
+
+%headings-style {
+  font-weight: 400;
 }
 %h1-style {
   font-weight: 300;
@@ -62,13 +70,7 @@ $heading-weight: 400;
   
 }
 
-//main font size
-$h1-size: $body-copy-size / 3 * 10;
-$h2-size: $body-copy-size / 3 * 8.5;
-$h3-size: $body-copy-size / 3 * 7;
-$h4-size: $body-copy-size / 3 * 6;
-$h5-size: $body-copy-size / 3 * 5;
-$h6-size: $body-copy-size / 3 * 4;
+
 
 // ===============================================================
 // ========================= type system =========================
@@ -80,42 +82,38 @@ body {
   font-weight: $body-copy-weight;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: $heading-weight;
-}
-
 h1 {
   @include rem(font-size, $h1-size);
-  @extend %h-style;
+  @extend %headings-style;
   @extend %h1-style;
 }
 
 h2 {
   @include rem(font-size, $h2-size);
-  @extend %h-style;
+  @extend %headings-style;
   @extend %h2-style;
 }
 
 h3 {
   @include rem(font-size, $h3-size);
-  @extend %h-style;
+  @extend %headings-style;
   @extend %h3-style;
 }
 
 h4 {
   @include rem(font-size, $h4-size);
-  @extend %h-style;
+  @extend %headings-style;
   @extend %h4-style;
 }
 
 h5 {
   @include rem(font-size, $h5-size);
-  @extend %h-style;
+  @extend %headings-style;
   @extend %h5-style;
 }
 
 h6 {
   @include rem(font-size, $h6-size);
-  @extend %h-style;
+  @extend %headings-style;
   @extend %h6-style;
 }
