@@ -1,3 +1,5 @@
+$button: 'button, .button';
+
 /* ----- Button ----- */
 
 // Mixins
@@ -53,7 +55,7 @@ $big-button-border-radius: 0;
 
 // Dev
 
-.button {
+#{$button} {
 	display: inline-block;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -62,6 +64,7 @@ $big-button-border-radius: 0;
 	@include rem(font-size, $button-font-size);
 	@extend %button-style;
 	padding: $button-padding;
+	
 	@if $button-border-radius != 0 {
 		border-radius: $button-border-radius;
 	}

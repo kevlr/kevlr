@@ -912,13 +912,13 @@ th {
   .visible--xs {
     display: block; } }
 /* ----- Button ----- */
-.button {
+button, .button {
   background: #cccccc;
   color: #333333;
   text-align: center;
   text-decoration: none; }
 
-.button {
+button, .button {
   display: inline-block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
