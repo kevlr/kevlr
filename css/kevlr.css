@@ -269,10 +269,6 @@ th {
   }
 }
 
-.no-flexbox .row {
-  display: block;
-}
-
 .external-gutter {
   margin-left: 10px;
   margin-right: 10px;
@@ -285,151 +281,151 @@ th {
   float: left;
 }
 
-.width1--md {
+.width1 {
   width: 8.33333%;
 }
 
-.width2--md {
+.width2 {
   width: 16.66667%;
 }
 
-.width3--md {
+.width3 {
   width: 25%;
 }
 
-.width4--md {
+.width4 {
   width: 33.33333%;
 }
 
-.width5--md {
+.width5 {
   width: 41.66667%;
 }
 
-.width6--md {
+.width6 {
   width: 50%;
 }
 
-.width7--md {
+.width7 {
   width: 58.33333%;
 }
 
-.width8--md {
+.width8 {
   width: 66.66667%;
 }
 
-.width9--md {
+.width9 {
   width: 75%;
 }
 
-.width10--md {
+.width10 {
   width: 83.33333%;
 }
 
-.width11--md {
+.width11 {
   width: 91.66667%;
 }
 
-.width12--md {
+.width12 {
   width: 100%;
 }
 
-.offset1--md {
+.offset1 {
   margin-left: 8.33333%;
 }
 
-.offset2--md {
+.offset2 {
   margin-left: 16.66667%;
 }
 
-.offset3--md {
+.offset3 {
   margin-left: 25%;
 }
 
-.offset4--md {
+.offset4 {
   margin-left: 33.33333%;
 }
 
-.offset5--md {
+.offset5 {
   margin-left: 41.66667%;
 }
 
-.offset6--md {
+.offset6 {
   margin-left: 50%;
 }
 
-.offset7--md {
+.offset7 {
   margin-left: 58.33333%;
 }
 
-.offset8--md {
+.offset8 {
   margin-left: 66.66667%;
 }
 
-.offset9--md {
+.offset9 {
   margin-left: 75%;
 }
 
-.offset10--md {
+.offset10 {
   margin-left: 83.33333%;
 }
 
-.offset11--md {
+.offset11 {
   margin-left: 91.66667%;
 }
 
-.offset12--md {
+.offset12 {
   margin-left: 100%;
 }
 
-.order1--md {
+.order1 {
   -webkit-order: 1;
   -ms-flex-order: 1;
   order: 1;
 }
 
-.order2--md {
+.order2 {
   -webkit-order: 2;
   -ms-flex-order: 2;
   order: 2;
 }
 
-.order3--md {
+.order3 {
   -webkit-order: 3;
   -ms-flex-order: 3;
   order: 3;
 }
 
-.order4--md {
+.order4 {
   -webkit-order: 4;
   -ms-flex-order: 4;
   order: 4;
 }
 
-.order5--md {
+.order5 {
   -webkit-order: 5;
   -ms-flex-order: 5;
   order: 5;
 }
 
-.baseline-align--md {
+.baseline-align {
   -webkit-align-items: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
 }
 
-.bottom-align--md {
+.bottom-align {
   -webkit-align-items: flex-end;
   -ms-flex-align: end;
   align-items: flex-end;
 }
 
-.vertical-center-align--md {
+.vertical-center-align {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
 }
 
-.equal-height--md {
+.equal-height {
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;

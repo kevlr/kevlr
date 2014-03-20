@@ -24,12 +24,11 @@ $clearfix: '.clearfix';
 // =========================== options ===========================
 // ===============================================================
 
-// Support
+// support
 $ie8-9-support: true;
 $moz22-27-support: true;
-$noflexbox-support: true; // /!\ need modernizr with flexbox detection /!\
 
-// CSS options
+// css options
 $box-sizing-border-box-on-every-element: true;
 
 // ===============================================================
@@ -37,7 +36,7 @@ $box-sizing-border-box-on-every-element: true;
 // ===============================================================
 
 
-$main-layout: 'md';
+// main layout
 $columns-number: 12;
 $column-gutter: 20px;
 $container-max-width: 960px;
@@ -61,7 +60,7 @@ $smaller-layouts-container-max-width:		767px,					960px;
 // ===============================================================
 
 // ===================================
-// ========== General style ==========
+// ========== general style ==========
 // ===================================
 
 $bigger-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-layouts-columns-number, $bigger-layouts-column-gutter, $bigger-layouts-container-max-width);
@@ -84,7 +83,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
 // ========== clearfix ==========
 
-@if $noflexbox-support or $ie8-9-support or $moz22-27-support {
+@if $ie8-9-support or $moz22-27-support {
 	#{$clearfix}, %clearfix {
 		&:before,
 		&:after {
@@ -142,14 +141,8 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	margin-left: - $column-gutter / 2;
 	margin-right: - $column-gutter / 2;
 	
-	@if $noflexbox-support or $ie8-9-support or $moz22-27-support {
+	@if $ie8-9-support or $moz22-27-support {
 		@extend %clearfix;
-	}
-}
-
-@if $noflexbox-support {
-	.no-flexbox #{$row} {
-		display: block;
 	}
 }
 
@@ -163,7 +156,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 #{$column} {
 	padding-left: $column-gutter / 2;
 	padding-right: $column-gutter / 2;
-	@if $noflexbox-support or $ie8-9-support or $moz22-27-support {
+	@if $ie8-9-support or $moz22-27-support {
 	min-height: 1px;
 	float: left;
 	}
@@ -177,7 +170,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 // columns width
 
 @for $i from 1 through $columns-number {
-	#{$width}#{$i}--#{$main-layout} {
+	#{$width}#{$i} {
 		width: 100% / $columns-number * $i;
 	}
 }
@@ -185,7 +178,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 // columns offset
 
 @for $i from 1 through $columns-number {
-	#{$offset}#{$i}--#{$main-layout} {
+	#{$offset}#{$i} {
 		margin-left: 100% / $columns-number * $i;
 	}
 }
@@ -193,7 +186,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 // ========== flex order ==========
 
 @for $i from 1 through $how-many-elements-to-order {
-	#{$order}#{$i}--#{$main-layout} {
+	#{$order}#{$i} {
 		-webkit-order: #{$i};
 		-ms-flex-order: #{$i};
 		order: #{$i};
@@ -202,7 +195,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
 // ========== flex baseline align ==========
 
-#{$baseline-align}--#{$main-layout} {
+#{$baseline-align} {
 	-webkit-align-items: baseline;
 	-ms-flex-align: baseline;
 	align-items: baseline;
@@ -210,7 +203,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
 // ========== flex bottom align ==========
 
-#{$bottom-align}--#{$main-layout} {
+#{$bottom-align} {
 	-webkit-align-items: flex-end;
 	-ms-flex-align: end;
 	align-items: flex-end;
@@ -218,7 +211,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
 // ========== flex center align ==========
 
-#{$vertical-center-align}--#{$main-layout} {
+#{$vertical-center-align} {
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -226,7 +219,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
 // ========== flex equal height ==========
 
-#{$equal-height}--#{$main-layout} {
+#{$equal-height} {
 	-webkit-align-items: stretch;
 	-ms-flex-align: stretch;
 	align-items: stretch;
