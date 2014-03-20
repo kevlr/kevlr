@@ -12,6 +12,9 @@ $vertical-center-align: '.vertical-center-align';
 $equal-height: '.equal-height';
 $hidden: '.hidden';
 $visible: '.visible';
+$inline: '.inline';
+$inline-block: '.inline-block';
+$flex: '.flex';
 
 // can put several values
 $container: '.container';
@@ -183,7 +186,9 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	}
 }
 
-// ========== flex order ==========
+// ========== flex options ==========
+
+// order
 
 @for $i from 1 through $how-many-elements-to-order {
 	#{$order}#{$i} {
@@ -193,7 +198,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	}
 }
 
-// ========== flex baseline align ==========
+// baseline align
 
 #{$baseline-align} {
 	-webkit-align-items: baseline;
@@ -201,7 +206,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	align-items: baseline;
 }
 
-// ========== flex bottom align ==========
+// bottom align
 
 #{$bottom-align} {
 	-webkit-align-items: flex-end;
@@ -209,7 +214,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	align-items: flex-end;
 }
 
-// ========== flex center align ==========
+// center align
 
 #{$vertical-center-align} {
 	-webkit-align-items: center;
@@ -217,12 +222,34 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	align-items: center;
 }
 
-// ========== flex equal height ==========
+// equal height
 
 #{$equal-height} {
 	-webkit-align-items: stretch;
 	-ms-flex-align: stretch;
 	align-items: stretch;
+}
+
+// ========== display ==========
+
+#{$inline} {
+	display: inline;
+}
+
+#{$inline-block} {
+	display: inline-block;
+}
+
+#{$flex} {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+// ========== visibility ==========
+
+#{$hidden} {
+	display: none;
 }
 
 // ===================================
@@ -278,7 +305,9 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 				}
 			}
 
-			// ========== responsive flex order ==========
+			// ========== responsive flex options ==========
+
+			// responsive order
 
 			@for $i from 1 through $how-many-elements-to-order {
 				.order#{$i}--#{nth($layout, 1)} {
@@ -288,7 +317,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 				}
 			}
 
-			// ========== responsive flex baseline align ==========
+			// responsive baseline align
 
 			#{$baseline-align}--#{nth($layout, 1)} {
 				-webkit-align-items: baseline;
@@ -296,7 +325,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 				align-items: baseline;
 			}
 
-			// ========== responsive flex bottom align ==========
+			// responsive bottom align
 
 			#{$bottom-align}--#{nth($layout, 1)} {
 				-webkit-align-items: flex-end;
@@ -304,7 +333,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 				align-items: flex-end;
 			}
 
-			// ========== responsive flex center align ==========
+			// responsive center align
 
 			#{$vertical-center-align}--#{nth($layout, 1)} {
 				-webkit-align-items: center;
@@ -312,7 +341,7 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 				align-items: center;
 			}
 
-			// ========== responsive flex equal height ==========
+			// responsive equal height
 
 			#{$equal-height}--#{nth($layout, 1)} {
 				-webkit-align-items: stretch;
@@ -328,6 +357,21 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 
 			#{$visible}--#{nth($layout, 1)} {
 				display: block;
+				
+				&#{$inline} {
+					display: inline;
+				}
+
+				&#{$inline-block} {
+					display: inline-block;
+				}
+
+				&#{$flex},
+				&#{$row} {
+					display: -webkit-flex;
+					display: -ms-flexbox;
+					display: flex;
+				}
 			}
 		}
 

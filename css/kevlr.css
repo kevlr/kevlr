@@ -431,6 +431,24 @@ th {
   align-items: stretch;
 }
 
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
 @media only screen and (min-width: 1024px) {
   .container {
     max-width: 1100px;
@@ -609,6 +627,17 @@ th {
 
   .visible--lg {
     display: block;
+  }
+  .visible--lg.inline {
+    display: inline;
+  }
+  .visible--lg.inline-block {
+    display: inline-block;
+  }
+  .visible--lg.flex, .visible--lg.row {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -790,6 +819,17 @@ th {
   .visible--xl {
     display: block;
   }
+  .visible--xl.inline {
+    display: inline;
+  }
+  .visible--xl.inline-block {
+    display: inline-block;
+  }
+  .visible--xl.flex, .visible--xl.row {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 @media only screen and (max-width: 767px) {
   .container {
@@ -970,6 +1010,17 @@ th {
   .visible--sm {
     display: block;
   }
+  .visible--sm.inline {
+    display: inline;
+  }
+  .visible--sm.inline-block {
+    display: inline-block;
+  }
+  .visible--sm.flex, .visible--sm.row {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 @media only screen and (max-width: 480px) {
   .container {
@@ -1149,6 +1200,17 @@ th {
 
   .visible--xs {
     display: block;
+  }
+  .visible--xs.inline {
+    display: inline;
+  }
+  .visible--xs.inline-block {
+    display: inline-block;
+  }
+  .visible--xs.flex, .visible--xs.row {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 /* ----- Button ----- */
