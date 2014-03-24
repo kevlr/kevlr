@@ -971,6 +971,19 @@ button, .button {
   font-size: 0.9375rem;
   padding: 7px 40px 8px; }
 
+.nav {
+  font-size: 20px;
+  line-height: 1.2; }
+  .nav ul {
+    list-style: none; }
+  .nav.equal-width ul {
+    display: table;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .nav.equal-width ul li {
+      display: table-cell; }
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400; }
 
