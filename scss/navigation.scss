@@ -8,6 +8,7 @@
 // can put several values
 $nav: '.nav';
 $active: '.active';
+$horizontal: '.horizontal';
 $equal-width: '.equal-width';
 
 
@@ -40,9 +41,18 @@ $nav-line-height: 1.2;
 	
 	ul {
 		list-style: none;
+		padding: 0;
 		
 		li {
 			
+		}
+	}
+	
+	&#{$horizontal} {
+		ul {
+			li{
+				display: inline-block;
+			}
 		}
 	}
 	
