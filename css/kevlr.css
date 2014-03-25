@@ -449,6 +449,22 @@ body {
   display: flex;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
 .hidden {
   display: none;
 }
@@ -623,6 +639,22 @@ body {
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
     align-items: stretch;
+  }
+
+  .text-left--lg {
+    text-align: left;
+  }
+
+  .text-right--lg {
+    text-align: right;
+  }
+
+  .text-center--lg {
+    text-align: center;
+  }
+
+  .text-justify--lg {
+    text-align: justify;
   }
 
   .hidden--lg {
@@ -816,6 +848,22 @@ body {
     align-items: stretch;
   }
 
+  .text-left--sm {
+    text-align: left;
+  }
+
+  .text-right--sm {
+    text-align: right;
+  }
+
+  .text-center--sm {
+    text-align: center;
+  }
+
+  .text-justify--sm {
+    text-align: justify;
+  }
+
   .hidden--sm {
     display: none;
   }
@@ -1007,6 +1055,22 @@ body {
     align-items: stretch;
   }
 
+  .text-left--xs {
+    text-align: left;
+  }
+
+  .text-right--xs {
+    text-align: right;
+  }
+
+  .text-center--xs {
+    text-align: center;
+  }
+
+  .text-justify--xs {
+    text-align: justify;
+  }
+
   .hidden--xs {
     display: none;
   }
@@ -1053,17 +1117,20 @@ button, .button {
   list-style: none;
   padding: 0;
 }
-.nav.horizontal ul li {
+.nav.nav-horizontal ul li {
   display: inline-block;
 }
-.nav.equal-width ul {
+.nav.nav-equal-width ul {
+  table-layout: fixed;
+  width: 100%;
   display: table;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-.nav.equal-width ul li {
+.nav.nav-equal-width ul li {
   display: table-cell;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {

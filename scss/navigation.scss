@@ -8,8 +8,8 @@
 // can put several values
 $nav: '.nav';
 $active: '.active';
-$horizontal: '.horizontal';
-$equal-width: '.equal-width';
+$nav-horizontal: '.nav-horizontal';
+$nav-equal-width: '.nav-equal-width';
 
 
 // ===============================================================
@@ -48,7 +48,7 @@ $nav-line-height: 1.2;
 		}
 	}
 	
-	&#{$horizontal} {
+	&#{$nav-horizontal} {
 		ul {
 			li{
 				display: inline-block;
@@ -56,15 +56,23 @@ $nav-line-height: 1.2;
 		}
 	}
 	
-	&#{$equal-width} {
+	&#{$nav-equal-width} {
 		ul {
-			display: table;
+			@if $ie8-9-support {
+				table-layout: fixed;
+				width: 100%;
+				display: table;
+			}
+			
 			display: -webkit-flex;
 			display: -ms-flexbox;
 			display: flex;
 			
 			li {
-				display: table-cell;
+				@if $ie8-9-support {
+					display: table-cell;
+				}
+				width: 100%;
 			}
 		}
 	}
