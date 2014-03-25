@@ -1254,6 +1254,3 @@ body:before {
 	content: '"' + $media-queries + '"';
 }
 */
-p {
-  color: #333333;
-}
