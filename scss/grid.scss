@@ -46,11 +46,11 @@ $container-max-width: 960px;
 $container-align: center; // center, left or right
 $how-many-elements-to-order: 5; // order propriety for flex display
 
-$bigger-layouts-name:					'lg',						'xl'; // ascending order
-$bigger-layouts-media-queries:			'(min-width: 1024px)',		'(min-width: 1200px)';
-$bigger-layouts-columns-number:			12,							12;
-$bigger-layouts-column-gutter:			20px,						40px;
-$bigger-layouts-container-max-width:	1100px,						1600px;
+$bigger-layouts-name:					'lg'; // ascending order
+$bigger-layouts-media-queries:			'(min-width: 1024px)';
+$bigger-layouts-columns-number:			12;
+$bigger-layouts-column-gutter:			20px;
+$bigger-layouts-container-max-width:	1100px;
 
 $smaller-layouts-name:						'xs',					'sm'; // ascending order
 $smaller-layouts-media-queries:				'(max-width: 480px)',	'(max-width: 767px)';
