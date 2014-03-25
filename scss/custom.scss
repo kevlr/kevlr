@@ -45,7 +45,4 @@ body:before {
 $pcolor: #333;
 p {
   color: $pcolor;
-  &:hover {
-    color: luminus($pcolor, 30%);
-  }
 }
