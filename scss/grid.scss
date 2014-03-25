@@ -12,6 +12,10 @@ $vertical-center-align: '.vertical-center-align';
 $equal-height: '.equal-height';
 $hidden: '.hidden';
 $visible: '.visible';
+$text-left: '.text-left';
+$text-right: '.text-right';
+$text-center: '.text-center';
+$text-justify: '.text-justify';
 
 // can put several values
 $container: '.container';
@@ -246,6 +250,24 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 	display: flex;
 }
 
+// ========== text alignment ==========
+
+#{$text-left} {
+	text-align: left;
+}
+
+#{$text-right} {
+	text-align: right;
+}
+
+#{$text-center} {
+	text-align: center;
+}
+
+#{$text-justify} {
+	text-align: justify;
+}
+
 // ========== visibility ==========
 
 #{$hidden} {
@@ -347,6 +369,24 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 				-webkit-align-items: stretch;
 				-ms-flex-align: stretch;
 				align-items: stretch;
+			}
+
+			// responsive text alignment
+
+			#{$text-left}--#{nth($layout, 1)} {
+				text-align: left;
+			}
+
+			#{$text-right}--#{nth($layout, 1)} {
+				text-align: right;
+			}
+
+			#{$text-center}--#{nth($layout, 1)} {
+				text-align: center;
+			}
+
+			#{$text-justify}--#{nth($layout, 1)} {
+				text-align: justify;
 			}
 
 			// ========== responsive visibility ==========
