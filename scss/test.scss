@@ -6,7 +6,7 @@
 
 
 // can put several values
-
+$article: '.article';
 
 // ===============================================================
 // =========================== options ===========================
@@ -19,11 +19,11 @@
 // ===============================================================
 
 @function luminus($color, $amount) {
-  @if lightness($color) > 50% {
-    @return darken($color, $amount);
-  } @else {
-    @return lighten($color, $amount);
-  }
+	@if lightness($color) > 50% {
+		@return darken($color, $amount);
+	} @else {
+		@return lighten($color, $amount);
+	}
 }
 
 // ===============================================================
@@ -34,7 +34,7 @@ $primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $secondary-font: "Georgia", "Lucida Bright", Times, TimesNewRoman, "Times New Roman", serif;
 $mono-font: "Andale Mono", AndaleMono, Consolas, "Courier New", Courier, monospace;
 
-//main font size
+// main font size
 $body-copy-size: 18px;
 $h1-size: $body-copy-size / 3 * 10;
 $h2-size: $body-copy-size / 3 * 8.5;
@@ -44,30 +44,56 @@ $h5-size: $body-copy-size / 3 * 5;
 $h6-size: $body-copy-size / 3 * 4;
 
 
-//main font style
+// main font style
 $body-copy-weight: 300;
 
 %headings-style {
-  font-weight: 400;
+	font-weight: 400;
+	color: $darkest-color;
+	margin: 0;
 }
 %h1-style {
-  font-weight: 300;
-  color: $primary-color;
 }
 %h2-style {
-  
 }
 %h3-style {
-  @extend %h1-style;
 }
 %h4-style {
-  
 }
 %h5-style {
-  
 }
 %h6-style {
-  
+}
+
+%link-style {
+	text-decoration: none;
+	color: $primary-color;
+	&:hover {
+		color: luminus($primary-color, 15%);
+	}
+}
+
+// article font style
+%article-headings-style {
+	font-weight: 400;
+	margin-top: .7em;
+	margin-bottom: .5em;
+}
+%article-h1-style {
+}
+%article-h2-style {
+}
+%article-h3-style {
+}
+%article-h4-style {
+}
+%article-h5-style {
+}
+%article-h6-style {
+}
+
+%article-link-style {
+	text-decoration: underline;
 }
 
 
@@ -77,43 +103,89 @@ $body-copy-weight: 300;
 // ===============================================================
 
 body {
-  @include rem(font-size, $body-copy-size);
-  font-family: $primary-font;
-  font-weight: $body-copy-weight;
+	@include rem(font-size, $body-copy-size);
+	font-family: $primary-font;
+	font-weight: $body-copy-weight;
 }
 
 h1 {
-  @include rem(font-size, $h1-size);
-  @extend %headings-style;
-  @extend %h1-style;
+	@include rem(font-size, $h1-size);
+	@extend %headings-style;
+	@extend %h1-style;
 }
 
 h2 {
-  @include rem(font-size, $h2-size);
-  @extend %headings-style;
-  @extend %h2-style;
+	@include rem(font-size, $h2-size);
+	@extend %headings-style;
+	@extend %h2-style;
 }
 
 h3 {
-  @include rem(font-size, $h3-size);
-  @extend %headings-style;
-  @extend %h3-style;
+	@include rem(font-size, $h3-size);
+	@extend %headings-style;
+	@extend %h3-style;
 }
 
 h4 {
-  @include rem(font-size, $h4-size);
-  @extend %headings-style;
-  @extend %h4-style;
+	@include rem(font-size, $h4-size);
+	@extend %headings-style;
+	@extend %h4-style;
 }
 
 h5 {
-  @include rem(font-size, $h5-size);
-  @extend %headings-style;
-  @extend %h5-style;
+	@include rem(font-size, $h5-size);
+	@extend %headings-style;
+	@extend %h5-style;
 }
 
 h6 {
-  @include rem(font-size, $h6-size);
-  @extend %headings-style;
-  @extend %h6-style;
+	@include rem(font-size, $h6-size);
+	@extend %headings-style;
+	@extend %h6-style;
+}
+
+a {
+	@extend %link-style;
+}
+
+#{$article} {
+	h1 {
+		@include rem(font-size, $h1-size);
+		@extend %article-headings-style;
+		@extend %article-h1-style;
+	}
+
+	h2 {
+		@include rem(font-size, $h2-size);
+		@extend %article-headings-style;
+		@extend %article-h2-style;
+	}
+
+	h3 {
+		@include rem(font-size, $h3-size);
+		@extend %article-headings-style;
+		@extend %article-h3-style;
+	}
+
+	h4 {
+		@include rem(font-size, $h4-size);
+		@extend %article-headings-style;
+		@extend %article-h4-style;
+	}
+
+	h5 {
+		@include rem(font-size, $h5-size);
+		@extend %article-headings-style;
+		@extend %article-h5-style;
+	}
+
+	h6 {
+		@include rem(font-size, $h6-size);
+		@extend %article-headings-style;
+		@extend %article-h6-style;
+	}
+	
+	a {
+		@extend %article-link-style;
+	}
 }
