@@ -15,23 +15,17 @@ body {
 
 @include media(sm) {
 	body {
-		background: #e8e8e8;
+		background: #dd;
 	}
 }
 
 @include media(xs) {
 	body {
-		background: #ddd;
-	}
-}
-
-@include media(lg) {
-	body {
 		background: #f8f8f8;
 	}
 }
 
-@include media(xl) {
+@include media(lg) {
 	body {
 		background: #fff;
 	}

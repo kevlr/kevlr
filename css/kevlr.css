@@ -1109,13 +1109,14 @@ button, .button {
   padding: 7px 40px 8px;
 }
 
-.nav {
-  font-size: 20px;
-  line-height: 1.2;
-}
 .nav ul {
   list-style: none;
   padding: 0;
+}
+.nav.nav-primary ul li a {
+  font-size: rem(font-size, 20px);
+  line-height: 1.2;
+  padding: 1.2;
 }
 .nav.nav-horizontal ul li {
   display: inline-block;
@@ -1236,17 +1237,17 @@ body {
 
 @media only screen and (max-width: 767px) {
   body {
-    background: #e8e8e8;
+    background: #dd;
   }
 }
 @media only screen and (max-width: 480px) {
   body {
-    background: #ddd;
+    background: #f8f8f8;
   }
 }
 @media only screen and (min-width: 1024px) {
   body {
-    background: #f8f8f8;
+    background: #fff;
   }
 }
 /*
