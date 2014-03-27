@@ -33,12 +33,21 @@ $nav-equal-width: '.nav-equal-width';
 $nav-primary-font-size: 20px;
 $nav-primary-item-line-height: 1.2;
 $nav-primary-item-padding: 1.2;
-%nav-primary-item-style {
-	
+%nav-primary-item-style {	
+}
+%nav-primary-item-hover-style {	
+}
+%nav-primary-item-active-style {
 }
 
-%nav-primary-item-hover-style {
-	
+$nav-secondary-font-size: 20px;
+$nav-secondary-item-line-height: 1.2;
+$nav-secondary-item-padding: 1.2;
+%nav-secondary-item-style {	
+}
+%nav-secondary-item-hover-style {	
+}
+%nav-secondary-item-active-style {
 }
 
 
@@ -63,6 +72,28 @@ $nav-primary-item-padding: 1.2;
 					@extend %nav-primary-style;
 					&:hover {
 						@extend %nav-primary-item-hover-style;
+					}
+					&:active {
+						@extend %nav-primary-item-active-style;
+					}
+				}
+			}
+		}
+	}
+
+	&#{$nav-secondary} {
+		ul {
+			li {
+				a {
+					font-size: rem(font-size, $nav-secondary-font-size);
+					line-height: $nav-secondary-item-line-height;
+					padding: $nav-secondary-item-padding;
+					@extend %nav-secondary-style;
+					&:hover {
+						@extend %nav-secondary-item-hover-style;
+					}
+					&:active {
+						@extend %nav-secondary-item-active-style;
 					}
 				}
 			}
