@@ -33,6 +33,7 @@ $flex: '.flex';
 
 // support
 $ie8-9-support: true;
+$ie8-layout: 'l';
 $moz22-27-support: true;
 
 // css options
@@ -50,17 +51,11 @@ $container-max-width: 960px;
 $container-align: center; // center, left or right
 $how-many-elements-to-order: 5; // order propriety for flex display
 
-$bigger-layouts-name:					'l'; // ascending order
-$bigger-layouts-media-queries:			'(min-width: 1024px)';
-$bigger-layouts-columns-number:			12;
-$bigger-layouts-column-gutter:			20px;
-$bigger-layouts-container-max-width:	1100px;
-
-$smaller-layouts-name:						's'; // ascending order
-$smaller-layouts-media-queries:				'(max-width: 767px)';
-$smaller-layouts-columns-number:			12;
-$smaller-layouts-column-gutter:				20px;
-$smaller-layouts-container-max-width:		960px;
+$bigger-layouts-name:					/*'m',*/						'l'; // ascending order
+$bigger-layouts-media-queries:			/*'(max-width: 767px)',*/		'(min-width: 1024px)';
+$bigger-layouts-columns-number:			/*12,*/							12;
+$bigger-layouts-column-gutter:			/*20px,*/						20px;
+$bigger-layouts-container-max-width:	/*960px,*/						1100px;
 
 // ===============================================================
 // ========================= grid system =========================
@@ -70,9 +65,7 @@ $smaller-layouts-container-max-width:		960px;
 // ========== general style ==========
 // ===================================
 
-$bigger-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-layouts-columns-number, $bigger-layouts-column-gutter, $bigger-layouts-container-max-width);
-$smaller-layouts: zip($smaller-layouts-name, $smaller-layouts-media-queries, $smaller-layouts-columns-number, $smaller-layouts-column-gutter, $smaller-layouts-container-max-width);
-$all-layouts: join($bigger-layouts, reverse($smaller-layouts));
+$all-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-layouts-columns-number, $bigger-layouts-column-gutter, $bigger-layouts-container-max-width);
 
 
 @if $box-sizing-border-box-on-every-element == true {
@@ -428,6 +421,24 @@ $all-layouts: join($bigger-layouts, reverse($smaller-layouts));
 		@if (nth($layout, 1) == $layout-name) {
 			@media only screen and #{nth($layout, 2)} {
 				@content
+			}
+		}
+		@if ($layout-name == $ie8-layout) {
+			.lt-ie9 {
+				@content
+			}
+		}
+	}
+}
+
+@mixin gutter($type, $directions, $ratio: 1) {
+	@each $direction in $directions {
+		#{$type}-#{$direction}: $column-gutter * $ratio;
+	}
+	@each $layout in $all-layouts {
+		@media only screen and #{nth($layout, 2)} {
+			@each $direction in $directions {
+				#{$type}-#{$direction}: nth($layout, 4) * $ratio;
 			}
 		}
 	}

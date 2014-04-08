@@ -3,17 +3,17 @@ body {
 }
 
 .column-style {
-  border: 2px solid lightblue;
-  background: aliceblue;
-  min-height: 100px;
+	border: 2px solid lightblue;
+	background: aliceblue;
+	min-height: 100px;
 }
 
 .column {
-  margin-top: 20px;
-  margin-bottom: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-@include media(sm) {
+@include media(s) {
 	body {
 		background: #dd;
 	}
@@ -25,7 +25,7 @@ body {
 	}
 }
 
-@include media(lg) {
+@include media(l) {
 	body {
 		background: #fff;
 	}
