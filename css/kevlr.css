@@ -1295,29 +1295,29 @@ button, .button {
   button .big-button, .button .big-button {
     padding: 12px 45px 13px; }
 
-.nav ul {
+.nav {
   list-style: none;
   padding: 0; }
-.nav.nav-primary ul li a {
-  font-size: rem(font-size, 20px);
-  line-height: 1.2;
-  padding: 1.2; }
-.nav.nav-secondary ul li a {
-  font-size: rem(font-size, 20px);
-  line-height: 1.2;
-  padding: 1.2; }
-.nav.nav-horizontal ul li {
-  display: inline-block; }
-.nav.nav-equal-width ul {
-  table-layout: fixed;
-  width: 100%;
-  display: table;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
-  .nav.nav-equal-width ul li {
-    display: table-cell;
-    width: 100%; }
+  .nav.nav-primary li a {
+    font-size: rem(font-size, 20px);
+    line-height: 1.2;
+    padding: 1.2; }
+  .nav.nav-secondary li a {
+    font-size: rem(font-size, 20px);
+    line-height: 1.2;
+    padding: 1.2; }
+  .nav.nav-horizontal li {
+    display: inline-block; }
+  .nav.nav-equal-width {
+    table-layout: fixed;
+    width: 100%;
+    display: table;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .nav.nav-equal-width li {
+      display: table-cell;
+      width: 100%; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
