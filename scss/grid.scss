@@ -46,26 +46,61 @@ $box-sizing-border-box-on-every-element: true;
 
 // main layout
 $columns-number: 12;
-$column-gutter: 20px;
-$container-max-width: 960px;
-$container-align: center; // center, left or right
-$how-many-elements-to-order: 5; // order propriety for flex display
+$column-gutter: 10px;
+$container-max-width: 320px;
 
-$bigger-layouts-name:					/*'m',*/						'l'; // ascending order
-$bigger-layouts-media-queries:			/*'(max-width: 767px)',*/		'(min-width: 1024px)';
-$bigger-layouts-columns-number:			/*12,*/							12;
-$bigger-layouts-column-gutter:			/*20px,*/						20px;
-$bigger-layouts-container-max-width:	/*960px,*/						1100px;
+// larger layout
+$larger-layouts-name:					's',						'm',						'l'; // ascending order
+$larger-layouts-media-queries:			'(min-width: 500px)',		'(min-width: 800px)',		'(min-width: 1024px)';
+$larger-layouts-columns-number:			12,							12,							12;
+$larger-layouts-column-gutter:			20px,						20px,						40px;
+$larger-layouts-container-max-width:	480px,						768px,						960px;
+
+// General
+$container-align: center; // center, left or right
+$elements-to-order: -3, 3; // order propriety for flex display
 
 // ===============================================================
 // ========================= grid system =========================
 // ===============================================================
 
 // ===================================
+// ============= mixins ==============
+// ===================================
+
+@mixin media($layout-name) {
+	@each $layout in $all-layouts {
+		@if (nth($layout, 1) == $layout-name) {
+			@media only screen and #{nth($layout, 2)} {
+				@content;
+			}
+		}
+		@if ($layout-name == $ie8-layout) {
+			.ie8 {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin gutter($type, $directions, $ratio: 1) {
+	@each $direction in $directions {
+		#{$type}-#{$direction}: $column-gutter * $ratio;
+	}
+	@each $layout in $all-layouts {
+		@media only screen and #{nth($layout, 2)} {
+			@each $direction in $directions {
+				#{$type}-#{$direction}: nth($layout, 4) * $ratio;
+			}
+		}
+	}
+}
+
+// ===================================
 // ========== general style ==========
 // ===================================
 
-$all-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-layouts-columns-number, $bigger-layouts-column-gutter, $bigger-layouts-container-max-width);
+$all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-layouts-columns-number, $larger-layouts-column-gutter, $larger-layouts-container-max-width);
 
 
 @if $box-sizing-border-box-on-every-element == true {
@@ -156,6 +191,7 @@ $all-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-l
 #{$column} {
 	padding-left: $column-gutter / 2;
 	padding-right: $column-gutter / 2;
+	width: 100%;
 	@if $ie8-9-support or $moz22-27-support {
 	min-height: 1px;
 	float: left;
@@ -187,7 +223,7 @@ $all-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-l
 
 // order
 
-@for $i from 1 through $how-many-elements-to-order {
+@for $i from nth($elements-to-order, 1) through nth($elements-to-order, 2) {
 	#{$order}#{$i} {
 		-webkit-order: #{$i};
 		-ms-flex-order: #{$i};
@@ -275,7 +311,7 @@ $all-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-l
 	
 	@if (nth($layout, 1)) {
 	
-		@media only screen and #{nth($layout, 2)} {
+		@include media(nth($layout, 1)) {
 			
 			// ========== responsive container ==========
 			
@@ -324,7 +360,7 @@ $all-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-l
 
 			// responsive order
 
-			@for $i from 1 through $how-many-elements-to-order {
+			@for $i from nth($elements-to-order, 1) through nth($elements-to-order, 2) {
 				.order#{$i}--#{nth($layout, 1)} {
 					-webkit-order: #{$i};
 					-ms-flex-order: #{$i};
@@ -410,36 +446,4 @@ $all-layouts: zip($bigger-layouts-name, $bigger-layouts-media-queries, $bigger-l
 
 	}
 
-}
-
-// ===================================
-// ============= mixins ==============
-// ===================================
-
-@mixin media($layout-name) {
-	@each $layout in $all-layouts {
-		@if (nth($layout, 1) == $layout-name) {
-			@media only screen and #{nth($layout, 2)} {
-				@content
-			}
-		}
-		@if ($layout-name == $ie8-layout) {
-			.lt-ie9 {
-				@content
-			}
-		}
-	}
-}
-
-@mixin gutter($type, $directions, $ratio: 1) {
-	@each $direction in $directions {
-		#{$type}-#{$direction}: $column-gutter * $ratio;
-	}
-	@each $layout in $all-layouts {
-		@media only screen and #{nth($layout, 2)} {
-			@each $direction in $directions {
-				#{$type}-#{$direction}: nth($layout, 4) * $ratio;
-			}
-		}
-	}
 }

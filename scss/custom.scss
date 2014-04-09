@@ -1,5 +1,5 @@
 body {
-	background: #eee;
+	background: #e8e8e8;
 }
 
 .column-style {
@@ -9,17 +9,16 @@ body {
 }
 
 .column {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	@include gutter(margin, top bottom, .5);
 }
 
 @include media(s) {
 	body {
-		background: #dd;
+		background: #eee;
 	}
 }
 
-@include media(xs) {
+@include media(m) {
 	body {
 		background: #f8f8f8;
 	}
