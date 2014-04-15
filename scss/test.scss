@@ -74,6 +74,8 @@ $body-copy-weight: 300;
 }
 
 // article font style
+$first-element-margin-top: 0;
+
 %article-headings-style {
 	font-weight: 400;
 	margin-top: .7em;
@@ -149,6 +151,10 @@ a {
 }
 
 #{$article} {
+	:first-child {
+		margin-top: $first-element-margin-top;
+	}
+	
 	h1 {
 		@include rem(font-size, $h1-size);
 		@extend %article-headings-style;
