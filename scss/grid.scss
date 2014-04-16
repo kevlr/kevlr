@@ -76,11 +76,6 @@ $elements-to-order: -3, 3; // order propriety for flex display
 				@content;
 			}
 		}
-		@if ($layout-name == $ie8-layout) {
-			.ie8 {
-				@content;
-			}
-		}
 	}
 }
 
@@ -120,7 +115,8 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 // ========== clearfix ==========
 
 @if $ie8-9-support or $moz22-27-support {
-	#{$clearfix}, %clearfix {
+	%clearfix {
+
 		&:before,
 		&:after {
 				content: " ";
@@ -133,6 +129,13 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 		&:after {
 				clear: both;
 		}
+	}
+}
+
+#{$clearfix} {
+	width: 100%;
+	@if $ie8-9-support or $moz22-27-support {
+		@extend %clearfix;
 	}
 }
 
@@ -152,8 +155,6 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 	} @else if $container-align == right {
 	margin: 0 0 0 auto;
 	}
-	padding-left: $column-gutter / 2;
-	padding-right: $column-gutter / 2;
 }
 
 // ========== main layout row ==========
@@ -176,9 +177,6 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 	-webkit-align-items: flex-start;
 	-ms-flex-align: start;
 	align-items: flex-start;
-	
-	margin-left: - $column-gutter / 2;
-	margin-right: - $column-gutter / 2;
 	
 	@if $ie8-9-support or $moz22-27-support {
 		@extend %clearfix;
@@ -321,16 +319,9 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 			
 			#{$container} {
 				max-width: nth($layout, 5);
-				padding-left: - (nth($layout, 4) / -2);
-				padding-right: - (nth($layout, 4) / -2);
 			}
 			
 			// ========== responsive row ==========
-			
-			#{$row} {
-				margin-left: - (nth($layout, 4) / 2);
-				margin-right: - (nth($layout, 4) / 2);
-			}
 			
 			#{$external-gutter} {
 				margin-left: - (nth($layout, 4) / -2);
