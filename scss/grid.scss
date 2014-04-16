@@ -48,14 +48,14 @@ $box-sizing-border-box-on-every-element: true;
 $columns-number: 12;
 $column-gutter: 10px;
 $container-max-width: none; //none if fluid
-$container-min-width: 320px; //none if fluid
+$container-min-width: 320px;
 
 // larger layout
-$larger-layouts-name:					's',						'm',						'l'; // ascending order
-$larger-layouts-media-queries:			'(min-width: 500px)',		'(min-width: 800px)',		'(min-width: 1024px)';
-$larger-layouts-columns-number:			12,							12,							12;
-$larger-layouts-column-gutter:			20px,						20px,						40px;
-$larger-layouts-container-max-width:	480px,						768px,						960px; //none if fluid
+$larger-layouts-name:					's',				'm',				'l'; // ascending order
+$larger-layouts-media-queries:			500px,				800px,				1024px;
+$larger-layouts-columns-number:			12,					12,					12;
+$larger-layouts-column-gutter:			20px,				20px,				40px;
+$larger-layouts-container-max-width:	480px,				768px,				960px; //none if fluid
 
 // General
 $container-align: center; // center, left or right
@@ -72,7 +72,7 @@ $elements-to-order: -3, 3; // order propriety for flex display
 @mixin media($layout-name) {
 	@each $layout in $all-layouts {
 		@if (nth($layout, 1) == $layout-name) {
-			@media only screen and #{nth($layout, 2)} {
+			@media only screen and (min-width: nth($layout, 2)) {
 				@content;
 			}
 		}
@@ -84,7 +84,7 @@ $elements-to-order: -3, 3; // order propriety for flex display
 		#{$type}-#{$direction}: $column-gutter * $ratio;
 	}
 	@each $layout in $all-layouts {
-		@media only screen and #{nth($layout, 2)} {
+		@media only screen and (min-width: nth($layout, 2)) {
 			@each $direction in $directions {
 				#{$type}-#{$direction}: nth($layout, 4) * $ratio;
 			}
@@ -114,29 +114,24 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 
 // ========== clearfix ==========
 
-@if $ie8-9-support or $moz22-27-support {
-	%clearfix {
+%clearfix {
+	&:before,
+	&:after {
+			content: " ";
+			display: table;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+	}
 
-		&:before,
-		&:after {
-				content: " ";
-				display: table;
-				display: -webkit-flex;
-				display: -ms-flexbox;
-				display: flex;
-		}
-
-		&:after {
-				clear: both;
-		}
+	&:after {
+			clear: both;
 	}
 }
 
 #{$clearfix} {
 	width: 100%;
-	@if $ie8-9-support or $moz22-27-support {
-		@extend %clearfix;
-	}
+	@extend %clearfix;
 }
 
 // ===================================
