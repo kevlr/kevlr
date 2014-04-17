@@ -6,7 +6,24 @@
 
 
 // can put several values
+$p: 'p';
+$h1: 'h1, .h1';
+$h2: 'h2, .h2';
+$h3: 'h3, .h3';
+$h4: 'h4, .h4';
+$h5: 'h5, .h5';
+$h6: 'h6, .h6';
+$a: 'a';
+
 $article: '.article';
+$article-p: 'p';
+$article-h1: 'h1';
+$article-h2: 'h2';
+$article-h3: 'h3';
+$article-h4: 'h4';
+$article-h5: 'h5';
+$article-h6: 'h6';
+$article-a: 'a';
 
 // ===============================================================
 // =========================== options ===========================
@@ -114,47 +131,47 @@ body {
 	font-weight: $body-copy-weight;
 }
 
-p {
+#{$p} {
 	line-height: $p-line-height;
 }
 
-h1 {
+#{$h1} {
 	@include rem(font-size, $h1-size);
 	@extend %headings-style;
 	@extend %h1-style;
 }
 
-h2 {
+#{$h2} {
 	@include rem(font-size, $h2-size);
 	@extend %headings-style;
 	@extend %h2-style;
 }
 
-h3 {
+#{$h3} {
 	@include rem(font-size, $h3-size);
 	@extend %headings-style;
 	@extend %h3-style;
 }
 
-h4 {
+#{$h4} {
 	@include rem(font-size, $h4-size);
 	@extend %headings-style;
 	@extend %h4-style;
 }
 
-h5 {
+#{$h5} {
 	@include rem(font-size, $h5-size);
 	@extend %headings-style;
 	@extend %h5-style;
 }
 
-h6 {
+#{$h6} {
 	@include rem(font-size, $h6-size);
 	@extend %headings-style;
 	@extend %h6-style;
 }
 
-a {
+#{$a} {
 	@extend %link-style;
 }
 
@@ -162,44 +179,48 @@ a {
 	:first-child {
 		margin-top: $first-element-margin-top;
 	}
+  
+    #{$article-p} {
+      
+    }
 	
-	h1 {
+	#{$article-h1} {
 		@include rem(font-size, $h1-size);
 		@extend %article-headings-style;
 		@extend %article-h1-style;
 	}
 
-	h2 {
+	#{$article-h2} {
 		@include rem(font-size, $h2-size);
 		@extend %article-headings-style;
 		@extend %article-h2-style;
 	}
 
-	h3 {
+	#{$article-h3} {
 		@include rem(font-size, $h3-size);
 		@extend %article-headings-style;
 		@extend %article-h3-style;
 	}
 
-	h4 {
+	#{$article-h4} {
 		@include rem(font-size, $h4-size);
 		@extend %article-headings-style;
 		@extend %article-h4-style;
 	}
 
-	h5 {
+	#{$article-h5} {
 		@include rem(font-size, $h5-size);
 		@extend %article-headings-style;
 		@extend %article-h5-style;
 	}
 
-	h6 {
+	#{$article-h6} {
 		@include rem(font-size, $h6-size);
 		@extend %article-headings-style;
 		@extend %article-h6-style;
 	}
 	
-	a {
+	#{$article-a} {
 		@extend %article-link-style;
 	}
 }
