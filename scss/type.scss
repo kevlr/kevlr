@@ -217,9 +217,9 @@ body {
 		margin-top: $first-element-margin-top;
 	}
 	
-		#{$article-p} {
-			
-		}
+	#{$article-p} {
+
+	}
 	
 	#{$article-h1} {
 		@extend %article-headings-style !optional;
