@@ -879,25 +879,11 @@ body {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex; } }
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  font-weight: 400;
-  color: #333333;
-  margin: 0;
-  line-height: 1.1; }
-
 a {
   text-decoration: none;
   color: #4292aa; }
   a:hover {
     color: #71b4c8; }
-
-.article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
-  font-weight: 400;
-  margin-top: .7em;
-  margin-bottom: .5em; }
-
-.article a {
-  text-decoration: underline; }
 
 body {
   font-size: 12px;
@@ -922,7 +908,11 @@ p {
 
 h1, .h1 {
   font-size: 40px;
-  font-size: 2.5rem; }
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  line-height: 1.1; }
   @media only screen and (min-width: 500px) {
     h1, .h1 {
       font-size: 50px;
@@ -938,7 +928,11 @@ h1, .h1 {
 
 h2, .h2 {
   font-size: 34px;
-  font-size: 2.125rem; }
+  font-size: 2.125rem;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  line-height: 1.1; }
   @media only screen and (min-width: 500px) {
     h2, .h2 {
       font-size: 42.5px;
@@ -954,7 +948,11 @@ h2, .h2 {
 
 h3, .h3 {
   font-size: 28px;
-  font-size: 1.75rem; }
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  line-height: 1.1; }
   @media only screen and (min-width: 500px) {
     h3, .h3 {
       font-size: 35px;
@@ -970,7 +968,11 @@ h3, .h3 {
 
 h4, .h4 {
   font-size: 24px;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  line-height: 1.1; }
   @media only screen and (min-width: 500px) {
     h4, .h4 {
       font-size: 30px;
@@ -986,7 +988,11 @@ h4, .h4 {
 
 h5, .h5 {
   font-size: 20px;
-  font-size: 1.25rem; }
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  line-height: 1.1; }
   @media only screen and (min-width: 500px) {
     h5, .h5 {
       font-size: 25px;
@@ -1002,7 +1008,11 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 16px;
-  font-size: 1rem; }
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  line-height: 1.1; }
   @media only screen and (min-width: 500px) {
     h6, .h6 {
       font-size: 20px;
@@ -1018,14 +1028,34 @@ h6, .h6 {
 
 .article :first-child {
   margin-top: 0; }
+.article h1 {
+  font-weight: 400;
+  margin-top: .7em;
+  margin-bottom: .5em; }
+.article h2 {
+  font-weight: 400;
+  margin-top: .7em;
+  margin-bottom: .5em; }
+.article h3 {
+  font-weight: 400;
+  margin-top: .7em;
+  margin-bottom: .5em; }
+.article h4 {
+  font-weight: 400;
+  margin-top: .7em;
+  margin-bottom: .5em; }
+.article h5 {
+  font-weight: 400;
+  margin-top: .7em;
+  margin-bottom: .5em; }
+.article h6 {
+  font-weight: 400;
+  margin-top: .7em;
+  margin-bottom: .5em; }
+.article a {
+  text-decoration: underline; }
 
 /* ----- Button ----- */
-button, .button {
-  background: #cccccc;
-  color: #333333;
-  text-align: center;
-  text-decoration: none; }
-
 button, .button {
   display: inline-block;
   -webkit-box-sizing: border-box;
@@ -1034,6 +1064,10 @@ button, .button {
   line-height: 1.2;
   font-size: 15px;
   font-size: 0.9375rem;
+  background: #cccccc;
+  color: #333333;
+  text-align: center;
+  text-decoration: none;
   padding: 7px 40px 8px; }
   button .big-button, .button .big-button {
     padding: 12px 45px 13px; }
@@ -1100,6 +1134,6 @@ body {
 $pxtest: 12px, 12px;
 
 body:before {
-	content: '"' + length($pxtest) + '"';
+	content: '"' + unit($pxtest) + '"';
 }
 */

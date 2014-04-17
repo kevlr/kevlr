@@ -35,6 +35,6 @@ body {
 $pxtest: 12px, 12px;
 
 body:before {
-	content: '"' + length($pxtest) + '"';
+	content: '"' + unit($pxtest) + '"';
 }
 */

@@ -13,7 +13,7 @@ $button-padding: 7px 40px 8px;
 $button-line-height: 1.2;
 $button-font-size: 15px;
 $button-border-radius: 0;
-%button-style {
+@mixin button-style {
 	background: $secondary-bg-color;
 	color: $secondary-color;
 	text-align: center;
@@ -36,7 +36,7 @@ $big-button-border-radius: 0;
 	box-sizing: border-box;
 	line-height: $button-line-height;
 	@include rem(font-size, $button-font-size);
-	@extend %button-style;
+	@include button-style;
 	padding: $button-padding;
 	
 	@if $button-border-radius != 0 {
