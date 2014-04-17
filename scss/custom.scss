@@ -31,7 +31,10 @@ body {
 }
 
 /*
+
+$pxtest: 12px, 12px;
+
 body:before {
-	content: '"' + $media-queries + '"';
+	content: '"' + length($pxtest) + '"';
 }
 */

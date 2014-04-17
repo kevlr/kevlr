@@ -1,3 +1,11 @@
+@function luminus($color, $amount) {
+	@if lightness($color) > 50% {
+		@return darken($color, $amount);
+	} @else {
+		@return lighten($color, $amount);
+	}
+}
+
 body {
 	background-color: $primary-bg-color;
 }
