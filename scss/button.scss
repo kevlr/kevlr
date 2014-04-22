@@ -9,13 +9,13 @@ $big-button: '.big-button';
 
 // Variables
 
-$button-padding: 7px 40px 8px;
+$button-padding: 12px 32px 13px;
 $button-line-height: 1.2;
-$button-font-size: 15px;
+$button-font-size: 20px;
 $button-border-radius: 0;
 @mixin button-style {
-	background: $secondary-bg-color;
-	color: $secondary-color;
+	background: $inverse-bg-color;
+	color: $inverse-color;
 	text-align: center;
 	text-decoration: none;
 }
