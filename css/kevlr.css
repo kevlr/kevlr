@@ -886,87 +886,127 @@ a {
     color: #71b4c8; }
 
 body {
-  font-size: 12px;
-  font-size: 0.75rem;
+  font-size: 18px;
+  font-size: 1.125rem;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300; }
   @media only screen and (min-width: 500px) {
     body {
-      font-size: 15px;
-      font-size: 0.9375rem; } }
-  @media only screen and (min-width: 800px) {
-    body {
-      font-size: 18px;
-      font-size: 1.125rem; } }
-  @media only screen and (min-width: 1024px) {
-    body {
       font-size: 20px;
       font-size: 1.25rem; } }
+  @media only screen and (min-width: 800px) {
+    body {
+      font-size: 21px;
+      font-size: 1.3125rem; } }
+  @media only screen and (min-width: 1024px) {
+    body {
+      font-size: 22px;
+      font-size: 1.375rem; } }
 
 p {
   line-height: 1.6; }
 
 h1, .h1 {
-  font-size: 40px;
-  font-size: 2.5rem;
+  font-size: 60px;
+  font-size: 3.75rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
   line-height: 1.1; }
   @media only screen and (min-width: 500px) {
-    h1, .h1 {
-      font-size: 50px;
-      font-size: 3.125rem; } }
-  @media only screen and (min-width: 800px) {
-    h1, .h1 {
-      font-size: 60px;
-      font-size: 3.75rem; } }
-  @media only screen and (min-width: 1024px) {
     h1, .h1 {
       font-size: 66.66667px;
       font-size: 4.16667rem; } }
+  @media only screen and (min-width: 800px) {
+    h1, .h1 {
+      font-size: 70px;
+      font-size: 4.375rem; } }
+  @media only screen and (min-width: 1024px) {
+    h1, .h1 {
+      font-size: 73.33333px;
+      font-size: 4.58333rem; } }
 
 h2, .h2 {
-  font-size: 34px;
-  font-size: 2.125rem;
+  font-size: 51px;
+  font-size: 3.1875rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
   line-height: 1.1; }
   @media only screen and (min-width: 500px) {
-    h2, .h2 {
-      font-size: 42.5px;
-      font-size: 2.65625rem; } }
-  @media only screen and (min-width: 800px) {
-    h2, .h2 {
-      font-size: 51px;
-      font-size: 3.1875rem; } }
-  @media only screen and (min-width: 1024px) {
     h2, .h2 {
       font-size: 56.66667px;
       font-size: 3.54167rem; } }
+  @media only screen and (min-width: 800px) {
+    h2, .h2 {
+      font-size: 59.5px;
+      font-size: 3.71875rem; } }
+  @media only screen and (min-width: 1024px) {
+    h2, .h2 {
+      font-size: 62.33333px;
+      font-size: 3.89583rem; } }
 
 h3, .h3 {
-  font-size: 28px;
-  font-size: 1.75rem;
+  font-size: 42px;
+  font-size: 2.625rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
   line-height: 1.1; }
   @media only screen and (min-width: 500px) {
     h3, .h3 {
-      font-size: 35px;
-      font-size: 2.1875rem; } }
+      font-size: 46.66667px;
+      font-size: 2.91667rem; } }
   @media only screen and (min-width: 800px) {
     h3, .h3 {
+      font-size: 49px;
+      font-size: 3.0625rem; } }
+  @media only screen and (min-width: 1024px) {
+    h3, .h3 {
+      font-size: 51.33333px;
+      font-size: 3.20833rem; } }
+
+h4, .h4 {
+  font-size: 36px;
+  font-size: 2.25rem;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  line-height: 1.1; }
+  @media only screen and (min-width: 500px) {
+    h4, .h4 {
+      font-size: 40px;
+      font-size: 2.5rem; } }
+  @media only screen and (min-width: 800px) {
+    h4, .h4 {
       font-size: 42px;
       font-size: 2.625rem; } }
   @media only screen and (min-width: 1024px) {
-    h3, .h3 {
-      font-size: 46.66667px;
-      font-size: 2.91667rem; } }
+    h4, .h4 {
+      font-size: 44px;
+      font-size: 2.75rem; } }
 
-h4, .h4 {
+h5, .h5 {
+  font-size: 30px;
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  line-height: 1.1; }
+  @media only screen and (min-width: 500px) {
+    h5, .h5 {
+      font-size: 33.33333px;
+      font-size: 2.08333rem; } }
+  @media only screen and (min-width: 800px) {
+    h5, .h5 {
+      font-size: 35px;
+      font-size: 2.1875rem; } }
+  @media only screen and (min-width: 1024px) {
+    h5, .h5 {
+      font-size: 36.66667px;
+      font-size: 2.29167rem; } }
+
+h6, .h6 {
   font-size: 24px;
   font-size: 1.5rem;
   font-weight: 400;
@@ -974,57 +1014,17 @@ h4, .h4 {
   margin: 0;
   line-height: 1.1; }
   @media only screen and (min-width: 500px) {
-    h4, .h4 {
-      font-size: 30px;
-      font-size: 1.875rem; } }
-  @media only screen and (min-width: 800px) {
-    h4, .h4 {
-      font-size: 36px;
-      font-size: 2.25rem; } }
-  @media only screen and (min-width: 1024px) {
-    h4, .h4 {
-      font-size: 40px;
-      font-size: 2.5rem; } }
-
-h5, .h5 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: #333333;
-  margin: 0;
-  line-height: 1.1; }
-  @media only screen and (min-width: 500px) {
-    h5, .h5 {
-      font-size: 25px;
-      font-size: 1.5625rem; } }
-  @media only screen and (min-width: 800px) {
-    h5, .h5 {
-      font-size: 30px;
-      font-size: 1.875rem; } }
-  @media only screen and (min-width: 1024px) {
-    h5, .h5 {
-      font-size: 33.33333px;
-      font-size: 2.08333rem; } }
-
-h6, .h6 {
-  font-size: 16px;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #333333;
-  margin: 0;
-  line-height: 1.1; }
-  @media only screen and (min-width: 500px) {
-    h6, .h6 {
-      font-size: 20px;
-      font-size: 1.25rem; } }
-  @media only screen and (min-width: 800px) {
-    h6, .h6 {
-      font-size: 24px;
-      font-size: 1.5rem; } }
-  @media only screen and (min-width: 1024px) {
     h6, .h6 {
       font-size: 26.66667px;
       font-size: 1.66667rem; } }
+  @media only screen and (min-width: 800px) {
+    h6, .h6 {
+      font-size: 28px;
+      font-size: 1.75rem; } }
+  @media only screen and (min-width: 1024px) {
+    h6, .h6 {
+      font-size: 29.33333px;
+      font-size: 1.83333rem; } }
 
 .article :first-child {
   margin-top: 0; }
