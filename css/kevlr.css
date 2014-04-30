@@ -907,12 +907,12 @@ p {
   line-height: 1.6; }
 
 h1, .h1 {
-  font-size: 48px;
-  font-size: 3rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
-  line-height: 1.1; }
+  line-height: 1.1;
+  font-size: 48px;
+  font-size: 3rem; }
   @media only screen and (min-width: 500px) {
     h1, .h1 {
       font-size: 53.33333px;
@@ -927,12 +927,12 @@ h1, .h1 {
       font-size: 3.66667rem; } }
 
 h2, .h2 {
-  font-size: 42px;
-  font-size: 2.625rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
-  line-height: 1.1; }
+  line-height: 1.1;
+  font-size: 42px;
+  font-size: 2.625rem; }
   @media only screen and (min-width: 500px) {
     h2, .h2 {
       font-size: 46.66667px;
@@ -947,12 +947,12 @@ h2, .h2 {
       font-size: 3.20833rem; } }
 
 h3, .h3 {
-  font-size: 36px;
-  font-size: 2.25rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
-  line-height: 1.1; }
+  line-height: 1.1;
+  font-size: 36px;
+  font-size: 2.25rem; }
   @media only screen and (min-width: 500px) {
     h3, .h3 {
       font-size: 40px;
@@ -967,12 +967,12 @@ h3, .h3 {
       font-size: 2.75rem; } }
 
 h4, .h4 {
-  font-size: 30px;
-  font-size: 1.875rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
-  line-height: 1.1; }
+  line-height: 1.1;
+  font-size: 30px;
+  font-size: 1.875rem; }
   @media only screen and (min-width: 500px) {
     h4, .h4 {
       font-size: 33.33333px;
@@ -987,12 +987,12 @@ h4, .h4 {
       font-size: 2.29167rem; } }
 
 h5, .h5 {
-  font-size: 24px;
-  font-size: 1.5rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
-  line-height: 1.1; }
+  line-height: 1.1;
+  font-size: 24px;
+  font-size: 1.5rem; }
   @media only screen and (min-width: 500px) {
     h5, .h5 {
       font-size: 26.66667px;
@@ -1007,12 +1007,12 @@ h5, .h5 {
       font-size: 1.83333rem; } }
 
 h6, .h6 {
-  font-size: 18px;
-  font-size: 1.125rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
-  line-height: 1.1; }
+  line-height: 1.1;
+  font-size: 18px;
+  font-size: 1.125rem; }
   @media only screen and (min-width: 500px) {
     h6, .h6 {
       font-size: 20px;
@@ -1052,8 +1052,6 @@ h6, .h6 {
   font-weight: 400;
   margin-top: .7em;
   margin-bottom: .5em; }
-.article a {
-  text-decoration: underline; }
 
 /* ----- Button ----- */
 button, .button {
@@ -1062,15 +1060,15 @@ button, .button {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   line-height: 1.2;
-  font-size: 15px;
-  font-size: 0.9375rem;
+  font-size: 20px;
+  font-size: 1.25rem;
   background: #4292aa;
   color: white;
   text-align: center;
   text-decoration: none;
-  padding: 7px 40px 8px; }
+  padding: 12px 32px 13px; }
   button .big-button, .button .big-button {
-    padding: 12px 45px 13px; }
+    padding: 17px 37px 18px; }
 
 .nav {
   list-style: none;
