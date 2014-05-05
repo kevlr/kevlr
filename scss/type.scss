@@ -127,7 +127,7 @@ pre {
 }
 
 #{$article} {
-	:first-child {
+	> :first-child {
 		margin-top: $first-element-margin-top;
 	}
 	
