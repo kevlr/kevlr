@@ -1,6 +1,15 @@
-// ===================================
-// ============= colors ==============
-// ===================================
+
+@function luminus($color, $amount) {
+	@if lightness($color) > 50% {
+		@return darken($color, $amount);
+	} @else {
+		@return lighten($color, $amount);
+	}
+}
+
+// ===============================================================
+// =========================== colors ============================
+// ===============================================================
 
 // basic colors
 $darkest-color: #333;
@@ -19,4 +28,27 @@ $inverse-color: $lightest-color;
 // background colors
 $primary-bg-color: $lightest-color;
 $secondary-bg-color: $lighter-color;
-$inverse-bg-color: #4292aa;
+$inverse-bg-color: luminus($primary-color, 20%);
+
+// ===============================================================
+// ========================= grid system =========================
+// ===============================================================
+
+
+// main layout
+$columns-number: 12;
+$column-gutter: 10px;
+$container-max-width: none; //none if fluid
+$container-min-width: 320px;
+$container-align: center; // center, left or right
+
+// larger layout
+$larger-layouts-name:					's',				'm',				'l'; // ascending order
+$larger-layouts-media-queries:			500px,				800px,				1024px;
+$larger-layouts-columns-number:			12,					12,					12;
+$larger-layouts-column-gutter:			20px,				20px,				40px;
+$larger-layouts-container-max-width:	480px,				768px,				960px; //none if fluid
+
+// General
+$media-queries-rules: 'only screen';
+$elements-to-order: -3, 3; // order propriety for flex display

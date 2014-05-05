@@ -1,13 +1,3 @@
-.column-style {
-	border: 2px solid lightblue;
-	background: aliceblue;
-	min-height: 100px;
-}
-
-.column {
-	@include gutter(margin, top bottom, .5);
-}
-
 /*
 
 $pxtest: 12px, 12px;

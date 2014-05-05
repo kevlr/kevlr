@@ -20,7 +20,8 @@ $text-justify: '.text-justify';
 // can put several values
 $container: '.container';
 $row: '.row';
-$external-gutter: '.external-gutter';
+$double-gutter: '.double-gutter';
+$no-gutter: '.no-gutter';
 $column: '.column';
 $clearfix: '.clearfix';
 $inline: '.inline';
@@ -39,29 +40,6 @@ $moz22-27-support: true;
 $box-sizing-border-box-on-every-element: true;
 
 // ===============================================================
-// ========================== variables ==========================
-// ===============================================================
-
-
-// main layout
-$columns-number: 12;
-$column-gutter: 10px;
-$container-max-width: none; //none if fluid
-$container-min-width: 320px;
-$container-align: center; // center, left or right
-
-// larger layout
-$larger-layouts-name:					's',				'm',				'l'; // ascending order
-$larger-layouts-media-queries:			500px,				800px,				1024px;
-$larger-layouts-columns-number:			12,					12,					12;
-$larger-layouts-column-gutter:			20px,				20px,				40px;
-$larger-layouts-container-max-width:	480px,				768px,				960px; //none if fluid
-
-// General
-$media-queries-rules: 'only screen';
-$elements-to-order: -3, 3; // order propriety for flex display
-
-// ===============================================================
 // ========================= grid system =========================
 // ===============================================================
 
@@ -69,34 +47,9 @@ $elements-to-order: -3, 3; // order propriety for flex display
 // ============= mixins ==============
 // ===================================
 
-@mixin media($layout-name) {
-	@each $layout in $all-layouts {
-		@if (nth($layout, 1) == $layout-name) {
-			@media #{$media-queries-rules} and (min-width: nth($layout, 2)) {
-				@content;
-			}
-		}
-	}
-}
-
-@mixin gutter($type, $directions, $ratio: 1) {
-	@each $direction in $directions {
-		#{$type}-#{$direction}: $column-gutter * $ratio;
-	}
-	@each $layout in $all-layouts {
-		@media #{$media-queries-rules} and (min-width: nth($layout, 2)) {
-			@each $direction in $directions {
-				#{$type}-#{$direction}: nth($layout, 4) * $ratio;
-			}
-		}
-	}
-}
-
 // ===================================
 // ========== general style ==========
 // ===================================
-
-$all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-layouts-columns-number, $larger-layouts-column-gutter, $larger-layouts-container-max-width);
 
 
 @if $box-sizing-border-box-on-every-element == true {
@@ -178,9 +131,14 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 	}
 }
 
-#{$external-gutter} {
+#{$double-gutter} {
 	margin-left: $column-gutter / 2;
 	margin-right: $column-gutter / 2;
+}
+
+#{$no-gutter} {
+	margin-left: -$column-gutter / 2;
+	margin-right: -$column-gutter / 2;
 }
 
 // ========== main layout columns ==========
@@ -318,9 +276,14 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 			
 			// ========== responsive row ==========
 			
-			#{$external-gutter} {
-				margin-left: - (nth($layout, 4) / -2);
-				margin-right: - (nth($layout, 4) / -2);
+			#{$double-gutter} {
+				margin-left: nth($layout, 4) / 2;
+				margin-right: nth($layout, 4) / 2;
+			}
+			
+			#{$no-gutter} {
+				margin-left: -(nth($layout, 4) / 2);
+				margin-right: -(nth($layout, 4) / 2);
 			}
 			
 			// ========== responsive columns ==========

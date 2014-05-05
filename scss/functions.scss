@@ -11,6 +11,31 @@
 	#{$propr}: $px / 16px * 1rem;
 }
 
+@mixin media($layout-name) {
+	@each $layout in $all-layouts {
+		@if (nth($layout, 1) == $layout-name) {
+			@media #{$media-queries-rules} and (min-width: nth($layout, 2)) {
+				@content;
+			}
+		}
+	}
+}
+
+$all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-layouts-columns-number, $larger-layouts-column-gutter, $larger-layouts-container-max-width);
+
+@mixin gutter($type, $directions, $ratio: 1) {
+	@each $direction in $directions {
+		#{$type}-#{$direction}: $column-gutter * $ratio;
+	}
+	@each $layout in $all-layouts {
+		@media #{$media-queries-rules} and (min-width: nth($layout, 2)) {
+			@each $direction in $directions {
+				#{$type}-#{$direction}: nth($layout, 4) * $ratio;
+			}
+		}
+	}
+}
+
 // ===================================
 // ============ functions ============
 // ===================================
