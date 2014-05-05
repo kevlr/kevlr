@@ -1,44 +1,14 @@
 // ===============================================================
-// ==================== mixins and functions =====================
+// ========================== functions ==========================
 // ===============================================================
 
-// ===================================
-// ============= mixins ==============
-// ===================================
-
-@mixin rem($propr, $px) {
-	#{$propr}: $px;
-	#{$propr}: $px / 16px * 1rem;
-}
-
-@mixin media($layout-name) {
-	@each $layout in $all-layouts {
-		@if (nth($layout, 1) == $layout-name) {
-			@media #{$media-queries-rules} and (min-width: nth($layout, 2)) {
-				@content;
-			}
-		}
+@function luminus($color, $amount) {
+	@if lightness($color) > 50% {
+		@return darken($color, $amount);
+	} @else {
+		@return lighten($color, $amount);
 	}
 }
-
-$all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-layouts-columns-number, $larger-layouts-column-gutter, $larger-layouts-container-max-width);
-
-@mixin gutter($type, $directions, $ratio: 1) {
-	@each $direction in $directions {
-		#{$type}-#{$direction}: $column-gutter * $ratio;
-	}
-	@each $layout in $all-layouts {
-		@media #{$media-queries-rules} and (min-width: nth($layout, 2)) {
-			@each $direction in $directions {
-				#{$type}-#{$direction}: nth($layout, 4) * $ratio;
-			}
-		}
-	}
-}
-
-// ===================================
-// ============ functions ============
-// ===================================
 
 @function fourvalues($values) {
 	@if length($values) == 1 {
@@ -66,5 +36,50 @@ $all-layouts: zip($larger-layouts-name, $larger-layouts-media-queries, $larger-l
 		@return $top $right $bottom;
 	} @else {
 		@return $top $right $bottom $left;
+	}
+}
+
+@mixin responsive-font-size($element-size) {
+	@for $i from 0 through length($larger-layouts-name) {
+		@if list-separator($element-size) == "space" { // auto
+			@if $i == 0 {
+				@if unit(nth($element-size, 1)) == "" {
+					@include rem(font-size, nth($element-size, 1) * nth(nth($body-font-size, $i+1),1));
+				} @else if unit(nth($element-size, 1)) == "px" {
+					@include rem(font-size, nth($element-size, 1));
+				}
+				@if length($element-size) == 2 {
+					line-height: nth($element-size, 2);
+				}
+			} @else {
+				@include media(nth($larger-layouts-name, $i)) {
+					@if unit(nth($element-size, 1)) == "" {
+						@include rem(font-size, nth($element-size, 1) * nth(nth($body-font-size, $i+1),1));
+					} @else if unit(nth($element-size, 1)) == "px" {
+						@include rem(font-size, nth($element-size, 1));
+					}
+				}
+			}
+		} @else if $i == 0 { // manual
+				@if unit(nth(nth($element-size, $i+1),1)) == "" { //semi-auto
+					@include rem(font-size, nth(nth($element-size, $i+1),1) * nth(nth($body-font-size, $i+1),1));
+				} @else if unit(nth(nth($element-size, $i+1),1)) == "px" { // manual
+					@include rem(font-size, nth(nth($element-size, $i+1),1));
+				}
+				@if length(nth($element-size, $i+1)) == 2 {
+					line-height: nth(nth($element-size, $i+1),2);
+				}
+		} @else {
+			@include media(nth($larger-layouts-name, $i)) {
+				@if unit(nth(nth($element-size, $i+1),1)) == "" {
+					@include rem(font-size, nth(nth($element-size, $i+1),1) * nth(nth($body-font-size, $i+1),1));
+				} @else if unit(nth(nth($element-size, $i+1),1)) == "px" {
+					@include rem(font-size, nth(nth($element-size, $i+1),1));
+				}
+				@if length(nth($element-size, $i+1)) == 2 {
+					line-height: nth(nth($element-size, $i+1),2);
+				}
+			}
+		}
 	}
 }

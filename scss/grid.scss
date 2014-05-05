@@ -1,34 +1,4 @@
 // ===============================================================
-// ========================= class names =========================
-// ===============================================================
-
-// only one value
-$width: '.width';
-$offset: '.offset';
-$order: '.order';
-$baseline-align: '.baseline-align';
-$bottom-align: '.bottom-align';
-$vertical-center-align: '.vertical-center-align';
-$equal-height: '.equal-height';
-$hidden: '.hidden';
-$visible: '.visible';
-$text-left: '.text-left';
-$text-right: '.text-right';
-$text-center: '.text-center';
-$text-justify: '.text-justify';
-
-// can put several values
-$container: '.container';
-$row: '.row';
-$double-gutter: '.double-gutter';
-$no-gutter: '.no-gutter';
-$column: '.column';
-$clearfix: '.clearfix';
-$inline: '.inline';
-$inline-block: '.inline-block';
-$flex: '.flex';
-
-// ===============================================================
 // =========================== options ===========================
 // ===============================================================
 
@@ -90,6 +60,10 @@ $box-sizing-border-box-on-every-element: true;
 // ===================================
 // =========== main layout ===========
 // ===================================
+
+body {
+	background-color: $primary-bg-color;
+}
 
 // ========== main layout container ==========
 
