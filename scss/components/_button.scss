@@ -31,7 +31,7 @@ $button-sizes: (
 	)
 );
 
-$button-variant: (
+$button-variants: (
 	alert: (
 		background: red,
 		font-size: 20px
@@ -51,14 +51,6 @@ $big-button-border-radius: 0;
 
 // Dev
 
-@each $size-name, $properties in $button-sizes {
-  #{$button}-#{$size-name} {
-    @each $property, $value in $properties {
-		#{$property}: $value;
-	}
-  }
-}
-
 #{$button} {
 	display: inline-block;
 	-webkit-box-sizing: border-box;
@@ -76,4 +68,20 @@ $big-button-border-radius: 0;
 	#{$big-button} {
 		padding: $big-button-padding;
 	}
+}
+
+@each $size-name, $properties in $button-sizes {
+  #{$button}-#{$size-name} {
+    @each $property, $value in $properties {
+		#{$property}: $value;
+	}
+  }
+}
+
+@each $variant-name, $properties in $button-variants {
+  #{$button}-#{$variant-name} {
+    @each $property, $value in $properties {
+		#{$property}: $value;
+	}
+  }
 }
