@@ -1,4 +1,4 @@
-$button: 'button, .button';
+$button: '.button';
 $big-button: '.big-button';
 
 /* ----- Button ----- */
@@ -20,6 +20,28 @@ $button-border-radius: 0;
 	text-decoration: none;
 }
 
+$button-sizes: (
+	big: (
+		padding: 20px,
+		font-size: 20px
+	),
+	small: (
+		padding: 10px,
+		font-size: 14px
+	)
+);
+
+$button-variant: (
+	alert: (
+		background: red,
+		font-size: 20px
+	),
+	success: (
+		background: blue,
+		font-size: 14px
+	)
+);
+
 // big buttons
 
 $big-button-padding: increase($button-padding, 5px);
@@ -28,6 +50,14 @@ $big-button-font-size: $button-font-size + 5px;
 $big-button-border-radius: 0;
 
 // Dev
+
+@each $size-name, $properties in $button-sizes {
+  #{$button}-#{$size-name} {
+    @each $property, $value in $properties {
+		#{$property}: $value;
+	}
+  }
+}
 
 #{$button} {
 	display: inline-block;

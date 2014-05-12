@@ -270,7 +270,7 @@ body {
 			// columns width
 
 			@for $i from 1 through nth($layout, 3) {
-				#{$width}#{$i}--#{nth($layout, 1)} {
+				#{$width}#{$i}_#{nth($layout, 1)} {
 					width: 100% / nth($layout, 3) * $i;
 				}
 			}
@@ -278,7 +278,7 @@ body {
 			// columns offset
 
 			@for $i from 1 through nth($layout, 3) {
-				#{$offset}#{$i}--#{nth($layout, 1)} {
+				#{$offset}#{$i}_#{nth($layout, 1)} {
 					margin-left: 100% / nth($layout, 3) * $i;
 				}
 			}
@@ -288,7 +288,7 @@ body {
 			// responsive order
 
 			@for $i from nth($elements-to-order, 1) through nth($elements-to-order, 2) {
-				.order#{$i}--#{nth($layout, 1)} {
+				.order#{$i}_#{nth($layout, 1)} {
 					-webkit-order: #{$i};
 					-ms-flex-order: #{$i};
 					order: #{$i};
@@ -297,7 +297,7 @@ body {
 
 			// responsive baseline align
 
-			#{$baseline-align}--#{nth($layout, 1)} {
+			#{$baseline-align}_#{nth($layout, 1)} {
 				-webkit-align-items: baseline;
 				-ms-flex-align: baseline;
 				align-items: baseline;
@@ -305,7 +305,7 @@ body {
 
 			// responsive bottom align
 
-			#{$bottom-align}--#{nth($layout, 1)} {
+			#{$bottom-align}_#{nth($layout, 1)} {
 				-webkit-align-items: flex-end;
 				-ms-flex-align: end;
 				align-items: flex-end;
@@ -313,7 +313,7 @@ body {
 
 			// responsive center align
 
-			#{$vertical-center-align}--#{nth($layout, 1)} {
+			#{$vertical-center-align}_#{nth($layout, 1)} {
 				-webkit-align-items: center;
 				-ms-flex-align: center;
 				align-items: center;
@@ -321,7 +321,7 @@ body {
 
 			// responsive equal height
 
-			#{$equal-height}--#{nth($layout, 1)} {
+			#{$equal-height}_#{nth($layout, 1)} {
 				-webkit-align-items: stretch;
 				-ms-flex-align: stretch;
 				align-items: stretch;
@@ -329,29 +329,29 @@ body {
 
 			// responsive text alignment
 
-			#{$text-left}--#{nth($layout, 1)} {
+			#{$text-left}_#{nth($layout, 1)} {
 				text-align: left;
 			}
 
-			#{$text-right}--#{nth($layout, 1)} {
+			#{$text-right}_#{nth($layout, 1)} {
 				text-align: right;
 			}
 
-			#{$text-center}--#{nth($layout, 1)} {
+			#{$text-center}_#{nth($layout, 1)} {
 				text-align: center;
 			}
 
-			#{$text-justify}--#{nth($layout, 1)} {
+			#{$text-justify}_#{nth($layout, 1)} {
 				text-align: justify;
 			}
 
 			// ========== responsive visibility ==========
 
-			#{$hidden}--#{nth($layout, 1)} {
+			#{$hidden}_#{nth($layout, 1)} {
 				display: none;
 			}
 
-			#{$visible}--#{nth($layout, 1)} {
+			#{$visible}_#{nth($layout, 1)} {
 				display: block;
 				
 				&#{$inline} {

@@ -4,17 +4,20 @@
 @charset "UTF-8";
 
 @import
-	"normalize",
-	//"_font-awesome/font-awesome",
-    "class",
-    "functions",
+	"base/reset",
+	
+	//"vendors/font-awesome/font-awesome",
+	
+    "utils/class",
+    "utils/functions",
 	"variables",
-	"mixins",
-	"grid",
-	"type",
-	"button",
-	"navigation",
-    "test",
-  
-    // custom style
-  	"custom";
+	"utils/mixins",
+	
+	"layout/grid",
+	
+	"base/type",
+	
+	"components/button",
+	"components/navigation",
+	
+    "test";
