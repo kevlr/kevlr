@@ -192,6 +192,22 @@ body {
 	align-items: stretch;
 }
 
+#{$equal-height-child} {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	
+	@if $moz22-27-support {
+		@supports not (flex-wrap: wrap) {
+			display: block;
+		}
+	}
+	
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
 // ========== display ==========
 
 #{$inline} {
