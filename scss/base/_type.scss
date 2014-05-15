@@ -1,73 +1,4 @@
 // ===============================================================
-// ========================== variables ==========================
-// ===============================================================
-
-$primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$secondary-font: "Georgia", "Lucida Bright", Times, TimesNewRoman, "Times New Roman", serif;
-$mono-font: "Andale Mono", AndaleMono, Consolas, "Courier New", Courier, monospace;
-
-// main font size
-// for the different layout (ascending order)
-//							main 					s 						m 						l
-$body-font-size: 			18px, 					20px, 					20px, 					20px;
-$h1-size: 					8/3;
-$h2-size: 					7/3;
-$h3-size: 					6/3;
-$h4-size: 					5/3;
-$h5-size: 					4/3;
-$h6-size: 					3/3;
-
-
-// main font style
-$body-font-weight: 300;
-$p-line-height: 1.6;
-
-@mixin headings-style {
-	font-weight: 400;
-	color: $darkest-color;
-	margin: 0;
-	line-height: 1.1;
-}
-@mixin h1-style {
-}
-@mixin h2-style {}
-@mixin h3-style {}
-@mixin h4-style {}
-@mixin h5-style {}
-@mixin h6-style {}
-
-%link-style {
-	text-decoration: none;
-	color: $primary-color;
-	&:hover {
-		color: luminus($primary-color, 15%);
-	}
-}
-
-$pre-font-size: 14px;
-$pre-font-family: $mono-font;
-@mixin pre-style {
-	background: luminus($primary-bg-color, 5%);
-	@include gutter(padding, top right bottom left, .25)
-}
-
-// article font style
-$first-element-margin-top: 0;
-
-@mixin article-headings-style {
-	margin-top: .7em;
-	margin-bottom: .5em;
-}
-@mixin article-h1-style {}
-@mixin article-h2-style {}
-@mixin article-h3-style {}
-@mixin article-h4-style {}
-@mixin article-h5-style {}
-@mixin article-h6-style {}
-
-@mixin article-link-style {}
-
-// ===============================================================
 // ========================= type system =========================
 // ===============================================================
 
@@ -75,6 +6,11 @@ body {
 	@include responsive-font-size($body-font-size);
 	font-family: $primary-font;
 	font-weight: $body-font-weight;
+}
+
+b,
+strong {
+  font-weight: $bold-font-weight;
 }
 
 #{$p} {

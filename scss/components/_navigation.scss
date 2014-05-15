@@ -33,7 +33,8 @@ $nav-equal-width: '.nav-equal-width';
 $nav-primary-font-size: 20px;
 $nav-primary-item-line-height: 1.2;
 $nav-primary-item-padding: 1.2;
-@mixin nav-primary-item-style {	
+@mixin nav-primary-item-style {
+	font-family: $secondary-font;
 }
 @mixin nav-primary-item-hover-style {	
 }
