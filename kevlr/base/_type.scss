@@ -6,6 +6,7 @@ body {
 	@include responsive-font-size($body-font-size);
 	font-family: $primary-font;
 	font-weight: $body-font-weight;
+	color: $body-color;
 }
 
 b,
@@ -14,7 +15,7 @@ strong {
 }
 
 #{$p} {
-	line-height: $p-line-height;
+	@include p-style;
 }
 
 #{$h1} {
@@ -74,31 +75,37 @@ pre {
 	
 	#{$article-h1} {
 		@include article-headings-style;
+		@include responsive-font-size($article-h1-size);
 		@include article-h1-style;
 	}
 
 	#{$article-h2} {
 		@include article-headings-style;
+		@include responsive-font-size($article-h2-size);
 		@include article-h2-style;
 	}
 
 	#{$article-h3} {
 		@include article-headings-style;
+		@include responsive-font-size($article-h3-size);
 		@include article-h3-style;
 	}
 
 	#{$article-h4} {
 		@include article-headings-style;
+		@include responsive-font-size($article-h4-size);
 		@include article-h4-style;
 	}
 
 	#{$article-h5} {
 		@include article-headings-style;
+		@include responsive-font-size($article-h5-size);
 		@include article-h5-style;
 	}
 
 	#{$article-h6} {
 		@include article-headings-style;
+		@include responsive-font-size($article-h6-size);
 		@include article-h6-style;
 	}
 	

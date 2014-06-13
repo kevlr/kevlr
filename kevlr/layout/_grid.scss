@@ -250,7 +250,7 @@ body {
 // ========== visibility ==========
 
 #{$hidden} {
-	display: none;
+	display: none !important;
 }
 
 // ===================================
@@ -337,29 +337,29 @@ body {
 			// ========== responsive visibility ==========
 
 			#{$hidden}_#{nth($layout, 1)} {
-				display: none;
+				display: none !important;
 			}
 
 			#{$visible}_#{nth($layout, 1)} {
-				display: block;
+				display: block !important;
 				
 				&#{$inline} {
-					display: inline;
+					display: inline !important;
 				}
 
 				&#{$inline-block} {
-					display: inline-block;
+					display: inline-block !important;
 				}
 
 				&#{$flex},
 				&#{$row} {
-					display: -webkit-flex;
-					display: -ms-flexbox;
-					display: flex;
+					display: -webkit-flex !important;
+					display: -ms-flexbox !important;
+					display: flex !important;
 					
 					@if $moz22-27-support {
 						@supports not (flex-wrap: wrap) {
-							display: block;
+							display: block !important;
 						}
 					}
 				}
