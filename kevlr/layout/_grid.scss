@@ -35,7 +35,15 @@ $box-sizing-border-box-on-every-element: true;
 	}
 }
 
-// ========== clearfix ==========
+// ========== float and clear ==========
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
 
 %clearfix {
 	&:before,
@@ -52,7 +60,7 @@ $box-sizing-border-box-on-every-element: true;
 	}
 }
 
-#{$clearfix} {
+.clearfix {
 	width: 100%;
 	@extend %clearfix;
 }
@@ -67,7 +75,7 @@ body {
 
 // ========== main layout container ==========
 
-#{$container} {
+.container {
 	@if $container-max-width != none {
 	max-width: $container-max-width;
 	}
@@ -81,7 +89,7 @@ body {
 
 // ========== main layout row ==========
 
-#{$row} {
+.row {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -105,19 +113,19 @@ body {
 	}
 }
 
-#{$double-gutter} {
+.double-marge {
 	margin-left: $column-gutter / 2;
 	margin-right: $column-gutter / 2;
 }
 
-#{$no-gutter} {
+.no-marge {
 	margin-left: -$column-gutter / 2;
 	margin-right: -$column-gutter / 2;
 }
 
 // ========== main layout columns ==========
 
-#{$column} {
+.column {
 	padding-left: $column-gutter / 2;
 	padding-right: $column-gutter / 2;
 	width: 100%;
@@ -135,7 +143,7 @@ body {
 // columns width
 
 @for $i from 1 through $columns-number {
-	#{$width}#{$i} {
+	.width#{$i} {
 		width: 100% / $columns-number * $i;
 	}
 }
@@ -143,7 +151,7 @@ body {
 // columns offset
 
 @for $i from 1 through $columns-number {
-	#{$offset}#{$i} {
+	.offset#{$i} {
 		margin-left: 100% / $columns-number * $i;
 	}
 }
@@ -153,7 +161,7 @@ body {
 // order
 
 @for $i from nth($elements-to-order, 1) through nth($elements-to-order, 2) {
-	#{$order}#{$i} {
+	.order#{$i} {
 		-webkit-order: #{$i};
 		-ms-flex-order: #{$i};
 		order: #{$i};
@@ -162,7 +170,7 @@ body {
 
 // baseline align
 
-#{$baseline-align} {
+.baseline-valign {
 	-webkit-align-items: baseline;
 	-ms-flex-align: baseline;
 	align-items: baseline;
@@ -170,7 +178,7 @@ body {
 
 // bottom align
 
-#{$bottom-align} {
+.bottom-valign {
 	-webkit-align-items: flex-end;
 	-ms-flex-align: end;
 	align-items: flex-end;
@@ -178,7 +186,7 @@ body {
 
 // center align
 
-#{$vertical-center-align} {
+.center-valign {
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -186,11 +194,11 @@ body {
 
 // equal height
 
-#{$equal-height} {
+.equal-height {
 	-webkit-align-items: stretch;
 	-ms-flex-align: stretch;
 	align-items: stretch;
-	#{$column} {
+	.column {
 		display: -webkit-flex;
 		display: -ms-flexbox;
 		display: flex;
@@ -209,15 +217,15 @@ body {
 
 // ========== display ==========
 
-#{$inline} {
+.inline {
 	display: inline;
 }
 
-#{$inline-block} {
+.inline-block {
 	display: inline-block;
 }
 
-#{$flex} {
+.flex {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -231,25 +239,21 @@ body {
 
 // ========== text alignment ==========
 
-#{$text-left} {
+.text-left {
 	text-align: left;
 }
 
-#{$text-right} {
+.text-right {
 	text-align: right;
 }
 
-#{$text-center} {
+.text-center {
 	text-align: center;
-}
-
-#{$text-justify} {
-	text-align: justify;
 }
 
 // ========== visibility ==========
 
-#{$hidden} {
+.hidden {
 	display: none !important;
 }
 
@@ -265,25 +269,25 @@ body {
 			
 			// ========== responsive container ==========
 			
-			#{$container} {
+			.container {
 				max-width: nth($layout, 5);
 			}
 			
 			// ========== responsive row ==========
 			
-			#{$double-gutter} {
+			.double-marge {
 				margin-left: nth($layout, 4) / 2;
 				margin-right: nth($layout, 4) / 2;
 			}
 			
-			#{$no-gutter} {
+			.no-marge {
 				margin-left: -(nth($layout, 4) / 2);
 				margin-right: -(nth($layout, 4) / 2);
 			}
 			
 			// ========== responsive columns ==========
 			
-			#{$column} {
+			.column {
 				padding-left: - (nth($layout, 4) / -2);
 				padding-right: - (nth($layout, 4) / -2);
 			}
@@ -291,7 +295,7 @@ body {
 			// columns width
 
 			@for $i from 1 through nth($layout, 3) {
-				#{$width}#{$i}_#{nth($layout, 1)} {
+				.width#{$i}_#{nth($layout, 1)} {
 					width: 100% / nth($layout, 3) * $i;
 				}
 			}
@@ -299,7 +303,7 @@ body {
 			// columns offset
 
 			@for $i from 1 through nth($layout, 3) {
-				#{$offset}#{$i}_#{nth($layout, 1)} {
+				.offset#{$i}_#{nth($layout, 1)} {
 					margin-left: 100% / nth($layout, 3) * $i;
 				}
 			}
@@ -318,41 +322,37 @@ body {
 
 			// responsive text alignment
 
-			#{$text-left}_#{nth($layout, 1)} {
+			.text-left_#{nth($layout, 1)} {
 				text-align: left;
 			}
 
-			#{$text-right}_#{nth($layout, 1)} {
+			.text-right_#{nth($layout, 1)} {
 				text-align: right;
 			}
 
-			#{$text-center}_#{nth($layout, 1)} {
+			.text-center_#{nth($layout, 1)} {
 				text-align: center;
-			}
-
-			#{$text-justify}_#{nth($layout, 1)} {
-				text-align: justify;
 			}
 
 			// ========== responsive visibility ==========
 
-			#{$hidden}_#{nth($layout, 1)} {
+			.hidden_#{nth($layout, 1)} {
 				display: none !important;
 			}
 
-			#{$visible}_#{nth($layout, 1)} {
+			.visible_#{nth($layout, 1)} {
 				display: block !important;
 				
-				&#{$inline} {
+				&.inline {
 					display: inline !important;
 				}
 
-				&#{$inline-block} {
+				&.inline-block {
 					display: inline-block !important;
 				}
 
-				&#{$flex},
-				&#{$row} {
+				&.flex,
+				&.row {
 					display: -webkit-flex !important;
 					display: -ms-flexbox !important;
 					display: flex !important;

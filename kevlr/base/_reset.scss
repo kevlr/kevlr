@@ -91,6 +91,8 @@ sub {
 
 img {
   border: 0;
+  max-width: 100%;
+  display: block;
 }
 
 svg:not(:root) {

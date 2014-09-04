@@ -2,53 +2,55 @@
 // ====================== navigation system ======================
 // ===============================================================
 
-#{$nav} {
+.nav {
 	
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	
-	&#{$nav-primary} {
+	&.nav-primary {
 		li {
 			a {
-				font-size: rem(font-size, $nav-primary-font-size);
+				@include rem(font-size, $nav-primary-font-size);
 				line-height: $nav-primary-item-line-height;
 				padding: $nav-primary-item-padding;
 				@include nav-primary-item-style;
 				&:hover {
 					@include nav-primary-item-hover-style;
 				}
-				&:active {
-					@include nav-primary-item-active-style;
-				}
 			}
+            
+            &.active a {
+              @include nav-primary-item-active-style;
+            }
 		}
 	}
 
-	&#{$nav-secondary} {
+	&.nav-secondary {
 		li {
 			a {
-				font-size: rem(font-size, $nav-secondary-font-size);
+				@include rem(font-size, $nav-secondary-font-size);
 				line-height: $nav-secondary-item-line-height;
 				padding: $nav-secondary-item-padding;
 				@include nav-secondary-item-style;
 				&:hover {
 					@include nav-secondary-item-hover-style;
 				}
-				&:active {
-					@include nav-secondary-item-active-style;
-				}
 			}
+            
+            &.active a {
+              @include nav-primary-item-active-style;
+            }
 		}
 	}
 	
-	&#{$nav-horizontal} {
+	&.nav-horizontal {
 		li{
 			display: inline-block;
 		}
 	}
 	
-	&#{$nav-equal-width} {
+	&.nav-equal-width {
 		@if $ie8-9-support {
 			table-layout: fixed;
 			width: 100%;
