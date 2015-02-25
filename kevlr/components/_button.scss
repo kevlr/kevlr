@@ -11,6 +11,7 @@
 	@include rem(font-size, $button-font-size);
 	@include button-style;
 	padding: $button-padding;
+    -webkit-font-smoothing: antialiased;
 	
 	@if $button-border-radius != 0 {
 		border-radius: $button-border-radius;
@@ -18,7 +19,7 @@
 }
 
 @each $size-name, $properties in $button-sizes {
-  .button-#{$size-name} {
+  .button--#{$size-name} {
     @each $property, $value in $properties {
 		#{$property}: $value;
 	}
@@ -26,7 +27,7 @@
 }
 
 @each $variant-name, $properties in $button-variants {
-  .button-#{$variant-name} {
+  .button--#{$variant-name} {
     @each $property, $value in $properties {
 		#{$property}: $value;
 	}

@@ -5,13 +5,14 @@
 body {
 	@include responsive-font-size($body-font-size);
 	font-family: $primary-font;
-	font-weight: $body-font-weight;
+	font-weight: $normal;
 	color: $body-color;
+    -webkit-font-smoothing: antialiased;
 }
 
 b,
 strong {
-  font-weight: $bold-font-weight;
+  font-weight: $bold;
 }
 
 p {
@@ -23,37 +24,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	@include headings-style;
 	@include responsive-font-size($h1-size);
 	@include h1-style;
 }
 
 h2 {
-	@include headings-style;
 	@include responsive-font-size($h2-size);
 	@include h2-style
 }
 
 h3 {
-	@include headings-style;
 	@include responsive-font-size($h3-size);
 	@include h3-style;
 }
 
 h4 {
-	@include headings-style;
 	@include responsive-font-size($h4-size);
 	@include h4-style;
 }
 
 h5 {
-	@include headings-style;
 	@include responsive-font-size($h5-size);
 	@include h5-style;
 }
 
 h6 {
-	@include headings-style;
 	@include responsive-font-size($h6-size);
 	@include h6-style;
 }
@@ -66,54 +61,4 @@ pre {
 	font-family: $pre-font-family;
 	@include rem(font-size, $pre-font-size);
 	@include pre-style;
-}
-
-.article {
-	> :first-child {
-		margin-top: $first-element-margin-top;
-	}
-	
-	p {
-
-	}
-	
-	h1 {
-		@include article-headings-style;
-		@include responsive-font-size($article-h1-size);
-		@include article-h1-style;
-	}
-
-	h2 {
-		@include article-headings-style;
-		@include responsive-font-size($article-h2-size);
-		@include article-h2-style;
-	}
-
-	h3 {
-		@include article-headings-style;
-		@include responsive-font-size($article-h3-size);
-		@include article-h3-style;
-	}
-
-	h4 {
-		@include article-headings-style;
-		@include responsive-font-size($article-h4-size);
-		@include article-h4-style;
-	}
-
-	h5 {
-		@include article-headings-style;
-		@include responsive-font-size($article-h5-size);
-		@include article-h5-style;
-	}
-
-	h6 {
-		@include article-headings-style;
-		@include responsive-font-size($article-h6-size);
-		@include article-h6-style;
-	}
-	
-	a {
-		@include article-link-style;
-	}
 }

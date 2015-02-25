@@ -34,11 +34,11 @@ $container-min-width: 320px;
 $container-align: center; // center, left or right
 
 // layouts
-$larger-layouts-name:					's',		'm'; // ascending order
-$larger-layouts-media-queries:			600px,		1000px;
-$larger-layouts-columns-number:			12,			12;
-$larger-layouts-column-gutter:			40px,		60px;
-$larger-layouts-container-max-width:	none,		768px; //none if fluid
+$larger-layouts-name:					's',		'm',        'l'; // ascending order
+$larger-layouts-media-queries:			500px,		800px,      1000px;
+$larger-layouts-columns-number:			12,			12,         12;
+$larger-layouts-column-gutter:			15px,		20px,       20px;
+$larger-layouts-container-max-width:	none,		none,       1200px; //none if fluid
 
 // general
 $media-queries-rules: 'only screen';
@@ -59,20 +59,18 @@ $normal: 400;
 $bold: 600;
 
 // font size and line-height for the different layouts (ascending order)
-//							main 			s 				m
-$body-font-size: 			14px, 			18px, 			20px;
-$h1-size: 					36px 1.1,		60px, 			90px;
-$h2-size: 					20px 1.3, 		30px, 			42px;
-$h3-size: 					4/3 1.3;
+//							main 			s 				m         l
+$body-font-size: 			14px, 			16px, 			17px,     18px;
+$h1-size: 					22px 1.1,		26px, 			30px,     36px;
+$h2-size: 					16px 1.3, 		20px, 			24px,     26px;
+$h3-size: 					14px 1.3, 		16px, 			18px,     20px;
 $h4-size: 					3/3 1.3;
 $h5-size: 					3/4 1.4;
 $h6-size: 					2/3 1.4;
 
 
 // main font style
-$body-color: $secondary-color;
-$body-font-weight: $light;
-$bold-font-weight: $bold;
+$body-color: $darker-color;
 
 @mixin p-style {
 	line-height: 1.6;
@@ -83,7 +81,6 @@ $bold-font-weight: $bold;
 @mixin headings-style {
 	font-family: $primary-font;
 	font-weight: $normal;
-	color: $darkest-color;
 	margin: 0;
 }
 
@@ -117,39 +114,6 @@ $pre-font-family: $mono-font;
 	border: 1px solid $light-color;
 	@include gutter(margin, top bottom, .5);
 }
-
-//article
-//							main 			s 				m
-$article-h1-size: 			24px 1.1,		30px, 			36px;
-$article-h2-size: 			18px 1.1, 		26px, 			30px;
-$article-h3-size: 			16px 1.1, 		20px, 			24px;
-$article-h4-size: 			14px 1.2, 		18px, 			20px;
-$article-h5-size: 			12px 1.2, 		16px, 			18px;
-$article-h6-size: 			10px 1.3, 		14px, 			16px;
-
-// article font style
-$first-element-margin-top: 0;
-
-// all article heading style
-@mixin article-headings-style {
-	margin-top: 1em;
-	margin-bottom: .5em;
-}
-
-// specific article heading style
-@mixin article-h1-style {
-	font-family: $primary-font;
-	color: $primary-color;
-	font-weight: $bold;
-}
-@mixin article-h2-style {}
-@mixin article-h3-style {}
-@mixin article-h4-style {}
-@mixin article-h5-style {}
-@mixin article-h6-style {}
-
-// article link styme
-@mixin article-link-style {}
 
 // ===============================================================
 // ========================= navigation ==========================
