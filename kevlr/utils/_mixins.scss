@@ -10,7 +10,7 @@
 @mixin media($layout-name) {
 	@each $layout in $all-layouts {
 		@if (nth($layout, 1) == $layout-name) {
-			@media #{$media-queries-rules} and (min-width: nth($layout, 2)) {
+			@media only screen and (min-width: nth($layout, 2)) {
 				@content;
 			}
 		}
@@ -30,7 +30,7 @@ $all-layouts: zip($layouts-name, $layouts-media-queries, $layouts-columns-number
 		#{$type}-#{$direction}: nth($layouts-column-gutter, 1) * $ratio;
 	}
 	@for $i from 2 through length($all-layouts) {
-		@media #{$media-queries-rules} and (min-width: nth($layouts-media-queries, $i)) {
+		@media only screen and (min-width: nth($layouts-media-queries, $i)) {
 			@each $direction in $directions {
 				#{$type}-#{$direction}: nth($layouts-column-gutter, $i) * $ratio;
 			}

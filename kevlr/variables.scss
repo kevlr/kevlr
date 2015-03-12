@@ -38,7 +38,6 @@ $layouts-column-gutter:			10px,       15px,		20px,       20px;
 $layouts-container-max-width:	none,       none,		none,       1200px; //none if fluid
 
 // general
-$media-queries-rules: 'only screen';
 $elements-to-order: -3, 3; // order propriety for flex display
 $ie8-support: true;
 $ie8-layout: "m"; //if ie8-support == true
