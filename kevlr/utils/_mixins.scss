@@ -16,9 +16,16 @@
 		}
     
         @if ($ie8-layout == $layout-name and $ie8-support == true) {
-			.#{$ie8-class-on-html-tag} {
-				@content;
-			}
+            @if & {
+                .#{$ie8-class-on-html-tag} & {
+                    @content;
+                }
+            
+            } @else {
+                .#{$ie8-class-on-html-tag} {
+                    @content;
+                }
+            }
 		}
 	}
 }
@@ -48,10 +55,13 @@ $all-layouts: zip($layouts-name, $layouts-media-queries, $layouts-columns-number
 				}
 		} @else {
 			@include media(nth($layouts-name, $i)) {
-				@include rem(font-size, nth(nth($size, $i),1));
                 
-				@if length(nth($size, $i)) == 2 {
-					line-height: nth(nth($size, $i+1),2);
+                @if nth(nth($size, $i),1) != nth(nth($size, $i - 1),1) {
+				    @include rem(font-size, nth(nth($size, $i),1));
+                }
+                
+				@if length(nth($size, $i)) == 2 and nth(nth($size, $i),2) != nth(nth($size, $i - 1),2) {
+					line-height: nth(nth($size, $i),2);
 				}
 			}
 		}
