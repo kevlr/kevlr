@@ -16,7 +16,7 @@
 		}
     
         @if ($ie8-layout == $layout-name and $ie8-support == true) {
-			.ie8 {
+			.#{$ie8-class-on-html-tag} {
 				@content;
 			}
 		}
