@@ -1,4 +1,18 @@
 // ===============================================================
+// =========================== options ===========================
+// ===============================================================
+
+// support
+$moz22-27-support: true;
+$ie8-9-support: true;
+$ie8-support: true; // $ie8-9-support must be true too
+$ie8-layout: "m"; //if ie8-support == true
+$ie8-class-on-html-tag: "ie8"; //if ie8-support == true
+
+// css options
+$box-sizing-border-box-on-every-element: true;
+
+// ===============================================================
 // =========================== colors ============================
 // ===============================================================
 
@@ -39,9 +53,6 @@ $layouts-container-max-width:	none,       none,		none,       1200px; //none if f
 
 // general
 $elements-to-order: -3, 3; // order propriety for flex display
-$ie8-support: true;
-$ie8-layout: "m"; //if ie8-support == true
-$ie8-class-on-html-tag: "ie8";
 
 // ===============================================================
 // ========================== typography =========================
