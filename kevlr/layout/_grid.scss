@@ -14,10 +14,6 @@ $box-sizing-border-box-on-every-element: true;
 // ===============================================================
 
 // ===================================
-// ============= mixins ==============
-// ===================================
-
-// ===================================
 // ========== general style ==========
 // ===================================
 
@@ -76,8 +72,8 @@ body {
 // ========== main layout container ==========
 
 .container {
-	@if $container-max-width != none {
-	max-width: $container-max-width;
+	@if nth($layouts-container-max-width, 1) != none {
+	max-width: nth($layouts-container-max-width, 1);
 	}
 	min-width: $container-min-width;
 	@if $container-align == center {
@@ -110,49 +106,6 @@ body {
 	
 	@if $ie8-9-support or $moz22-27-support {
 		@extend %clearfix;
-	}
-}
-
-.double-marge {
-	margin-left: $column-gutter / 2;
-	margin-right: $column-gutter / 2;
-}
-
-.no-marge {
-	margin-left: -$column-gutter / 2;
-	margin-right: -$column-gutter / 2;
-}
-
-// ========== main layout columns ==========
-
-.column {
-	padding-left: $column-gutter / 2;
-	padding-right: $column-gutter / 2;
-	width: 100%;
-	@if $ie8-9-support or $moz22-27-support {
-	min-height: 1px;
-	float: left;
-	}
-	@if $box-sizing-border-box-on-every-element == false {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-}
-
-// columns width
-
-@for $i from 1 through $columns-number {
-	.width#{$i} {
-		width: 100% / $columns-number * $i;
-	}
-}
-
-// columns offset
-
-@for $i from 1 through $columns-number {
-	.offset#{$i} {
-		margin-left: 100% / $columns-number * $i;
 	}
 }
 
@@ -261,111 +214,156 @@ body {
 // ========== media queries ==========
 // ===================================
 
-@each $layout in $all-layouts {
-	
-	@if (nth($layout, 1)) {
-	
-		@include media(nth($layout, 1)) {
-			
-			// ========== responsive container ==========
-			
-			.container {
-				max-width: nth($layout, 5);
-			}
-			
-			// ========== responsive row ==========
-			
-			.double-marge {
-				margin-left: nth($layout, 4) / 2;
-				margin-right: nth($layout, 4) / 2;
-			}
-			
-			.no-marge {
-				margin-left: -(nth($layout, 4) / 2);
-				margin-right: -(nth($layout, 4) / 2);
-			}
-			
-			// ========== responsive columns ==========
-			
-			.column {
-				padding-left: - (nth($layout, 4) / -2);
-				padding-right: - (nth($layout, 4) / -2);
-			}
-			
-			// columns width
+@for $i from 1 through length($all-layouts) {
+    
+    @if ( $i == 1 ) {
+    
+        .double-marge {
+            margin-left: nth($layouts-column-gutter, $i) / 2;
+            margin-right: nth($layouts-column-gutter, $i) / 2;
+        }
 
-			@for $i from 1 through nth($layout, 3) {
-				.width#{$i}_#{nth($layout, 1)} {
-					width: 100% / nth($layout, 3) * $i;
-				}
-			}
+        .no-marge {
+            margin-left: nth($layouts-column-gutter, $i) / -2;
+            margin-right: nth($layouts-column-gutter, $i) / -2;
+        }
 
-			// columns offset
+        // ========== main layout columns ==========
 
-			@for $i from 1 through nth($layout, 3) {
-				.offset#{$i}_#{nth($layout, 1)} {
-					margin-left: 100% / nth($layout, 3) * $i;
-				}
-			}
+        .column {
+            padding-left: nth($layouts-column-gutter, $i) / 2;
+            padding-right: nth($layouts-column-gutter, $i) / 2;
+            width: 100%;
+            @if $ie8-9-support or $moz22-27-support {
+            min-height: 1px;
+            float: left;
+            }
+            @if $box-sizing-border-box-on-every-element == false {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+        }
 
-			// ========== responsive flex options ==========
+        // columns width
 
-			// responsive order
+        @for $j from 1 through nth($layouts-columns-number, $i) {
+            .width#{$j} {
+                width: 100% / nth($layouts-columns-number, $i) * $j;
+            }
+        }
 
-			@for $i from nth($elements-to-order, 1) through nth($elements-to-order, 2) {
-				.order#{$i}_#{nth($layout, 1)} {
-					-webkit-order: #{$i};
-					-ms-flex-order: #{$i};
-					order: #{$i};
-				}
-			}
+        // columns offset
 
-			// responsive text alignment
+        @for $j from 1 through nth($layouts-columns-number, $i) {
+            .offset#{$j} {
+                margin-left: 100% / nth($layouts-columns-number, $i) * $j;
+            }
+        }
+        
+    } @else {
 
-			.text-left_#{nth($layout, 1)} {
-				text-align: left;
-			}
+        @include media(nth($layouts-name, $i)) {
 
-			.text-right_#{nth($layout, 1)} {
-				text-align: right;
-			}
+            // ========== responsive container ==========
 
-			.text-center_#{nth($layout, 1)} {
-				text-align: center;
-			}
+            .container {
+                max-width: nth($layouts-container-max-width, $i);
+            }
 
-			// ========== responsive visibility ==========
+            // ========== responsive row ==========
 
-			.hidden_#{nth($layout, 1)} {
-				display: none !important;
-			}
+            .double-marge {
+                margin-left: nth($layouts-column-gutter, $i) / 2;
+                margin-right: nth($layouts-column-gutter, $i) / 2;
+            }
 
-			.visible_#{nth($layout, 1)} {
-				display: block !important;
-				
-				&.inline {
-					display: inline !important;
-				}
+            .no-marge {
+                margin-left: -(nth($layouts-column-gutter, $i) / 2);
+                margin-right: -(nth($layouts-column-gutter, $i) / 2);
+            }
 
-				&.inline-block {
-					display: inline-block !important;
-				}
+            // ========== responsive columns ==========
 
-				&.flex,
-				&.row {
-					display: -webkit-flex !important;
-					display: -ms-flexbox !important;
-					display: flex !important;
-					
-					@if $moz22-27-support {
-						@supports not (flex-wrap: wrap) {
-							display: block !important;
-						}
-					}
-				}
-			}
-		}
+            .column {
+                padding-left: (nth($layouts-column-gutter, $i) / 2);
+                padding-right: (nth($layouts-column-gutter, $i) / 2);
+            }
 
-	}
+            // columns width
+
+            @for $j from 1 through nth($layouts-columns-number, $i) {
+                .width#{$j}_#{nth($layouts-name, $i)} {
+                    width: 100% / nth($layouts-columns-number, $i) * $j;
+                }
+            }
+
+            // columns offset
+
+            @for $j from 1 through nth($layouts-columns-number, $i) {
+                .offset#{$j}_#{nth($layouts-name, $i)} {
+                    margin-left: 100% / nth($layouts-columns-number, $i) * $j;
+                }
+            }
+
+            // ========== responsive flex options ==========
+
+            // responsive order
+
+            @for $j from nth($elements-to-order, 1) through nth($elements-to-order, 2) {
+                .order#{$j}_#{nth($layouts-name, $i)} {
+                    -webkit-order: #{$j};
+                    -ms-flex-order: #{$j};
+                    order: #{$j};
+                }
+            }
+
+            // responsive text alignment
+
+            .text-left_#{nth($layouts-name, $i)} {
+                text-align: left;
+            }
+
+            .text-right_#{nth($layouts-name, $i)} {
+                text-align: right;
+            }
+
+            .text-center_#{nth($layouts-name, $i)} {
+                text-align: center;
+            }
+
+            // ========== responsive visibility ==========
+
+            .hidden_#{nth($layouts-name, $i)} {
+                display: none !important;
+            }
+
+            .visible_#{nth($layouts-name, $i)} {
+                display: block !important;
+
+                &.inline {
+                    display: inline !important;
+                }
+
+                &.inline-block {
+                    display: inline-block !important;
+                }
+
+                &.flex,
+                &.row {
+                    display: -webkit-flex !important;
+                    display: -ms-flexbox !important;
+                    display: flex !important;
+
+                    @if $moz22-27-support {
+                        @supports not (flex-wrap: wrap) {
+                            display: block !important;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
 
 }
