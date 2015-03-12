@@ -15,7 +15,7 @@
 			}
 		}
     
-        @if ($ie8-layout == $layout-name and ie8-support == true) {
+        @if ($ie8-layout == $layout-name and $ie8-support == true) {
 			.ie8 {
 				@content;
 			}
@@ -30,7 +30,7 @@ $all-layouts: zip($layouts-name, $layouts-media-queries, $layouts-columns-number
 		#{$type}-#{$direction}: nth($layouts-column-gutter, 1) * $ratio;
 	}
 	@for $i from 2 through length($all-layouts) {
-		@media only screen and (min-width: nth($layouts-media-queries, $i)) {
+		@include media(nth($layouts-name, $i)) {
 			@each $direction in $directions {
 				#{$type}-#{$direction}: nth($layouts-column-gutter, $i) * $ratio;
 			}
