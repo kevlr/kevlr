@@ -255,28 +255,31 @@ body {
         @include media(nth($layouts-name, $i)) {
 
             // ========== responsive container ==========
-
-            .container {
-                max-width: nth($layouts-container-max-width, $i);
+            @if nth($layouts-container-max-width, $i) != nth($layouts-container-max-width, $i - 1) {
+                .container {
+                    max-width: nth($layouts-container-max-width, $i);
+                }
             }
+            
+            @if nth($layouts-column-gutter, $i) != nth($layouts-column-gutter, $i - 1) {
+                // ========== responsive row ==========
 
-            // ========== responsive row ==========
+                .double-marge {
+                    margin-left: nth($layouts-column-gutter, $i) / 2;
+                    margin-right: nth($layouts-column-gutter, $i) / 2;
+                }
 
-            .double-marge {
-                margin-left: nth($layouts-column-gutter, $i) / 2;
-                margin-right: nth($layouts-column-gutter, $i) / 2;
-            }
+                .no-marge {
+                    margin-left: -(nth($layouts-column-gutter, $i) / 2);
+                    margin-right: -(nth($layouts-column-gutter, $i) / 2);
+                }
 
-            .no-marge {
-                margin-left: -(nth($layouts-column-gutter, $i) / 2);
-                margin-right: -(nth($layouts-column-gutter, $i) / 2);
-            }
+                // ========== responsive columns ==========
 
-            // ========== responsive columns ==========
-
-            .column {
-                padding-left: (nth($layouts-column-gutter, $i) / 2);
-                padding-right: (nth($layouts-column-gutter, $i) / 2);
+                .column {
+                    padding-left: (nth($layouts-column-gutter, $i) / 2);
+                    padding-right: (nth($layouts-column-gutter, $i) / 2);
+                }
             }
 
             // columns width

@@ -411,9 +411,6 @@ body {
   margin-left: 100%; }
 
 @media only screen and (min-width: 500px) {
-  .container {
-    max-width: none; }
-
   .double-marge {
     margin-left: 7.5px;
     margin-right: 7.5px; }
@@ -558,8 +555,6 @@ body {
       @supports not (flex-wrap: wrap) {
         .visible_s.flex, .visible_s.row {
           display: block !important; } } }
-.ie8 .container {
-  max-width: none; }
 .ie8 .double-marge {
   margin-left: 10px;
   margin-right: 10px; }
@@ -667,8 +662,6 @@ body {
       .ie8 .visible_m.flex, .ie8 .visible_m.row {
         display: block !important; } }
 
-.ie8 .container {
-  max-width: none; }
 .ie8 .double-marge {
   margin-left: 10px;
   margin-right: 10px; }
@@ -777,9 +770,6 @@ body {
         display: block !important; } }
 
 @media only screen and (min-width: 800px) {
-  .container {
-    max-width: none; }
-
   .double-marge {
     margin-left: 10px;
     margin-right: 10px; }
@@ -924,8 +914,6 @@ body {
       @supports not (flex-wrap: wrap) {
         .visible_m.flex, .visible_m.row {
           display: block !important; } } }
-.ie8 .container {
-  max-width: none; }
 .ie8 .double-marge {
   margin-left: 10px;
   margin-right: 10px; }
@@ -1033,8 +1021,6 @@ body {
       .ie8 .visible_m.flex, .ie8 .visible_m.row {
         display: block !important; } }
 
-.ie8 .container {
-  max-width: none; }
 .ie8 .double-marge {
   margin-left: 10px;
   margin-right: 10px; }
@@ -1145,18 +1131,6 @@ body {
 @media only screen and (min-width: 1000px) {
   .container {
     max-width: 1200px; }
-
-  .double-marge {
-    margin-left: 10px;
-    margin-right: 10px; }
-
-  .no-marge {
-    margin-left: -10px;
-    margin-right: -10px; }
-
-  .column {
-    padding-left: 10px;
-    padding-right: 10px; }
 
   .width1_l {
     width: 8.33333%; }
