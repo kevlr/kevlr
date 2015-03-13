@@ -20,12 +20,11 @@ $border-box-on-every-element: true !default;
 $darkest-color: #555 !default;
 $darker-color: #979797 !default;
 $dark-color: lighten($darker-color, 20%) !default;
-
 $lightest-color: #fff !default;
 $lighter-color: #f6f6f6 !default;
 $light-color: #ddd !default;
 
-// text colors
+// brand colors
 $primary-color: #31d0e0 !default;
 $secondary-color: $darkest-color !default;
 $inverse-color: $lightest-color !default;
