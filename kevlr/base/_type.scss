@@ -10,56 +10,49 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+p {
+    margin: $paragraph-margin;
+}
+
 b,
 strong {
   font-weight: $bold;
 }
 
-p {
-	@include p-style;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  @include headings-style;
-}
-
 h1 {
 	@include responsive-font-size($h1-size);
-	@include h1-style;
 }
 
 h2 {
 	@include responsive-font-size($h2-size);
-	@include h2-style
 }
 
 h3 {
 	@include responsive-font-size($h3-size);
-	@include h3-style;
 }
 
 h4 {
 	@include responsive-font-size($h4-size);
-	@include h4-style;
 }
 
 h5 {
 	@include responsive-font-size($h5-size);
-	@include h5-style;
 }
 
 h6 {
 	@include responsive-font-size($h6-size);
-	@include h6-style;
 }
 
 a {
-	@extend %link-style;
+    text-decoration: $link-text-decoration;
+    color: $link-color;
+    
+    &:hover {
+        color: $link-hover-color;
+    }
 }
 
-pre {
-	font-family: $pre-font-family;
-	@include rem(font-size, $pre-font-size);
-	@include pre-style;
+.title {
+    margin: 0;
+    font-weight: normal;
 }
-

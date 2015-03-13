@@ -177,12 +177,6 @@ td,
 th {
   padding: 0; }
 
-a {
-  text-decoration: none;
-  color: #31d0e0; }
-  a:hover {
-    color: #1a9eab; }
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1297,24 +1291,17 @@ body {
       font-size: 18px;
       font-size: 1.125rem; } }
 
+p {
+  margin: 0.8em 0; }
+
 b,
 strong {
   font-weight: 600; }
 
-p {
-  line-height: 1.6;
-  margin: .8em 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: Muli, sans-serif;
-  font-weight: 400;
-  margin: 0; }
-
 h1 {
   font-size: 22px;
   font-size: 1.375rem;
-  line-height: 1.1;
-  font-family: Quicksand, sans-serif; }
+  line-height: 1.1; }
   @media only screen and (min-width: 500px) {
     h1 {
       font-size: 26px;
@@ -1486,80 +1473,15 @@ h6 {
       font-size: 14px;
       font-size: 0.875rem; } }
 
-pre {
-  font-family: "Andale Mono", monospace;
-  font-size: 14px;
-  font-size: 0.875rem;
-  background: #f6f6f6;
-  padding-top: 2.5px;
-  padding-right: 2.5px;
-  padding-bottom: 2.5px;
-  padding-left: 2.5px;
-  border: 1px solid #ddd;
-  margin-top: 5px;
-  margin-bottom: 5px; }
-  @media only screen and (min-width: 500px) {
-    pre {
-      padding-top: 3.75px;
-      padding-right: 3.75px;
-      padding-bottom: 3.75px;
-      padding-left: 3.75px; } }
-  .ie8 pre {
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px; }
-  .ie8 pre {
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px; }
-  @media only screen and (min-width: 800px) {
-    pre {
-      padding-top: 5px;
-      padding-right: 5px;
-      padding-bottom: 5px;
-      padding-left: 5px; } }
-  .ie8 pre {
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px; }
-  .ie8 pre {
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px; }
-  @media only screen and (min-width: 1000px) {
-    pre {
-      padding-top: 5px;
-      padding-right: 5px;
-      padding-bottom: 5px;
-      padding-left: 5px; } }
-  @media only screen and (min-width: 500px) {
-    pre {
-      margin-top: 7.5px;
-      margin-bottom: 7.5px; } }
-  .ie8 pre {
-    margin-top: 10px;
-    margin-bottom: 10px; }
-  .ie8 pre {
-    margin-top: 10px;
-    margin-bottom: 10px; }
-  @media only screen and (min-width: 800px) {
-    pre {
-      margin-top: 10px;
-      margin-bottom: 10px; } }
-  .ie8 pre {
-    margin-top: 10px;
-    margin-bottom: 10px; }
-  .ie8 pre {
-    margin-top: 10px;
-    margin-bottom: 10px; }
-  @media only screen and (min-width: 1000px) {
-    pre {
-      margin-top: 10px;
-      margin-bottom: 10px; } }
+a {
+  text-decoration: none;
+  color: #31d0e0; }
+  a:hover {
+    color: #1a9eab; }
+
+.title {
+  margin: 0;
+  font-weight: normal; }
 
 .button {
   display: inline-block;
