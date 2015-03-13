@@ -7,7 +7,7 @@
 // ===================================
 
 
-@if $box-sizing-border-box-on-every-element == true {
+@if $border-box-on-every-element == true {
 	* {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
@@ -227,7 +227,7 @@ body {
             min-height: 1px;
             float: left;
             }
-            @if $box-sizing-border-box-on-every-element == false {
+            @if $border-box-on-every-element == false {
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
