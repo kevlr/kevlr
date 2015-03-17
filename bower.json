@@ -1,0 +1,25 @@
+{
+    "name": "kevlr",
+    "description": "The true responsive front-end framework for building mobile first web projects",
+    "version": "1.0.0",
+    "keywords": [
+        "css",
+        "sass",
+        "mobile-first",
+        "responsive",
+        "front-end",
+        "framework",
+        "web"
+    ],
+    "homepage": "http://kevlr.github.io",
+    "main": [
+        "sass/kevlr.sass",
+        "css/kevlr.css"
+    ],
+    "ignore": [
+        "/.*"
+    ],
+    "authors": [
+        { "name": "Valentin Escoyez", "twitter": "@ValentinEscoyez", "homepage": "http://valentin.escoyez.be" }
+    ]
+}
