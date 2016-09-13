@@ -1,1 +1,11 @@
+# Node modules
+# ----------------------------
+node_modules/
 
+# Distribution folder
+# ----------------------------
+dist/
+
+# Cache
+# ----------------------------
+.sass-cache/
