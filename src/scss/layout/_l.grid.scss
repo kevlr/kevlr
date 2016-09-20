@@ -1,0 +1,120 @@
+@for $layout from 1 through length($layouts-name) {
+  $layout-name: nth($layouts-name, $layout);
+  $gutter: nth($layouts-column-gutter, $layout);
+  $max-width: nth($layouts-container-max-width, $layout);
+
+  @if ( $layout == 1 ) {
+
+		/**
+		 * 1. Reset padding and margin so that
+		 *    the grid can be used on HTML elements
+		 *    other than div
+		 */
+    .l-grid {
+      display: block;
+			padding: 0; /* 1 */
+			margin: 0; /* 1 */
+      margin-left: $gutter * -1;
+      @include clearfix;
+    }
+
+    @if $flex-grid {
+
+      .l-grid--flex {
+        display: flex;
+        flex-wrap: wrap;
+
+        /**
+    		 * 1. Remove clearfix
+         *    that provide bug on safari
+    		 */
+        &:before,
+        &:after {
+          display: flex; /* 1 */
+        }
+      }
+
+    }
+
+    .l-grid__item {
+      display: block;
+      width: 100%;
+      float: left;
+      min-height: 1px;
+      padding-left: $gutter;
+    }
+
+    @for $col-number from 2 through 2 {
+      .l-grid--clear-#{$col-number} {
+        .l-grid__item:nth-child(#{$col-number + 'n'} + 1) {
+          clear: both;
+        }
+      }
+    }
+
+  } @else {
+    $prev-gutter: nth($layouts-column-gutter, $layout - 1);
+
+    @include media-query($layout-name) {
+
+      @if $gutter != $prev-gutter {
+        .l-grid {
+          margin-left: $gutter * -1;
+        }
+
+        .l-grid__item {
+          padding-left: $gutter;
+        }
+
+				.l-grid--tight {
+					margin-left: $gutter * -0.5;
+
+					.l-grid__item {
+						padding-left: $gutter * 0.5;
+					}
+				}
+      }
+
+      @for $col-number from 2 through 4 {
+        .l-grid--clear-#{$col-number}_#{$layout-name} {
+          .l-grid__item:nth-child(n) {
+            clear: none;
+          }
+          .l-grid__item:nth-child(#{$col-number + 'n'} + 1) {
+            clear: both;
+          }
+        }
+      }
+    }
+  }
+}
+
+@if $flex-grid {
+
+  @for $layout from 1 through length($layouts-name) {
+    $layout-name: nth($layouts-name, $layout);
+
+    @for $order-number from nth($flex-grid-order-range, 1) through nth($flex-grid-order-range, length($flex-grid-order-range)) {
+      $suffix: '';
+      $sign: '';
+
+      @if ( $layout > 1 ) {
+        $suffix: '_' + $layout-name;
+      }
+
+      @if ( $order-number < 0 ) {
+        $sign: 'minus';
+      }
+
+      @include media-query($layout-name) {
+        .l-grid__item--order-#{$sign}#{$order-number}#{$suffix} {
+          order: $order-number;
+        }
+      }
+    }
+  }
+
+}
+
+.l-grid--spaced-items {
+}

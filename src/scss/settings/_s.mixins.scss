@@ -1,0 +1,59 @@
+@mixin media-query($from, $until: false) {
+  $from-index: index($layouts-name, $from);
+  $from-breakpoint: nth($layouts-break-point, $from-index);
+
+  @if ($until) {
+    $until-index: index($layouts-name, $until);
+    $until-breakpoint: nth($layouts-break-point, $until-index) - 1;
+
+    @if ($from-breakpoint == 0) {
+      @media only screen and (max-width: $until-breakpoint) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $from-breakpoint) and (max-width: $until-breakpoint) {
+        @content;
+      }
+    }
+  } @else {
+    @if ($from-breakpoint == 0) {
+      @content;
+    } @else {
+      @media only screen and (min-width: $from-breakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin responsive($property, $value, $multiplier: 1, $adder: 0, $string: '') {
+  @if (type-of($value) == "map") {
+    @each $layout-name in $layouts-name {
+      @if map-has-key($value, $layout-name) {
+        @include media-query($layout-name) {
+          #{$property}: unquote(multiply-all(map-get($value, $layout-name), $multiplier, $adder) + $string);
+        }
+      }
+    }
+  } @else {
+    #{$property}: multiply-all($value, $multiplier);
+  }
+}
+
+@mixin list-reset() {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+      content: " ";
+      display: table;
+  }
+
+  &:after {
+      clear: both;
+  }
+}
