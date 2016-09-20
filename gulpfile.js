@@ -12,7 +12,7 @@ var browers = [
 
 // Load plugins
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     cssnano = require('gulp-cssnano'),
     jshint = require('gulp-jshint'),
@@ -28,19 +28,19 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber');
     sourcemaps = require('gulp-sourcemaps');
 
-var bounce = function (err) {
+var bounce = function () {
   gutil.beep();
   this.emit('end');
 };
 
 // Styles
 gulp.task('styles', function() {
-  return sass(path + 'src/scss/main.scss', {
-    style: 'expanded',
-    emitCompileError: true
-  })
-  .on('error', bounce)
+  return gulp.src(path + 'src/scss/main.scss')
+  .pipe(plumber({ errorHandler: bounce }))
   .pipe(sourcemaps.init())
+  .pipe(sass({
+    outputStyle: 'expanded'
+  }).on('error', sass.logError))
   .pipe(autoprefixer({
     browsers: browers
   }))
@@ -68,15 +68,17 @@ gulp.task('scripts', ['jshint'], function() {
     path + 'src/js/plugins/**/*.js',
     path + 'src/js/modules/**/*.js'
   ])
+  .pipe(sourcemaps.init())
   .pipe(concat('main.js'))
   .pipe(gulp.dest(path + 'dist/js'))
   .pipe(rename({ suffix: '.min' }))
   .pipe(uglify())
+  .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(path + 'dist/js'))
   .pipe(notify({ message: 'Scripts task complete' }));
 });
 
-// Images
+// Optimize images
 gulp.task('images', function() {
   return gulp.src(path + 'src/img/**/*')
   .pipe(cache(imagemin({
@@ -91,9 +93,15 @@ gulp.task('images', function() {
   .pipe(notify({ message: 'Images task complete' }));
 });
 
+// Copy font files
+gulp.task('fonts', function() {
+  return gulp.src('app/fonts/**/*')
+  .pipe(gulp.dest('dist/fonts'))
+})
+
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('styles', 'scripts', 'images');
+  gulp.start('styles', 'scripts', 'images', 'fonts');
 });
 
 // Watch
@@ -107,6 +115,9 @@ gulp.task('watch', function() {
 
   // Watch image files
   gulp.watch(path + 'src/img/**/*', ['images']);
+
+  // Watch font files
+  gulp.watch(path + 'src/fonts/**/*', ['fonts']);
 
   // Create LiveReload server
   livereload.listen();
