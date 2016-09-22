@@ -26,7 +26,8 @@ var gulp = require('gulp'),
     del = require('del'),
     gutil = require('gulp-util'),
     plumber = require('gulp-plumber');
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    svgSprite = require('gulp-svg-sprite');
 
 var bounce = function () {
   gutil.beep();
@@ -68,6 +69,7 @@ gulp.task('scripts', ['jshint'], function() {
     path + 'src/js/plugins/**/*.js',
     path + 'src/js/modules/**/*.js'
   ])
+  .pipe(plumber({ errorHandler: bounce }))
   .pipe(sourcemaps.init())
   .pipe(concat('main.js'))
   .pipe(gulp.dest(path + 'dist/js'))
@@ -78,17 +80,22 @@ gulp.task('scripts', ['jshint'], function() {
   .pipe(notify({ message: 'Scripts task complete' }));
 });
 
+// Icons sprite
+gulp.task('icons', function() {
+  return gulp.src([path + 'src/img/icons/**/*.svg'])
+  .pipe(svgSprite(config)),
+  .pipe(gulp.dest(path + 'dist/img'));
+});
+
 // Optimize images
 gulp.task('images', function() {
   return gulp.src(path + 'src/img/**/*')
-  .pipe(cache(imagemin({
-    optimizationLevel: 3,
-    progressive: true,
-    interlaced: true,
-    svgoPlugins: [
-      {cleanupIDs: false}
-    ]
-  })))
+  .pipe(cache(imagemin([
+    imagemin.gifsicle({interlaced: true}),
+    imagemin.jpegtran({progressive: true}),
+    imagemin.optipng({optimizationLevel: 3}),
+    imagemin.svgo({plugins: [{cleanupIDs: false}]})
+  ])))
   .pipe(gulp.dest(path + 'dist/img'))
   .pipe(notify({ message: 'Images task complete' }));
 });
@@ -96,7 +103,7 @@ gulp.task('images', function() {
 // Copy font files
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/**/*')
-  .pipe(gulp.dest('dist/fonts'))
+  .pipe(gulp.dest('dist/fonts'));
 })
 
 // Default task
