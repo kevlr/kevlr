@@ -57,3 +57,11 @@
       clear: both;
   }
 }
+
+@mixin font($font-name) {
+  $font-settings: map-get($fonts, $font-name);
+
+  @each $key, $value in $font-settings {
+    @include responsive($key, $value);
+  }
+}

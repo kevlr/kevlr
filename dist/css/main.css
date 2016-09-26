@@ -1413,3 +1413,8 @@ template {
 .u-clearfix:after {
   clear: both;
 }
+
+.u-text-small {
+  font-size: 28px;
+  line-height: 1.2;
+}

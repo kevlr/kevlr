@@ -1,6 +1,8 @@
 @function multiply-all($values, $multiplier, $adder: 0) {
   @for $n from 1 through length($values) {
-    $values: set-nth($values, $n, nth($values, $n) * $multiplier + $adder);
+    @if type-of(nth($values, $n)) == 'number' {
+      $values: set-nth($values, $n, nth($values, $n) * $multiplier + $adder);
+    }
   }
   @return $values;
 }
