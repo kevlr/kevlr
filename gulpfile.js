@@ -13,6 +13,7 @@ var browers = [
 // Load plugins
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    sassGlob = require('gulp-sass-glob'),
     autoprefixer = require('gulp-autoprefixer'),
     cssnano = require('gulp-cssnano'),
     jshint = require('gulp-jshint'),
@@ -39,11 +40,13 @@ gulp.task('styles', function() {
   return gulp.src(path + 'src/scss/main.scss')
   .pipe(plumber({ errorHandler: bounce }))
   .pipe(sourcemaps.init())
+  .pipe(sassGlob())
   .pipe(sass({
     outputStyle: 'expanded'
   }).on('error', sass.logError))
   .pipe(autoprefixer({
-    browsers: browers
+    browsers: browers,
+		cascade: false
   }))
   .pipe(gulp.dest(path + 'dist/css'))
   .pipe(rename({ suffix: '.min' }))
@@ -61,6 +64,12 @@ gulp.task('jshint', function() {
   .pipe(jshint.reporter('default'))
   .pipe(jshint.reporter('fail'))
   .pipe(notify({ message: 'Hint task done' }));
+});
+
+// JS Library files
+gulp.task('library', function() {
+  return gulp.src(path + 'src/js/lib/**/*.js')
+  .pipe(gulp.dest(path + 'dist/js/lib'));
 });
 
 // Scripts
@@ -81,11 +90,11 @@ gulp.task('scripts', ['jshint'], function() {
 });
 
 // Icons sprite
-gulp.task('icons', function() {
-  return gulp.src([path + 'src/img/icons/**/*.svg'])
-  .pipe(svgSprite(config)),
-  .pipe(gulp.dest(path + 'dist/img'));
-});
+// gulp.task('icons', function() {
+//   return gulp.src([path + 'src/img/icons/**/*.svg'])
+//   .pipe(svgSprite(config)),
+//   .pipe(gulp.dest(path + 'dist/img'));
+// });
 
 // Optimize images
 gulp.task('images', function() {
@@ -103,12 +112,12 @@ gulp.task('images', function() {
 // Copy font files
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/**/*')
-  .pipe(gulp.dest('dist/fonts'));
+  .pipe(gulp.dest(path + 'dist/fonts'));
 })
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('styles', 'scripts', 'images', 'fonts');
+  gulp.start('styles', 'scripts', 'library', 'images', 'fonts');
 });
 
 // Watch
@@ -119,6 +128,9 @@ gulp.task('watch', function() {
 
   // Watch .js files
   gulp.watch(path + 'src/js/**/*.js', ['scripts']);
+
+  // Watch .js files in lib folder
+  gulp.watch(path + 'src/js/lib/**/*.js', ['library']);
 
   // Watch image files
   gulp.watch(path + 'src/img/**/*', ['images']);
