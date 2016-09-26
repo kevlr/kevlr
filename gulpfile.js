@@ -90,11 +90,21 @@ gulp.task('scripts', ['jshint'], function() {
 });
 
 // Icons sprite
-// gulp.task('icons', function() {
-//   return gulp.src([path + 'src/img/icons/**/*.svg'])
-//   .pipe(svgSprite(config)),
-//   .pipe(gulp.dest(path + 'dist/img'));
-// });
+gulp.task('icons', function() {
+  return gulp.src([path + 'src/img/icons/**/*.svg'])
+  .pipe(svgSprite({
+    mode: {
+      symbol: {
+        dest: '',
+        sprite: 'icons.svg'
+      }
+    }
+  }))
+  .pipe(cache(imagemin([
+    imagemin.svgo({plugins: [{cleanupIDs: false}]})
+  ])))
+  .pipe(gulp.dest(path + 'dist/img'));
+});
 
 // Optimize images
 gulp.task('images', function() {
@@ -117,7 +127,7 @@ gulp.task('fonts', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('styles', 'scripts', 'library', 'images', 'fonts');
+  gulp.start('styles', 'scripts', 'library', 'images', 'icons', 'fonts');
 });
 
 // Watch
@@ -134,6 +144,9 @@ gulp.task('watch', function() {
 
   // Watch image files
   gulp.watch(path + 'src/img/**/*', ['images']);
+
+  // Watch icons
+  gulp.watch(path + 'src/img/icons/**/*', ['icons']);
 
   // Watch font files
   gulp.watch(path + 'src/fonts/**/*', ['fonts']);
