@@ -1,3 +1,7 @@
+//  ========================================================================  //
+//  Grid base
+//  ========================================================================  //
+
 @for $layout from 1 through length($layouts-name) {
   $layout-name: nth($layouts-name, $layout);
   $gutter: nth($layouts-column-gutter, $layout);
@@ -18,24 +22,6 @@
       @include clearfix;
     }
 
-    @if $flex-grid {
-
-      .l-grid--flex {
-        display: flex;
-        flex-wrap: wrap;
-
-        /**
-    		 * 1. Remove clearfix
-         *    that provide bug on safari
-    		 */
-        &:before,
-        &:after {
-          display: flex; /* 1 */
-        }
-      }
-
-    }
-
     .l-grid__item {
       display: block;
       width: 100%;
@@ -44,19 +30,10 @@
       padding-left: $gutter;
     }
 
-    @for $col-number from 2 through 2 {
-      .l-grid--clear-#{$col-number} {
-        .l-grid__item:nth-child(#{$col-number + 'n'} + 1) {
-          clear: both;
-        }
-      }
-    }
-
   } @else {
     $prev-gutter: nth($layouts-column-gutter, $layout - 1);
 
     @include media-query($layout-name) {
-
       @if $gutter != $prev-gutter {
         .l-grid {
           margin-left: $gutter * -1;
@@ -65,17 +42,91 @@
         .l-grid__item {
           padding-left: $gutter;
         }
-
-				.l-grid--tight {
-					margin-left: $gutter * -0.5;
-
-					.l-grid__item {
-						padding-left: $gutter * 0.5;
-					}
-				}
       }
+    }
+  }
+}
 
-      @for $col-number from 2 through 4 {
+//  ========================================================================  //
+//  Grid size
+//  ========================================================================  //
+
+@for $layout from 1 through length($layouts-name) {
+  $layout-name: nth($layouts-name, $layout);
+  $columns-number: nth($layouts-columns-number, $layout);
+
+  @if ( $layout == 1 ) {
+
+    @for $col-number from 1 through $columns-number {
+      .l-grid__item--width-#{$col-number} {
+        width: 100% / $columns-number * $col-number;
+      }
+    }
+
+  } @else {
+
+    @include media-query($layout-name) {
+
+      @for $col-number from 1 through $columns-number {
+        .l-grid__item--width-#{$col-number}_#{$layout-name} {
+          width: 100% / $columns-number * $col-number;
+        }
+      }
+    }
+  }
+}
+
+//  ========================================================================  //
+//  Grid offset
+//  ========================================================================  //
+
+@for $layout from 1 through length($layouts-name) {
+  $layout-name: nth($layouts-name, $layout);
+  $columns-number: nth($layouts-columns-number, $layout);
+
+  @if ( $layout == 1 ) {
+
+    @for $col-number from 1 through $columns-number {
+      .l-grid__item--offset-#{($col-number - 1)} {
+        margin-left: 100% / $columns-number * ($col-number - 1);
+      }
+    }
+
+  } @else {
+
+    @include media-query($layout-name) {
+      @for $col-number from 1 through $columns-number {
+        .l-grid__item--offset-#{($col-number - 1)}_#{$layout-name} {
+          margin-left: 100% / $columns-number * ($col-number - 1);
+        }
+      }
+    }
+
+  }
+}
+
+//  ========================================================================  //
+//  Grid clear
+//  ========================================================================  //
+
+@for $layout from 1 through length($layouts-name) {
+  $layout-name: nth($layouts-name, $layout);
+
+  @if ( $layout == 1 ) {
+
+    @each $col-number in $grid-items-clear {
+      .l-grid--clear-#{$col-number} {
+        .l-grid__item:nth-child(#{$col-number + 'n'} + 1) {
+          clear: both;
+        }
+      }
+    }
+
+  } @else {
+
+    @include media-query($layout-name) {
+
+      @each $col-number in $grid-items-clear {
         .l-grid--clear-#{$col-number}_#{$layout-name} {
           .l-grid__item:nth-child(n) {
             clear: none;
@@ -85,16 +136,37 @@
           }
         }
       }
+
     }
   }
 }
 
+//  ========================================================================  //
+//  Grid Flex
+//  ========================================================================  //
+
 @if $flex-grid {
 
+  // Base
+  .l-grid--flex {
+    display: flex;
+    flex-wrap: wrap;
+
+    /**
+     * 1. Remove clearfix
+     *    that provide bug on safari
+     */
+    &:before,
+    &:after {
+      display: flex; /* 1 */
+    }
+  }
+
+  // Order
   @for $layout from 1 through length($layouts-name) {
     $layout-name: nth($layouts-name, $layout);
 
-    @for $order-number from nth($flex-grid-order-range, 1) through nth($flex-grid-order-range, length($flex-grid-order-range)) {
+    @each $order-number in $flex-grid-order {
       $suffix: '';
       $sign: '';
 
@@ -114,7 +186,36 @@
     }
   }
 
+  // Alignments
+  @each $alignment in $flex-grid-alignments {
+    .l-grid--align-#{$alignment} {
+      align-items: $alignment;
+    }
+  }
+
+  @each $alignment in $flex-grid-item-alignments {
+    .l-grid__item--align-#{$alignment} {
+      align-self: $alignment;
+    }
+  }
+
 }
 
-.l-grid--spaced-items {
+//  ========================================================================  //
+//  Grid spacing
+//  ========================================================================  //
+
+@each $ratio in $vertical-unit-variation {
+  $suffix: '-' + replace($ratio + '', '.', '') + 'x';
+  @if ($ratio == 1) {
+    $suffix: '';
+  }
+
+  .l-grid--item-spacing#{$suffix} {
+    @include responsive('margin-top', $vertical-unit, $ratio * -1);
+
+    .l-grid__item {
+      @include responsive('margin-top', $vertical-unit, $ratio);
+    }
+  }
 }

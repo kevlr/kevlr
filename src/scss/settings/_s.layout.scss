@@ -8,6 +8,7 @@ $layouts-column-gutter:       24px,       36px,       48px,       60px;
 $layouts-container-max-width: none,       none,       none,       1200px;
 
 $container-min-width: 320px;
+$container-marge-ratio: 0.5;
 $grid-items-clear: 2, 3, 4;
 
 //  ========================================================================  //
@@ -26,6 +27,6 @@ $vertical-unit-variation: 0.25, 0.5, 1, 2, 4;
 $flex-grid: true;
 
 // flex options
-$flex-grid-order-range: -1, 1;
+$flex-grid-order: ();
 $flex-grid-alignments: ();
-$flex-grid-items-alignments: ();
+$flex-grid-item-alignments: ();
