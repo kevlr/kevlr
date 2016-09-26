@@ -8,19 +8,16 @@
 @import 'base/b.initialize';
 
 /* Layout */
-@import 'layout/l.container';
-@import 'layout/l.grid';
+@import 'layout/**/*';
 
 /* Objects */
-// @import 'objects/o.';
+@import 'objects/**/*';
 
 /* Components */
-// @import 'components/c.';
+@import 'components/**/*';
 
 /* Plugins */
-// @import 'plugins/';
+@import 'plugins/**/*';
 
 /* Utilities */
-@import 'utilities/u.layout';
-@import 'utilities/u.color';
-@import 'utilities/u.typography';
+@import 'utilities/**/*';

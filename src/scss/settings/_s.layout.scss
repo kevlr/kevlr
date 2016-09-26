@@ -17,7 +17,7 @@ $grid-items-clear: 2, 3, 4;
 $horizontal-unit: lists-to-map($layouts-name, $layouts-column-gutter);
 $vertical-unit: $horizontal-unit;
 
-$vertical-unit-variation: 0.25, 0.5, 2, 4;
+$vertical-unit-variation: 0.25, 0.5, 1, 2, 4;
 
 //  ========================================================================  //
 //  Flex Grid
@@ -27,5 +27,5 @@ $flex-grid: true;
 
 // flex options
 $flex-grid-order-range: -1, 1;
-$flex-grid-alignments: baseline, flex-start;
-$flex-grid-items-alignments: center;
+$flex-grid-alignments: ();
+$flex-grid-items-alignments: ();

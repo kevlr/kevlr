@@ -1,0 +1,23 @@
+@each $ratio in $vertical-unit-variation {
+  $suffix: '-' + replace($ratio + '', '.', '') + 'x';
+  @if ($ratio == 1) {
+    $suffix: '';
+  }
+
+  .u-margin-top#{$suffix} {
+    @include responsive('margin-top', $vertical-unit, $ratio);
+  }
+
+  .u-margin-bottom#{$suffix} {
+    @include responsive('margin-bottom', $vertical-unit, $ratio);
+  }
+
+  .u-margin-y#{$suffix} {
+    @extend .u-margin-top#{$suffix};
+    @extend .u-margin-bottom#{$suffix};
+  }
+}
+
+.u-clearfix {
+  @include clearfix;
+}
