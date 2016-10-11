@@ -468,10 +468,10 @@ img {
 /* Layout */
 .l-container {
   display: block;
-  min-width: 320px;
   margin: 0 auto;
   padding-left: 12px;
   padding-right: 12px;
+  min-width: 320px;
 }
 
 @media only screen and (min-width: 500px) {
