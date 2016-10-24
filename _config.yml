@@ -35,3 +35,7 @@ sass:
   add_charset: true
   sass_dir: assets/sass
   style: :compressed
+
+collections:
+  components:
+    output: true

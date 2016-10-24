@@ -1,0 +1,12 @@
+<div id="{{ include.component.slug }}">
+	<h2>{{ include.component.title }}</h2>
+	<p>{{ include.component.description }}</p>
+	<div class="c-component">
+		<div class="c-component__preview">
+			{{ include.component.content }}
+		</div>
+		<div class="c-component__code">
+			{% highlight html %}{{ include.component.content }}{% endhighlight %}
+		</div>
+	</div>
+</div>

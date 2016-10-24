@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: page.lang | default: 'en' }}">
+
+  {% include head.html %}
+
+  <body>
+
+    <main class="main" aria-label="Content">
+			<div class="l-container">
+				{% include component.html component=page %}
+				<a href="/docs/#{{ page.slug }}">Back</a>
+			</div>
+    </main>
+
+  </body>
+
+</html>

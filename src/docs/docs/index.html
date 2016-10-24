@@ -2,9 +2,9 @@
 layout: default
 ---
 <div class="l-container">
-  <div class="home">
-
     <h1>Documentation</h1>
-
-  </div>
+    {% for component in site.components %}
+			{% include component.html component=component %}
+			<a href="{{ component.url }}">Full page</a>
+    {% endfor %}
 </div>

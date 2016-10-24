@@ -23,17 +23,27 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
     del = require('del'),
     gutil = require('gulp-util'),
     plumber = require('gulp-plumber');
     sourcemaps = require('gulp-sourcemaps'),
-    svgSprite = require('gulp-svg-sprite');
+    svgSprite = require('gulp-svg-sprite'),
+    shell = require('gulp-shell'),
+    browserSync = require('browser-sync').create(),
+    browserSyncReload = browserSync.reload;
 
 var bounce = function () {
   gutil.beep();
   this.emit('end');
 };
+
+// BrowserSync proxy
+gulp.task('browser-sync', function() {
+  browserSync.init({
+    proxy: "",
+    port: "3000"
+  });
+});
 
 // Styles
 gulp.task('styles', function() {
@@ -151,17 +161,36 @@ gulp.task('watch', function() {
   // Watch font files
   gulp.watch(path + 'src/fonts/**/*', ['fonts']);
 
-  // Create LiveReload server
-  livereload.listen();
-
   // Watch any files in dist/, reload on change
-  gulp.watch([path + 'dist/**']).on('change', livereload.changed);
+  gulp.watch([path + 'dist/**']).on('change', browserSyncReload);
 });
+
+// Serve
+gulp.task('serve', ['browser-sync', 'watch']);
 
 // Clear cache
 gulp.task('cache', function (done) {
   return cache.clearAll(done);
 });
+
+// Task for building documentation
+gulp.task('buildDocs', shell.task(['bundle exec jekyll build']));
+
+// Building documentation when something changed:
+gulp.task('watchDocs', shell.task(['bundle exec jekyll build --watch']));
+
+// Serving documentation with Browsersync
+gulp.task('serveDocs', function () {
+    browserSync.init({
+      server: {
+        baseDir: 'docs/'
+      },
+      port: 4000
+    });
+    gulp.watch('docs/**/*').on('change', browserSync.reload);
+});
+
+gulp.task('docs', ['watchDocs', 'serveDocs']);
 
 // Clean
 gulp.task('clean', function() {
