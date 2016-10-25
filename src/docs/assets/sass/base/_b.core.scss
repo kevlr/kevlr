@@ -1,3 +1,7 @@
 body {
   @include clearfix;
 }
+
+figure {
+  margin: 0;
+}

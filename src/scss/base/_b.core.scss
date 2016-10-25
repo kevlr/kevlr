@@ -53,3 +53,8 @@ code {
     font-weight: $core-code-font-weight;
   }
 }
+
+a {
+  color: $core-link-color;
+  text-decoration: $core-link-decoration;
+}

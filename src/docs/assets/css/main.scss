@@ -18,13 +18,13 @@
 @import 'base/b.core';
 
 /* Layout */
-// @import 'layout/l.';
+@import 'layout/l.header';
 
 /* Objects */
 // @import 'objects/o.';
 
 /* Components */
-// @import 'components/c.';
+@import 'components/c.component';
 
 /* Plugins */
 @import 'plugins/p.highlight';

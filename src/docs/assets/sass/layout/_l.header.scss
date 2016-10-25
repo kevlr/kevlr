@@ -1,0 +1,42 @@
+.l-header {
+  @include clearfix;
+  @include responsive('padding-top', $vertical-unit, 0.25);
+  @include responsive('padding-bottom', $vertical-unit, 0.25);
+}
+
+.l-header__container {
+  display: flex;
+  align-items: baseline;
+}
+
+.l-header__logo {
+  float: left;
+  margin-right: auto;
+}
+
+.l-header__title {
+  margin: 0;
+}
+
+.l-header__nav {
+  float: right;
+  margin-left: auto;
+}
+
+.l-header__list {
+  @include list-reset;
+}
+
+.l-header__item {
+  display: inline-block;
+  @include responsive('margin-left', $horizontal-unit, 0.5);
+  margin-left: 20px;
+}
+
+.l-header__link {
+  text-decoration: none;
+}
+
+.l-header__link--active {
+  border-bottom: 2px solid;
+}
