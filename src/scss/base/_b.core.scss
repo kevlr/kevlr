@@ -1,0 +1,55 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  font-family: $core-font-family;
+  @if ( $core-font-color ) {
+    color: $core-font-color;
+  }
+  @if ( $core-font-weight != normal ) {
+    font-weight: $core-font-weight;
+  }
+  @if ( $core-font-smoothing ) {
+    -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+  }
+  @if ( $core-background ) {
+    background: $core-background;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @if ( $core-headings-font-family ) {
+    font-family: $core-headings-font-family;
+  }
+  @if ( $core-headings-font-weight ) {
+    font-weight: $core-headings-font-weight;
+  }
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+pre,
+code {
+  @if ( $core-code-font-family ) {
+    font-family: $core-code-font-family;
+  }
+  @if ( $core-code-font-weight ) {
+    font-weight: $core-code-font-weight;
+  }
+}

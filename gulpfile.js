@@ -1,3 +1,7 @@
+//  ========================================================================  //
+//  Variables
+//  ========================================================================  //
+
 // path to assets directory
 var path = '';
 
@@ -9,6 +13,10 @@ var browers = [
   'android >= 4.4',
   'bb >= 10'
 ];
+
+//  ========================================================================  //
+//  Processes
+//  ========================================================================  //
 
 // Load plugins
 var gulp = require('gulp'),
@@ -177,10 +185,24 @@ gulp.task('cache', function (done) {
   return cache.clearAll(done);
 });
 
-// Task for building documentation
+// Empty "dist" directory
+gulp.task('clean', function() {
+  return del([path + 'dist/css', path + 'dist/js', path + 'dist/img']);
+});
+
+//  ========================================================================  //
+//  Documentation
+//  ========================================================================  //
+
+// Building documentation
 gulp.task('buildDocs', shell.task(['bundle exec jekyll build']));
 
-// Building documentation when something changed:
+// Watch source files
+gulp.task('sourceToDocs', function() {
+  gulp.watch(path + 'src/scss/**/*.scss', ['buildDocs']);
+});
+
+// Watch documentation
 gulp.task('watchDocs', shell.task(['bundle exec jekyll build --watch']));
 
 // Serving documentation with Browsersync
@@ -194,9 +216,5 @@ gulp.task('serveDocs', function () {
     gulp.watch('docs/**/*').on('change', browserSync.reload);
 });
 
-gulp.task('docs', ['watchDocs', 'serveDocs']);
-
-// Clean
-gulp.task('clean', function() {
-  return del([path + 'dist/css', path + 'dist/js', path + 'dist/img']);
-});
+// Developing documenttion
+gulp.task('docs', ['watchDocs', 'sourceToDocs', 'serveDocs']);

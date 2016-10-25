@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<div class="l-container">
+  <h1>Components</h1>
+  {% for component in site.components %}
+		{% include component.html component=component %}
+		<a href="{{ component.url }}">View this component in full page</a>
+  {% endfor %}
+</div>
