@@ -17,6 +17,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     cssnano = require('gulp-cssnano'),
     jshint = require('gulp-jshint'),
+    babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
@@ -90,6 +91,9 @@ gulp.task('scripts', ['jshint'], function() {
   ])
   .pipe(plumber({ errorHandler: bounce }))
   .pipe(sourcemaps.init())
+  .pipe(babel({
+    presets: ['es2015']
+  }))
   .pipe(concat('main.js'))
   .pipe(gulp.dest(path + 'dist/js'))
   .pipe(rename({ suffix: '.min' }))
