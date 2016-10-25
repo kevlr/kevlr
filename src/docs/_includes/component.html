@@ -1,6 +1,6 @@
 <div id="{{ include.component.slug }}">
 	<h2>{{ include.component.title }}</h2>
-	<p>{{ include.component.description }}</p>
+	{{ include.component.description|markdownify }}
 	<div class="c-component">
 		<div class="c-component__preview">
 			{{ include.component.content }}

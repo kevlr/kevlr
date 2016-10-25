@@ -39,3 +39,9 @@ sass:
 collections:
   components:
     output: true
+
+defaults:
+  - scope:
+      type: components
+    values:
+      layout: component
