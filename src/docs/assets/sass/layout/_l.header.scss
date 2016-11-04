@@ -35,6 +35,10 @@
 
 .l-header__link {
   text-decoration: none;
+
+  &:hover {
+    border-bottom: 2px solid;
+  }
 }
 
 .l-header__link--active {
