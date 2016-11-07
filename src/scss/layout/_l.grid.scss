@@ -116,7 +116,7 @@
 
     @each $col-number in $grid-items-clear {
       .l-grid--clear-#{$col-number} {
-        .l-grid__item:nth-child(#{$col-number + 'n'} + 1) {
+        .l-grid__item:nth-child#{'(' + $col-number + 'n + 1)'} {
           clear: both;
         }
       }
@@ -131,7 +131,7 @@
           .l-grid__item:nth-child(n) {
             clear: none;
           }
-          .l-grid__item:nth-child(#{$col-number + 'n'} + 1) {
+          .l-grid__item:nth-child#{'(' + $col-number + 'n + 1)'} {
             clear: both;
           }
         }

@@ -1,16 +1,17 @@
-$core-font-smoothing: true !default;
+$core-full-height: true;
+$core-font-smoothing: true;
 
-$core-font-family: $sans-serif !default;
-$core-font-weight: $normal !default;
-$core-font-color: #000 !default;
+$core-font-family: $sans-serif;
+$core-font-weight: $normal;
+$core-font-color: $font-color;
 
-$core-headings-font-family: $sans-serif !default;
-$core-headings-font-weight: $bold !default;
+$core-headings-font-family: $sans-serif;
+$core-headings-font-weight: $bold;
 
-$core-code-font-family: $mono !default;
-$core-code-font-weight: $normal !default;
+$core-code-font-family: $mono;
+$core-code-font-weight: $normal;
 
-$core-link-color: inherit !default;
-$core-link-decoration: underline !default;
+$core-link-color: inherit;
+$core-link-decoration: underline;
 
-$core-background: #fff !default;
+$core-background: #fff;

@@ -1,6 +1,8 @@
 html {
-  height: 100%;
   box-sizing: border-box;
+  @if ( $core-full-height ) {
+    height: 100%;
+  }
 }
 
 *, *:before, *:after {
@@ -8,8 +10,12 @@ html {
 }
 
 body {
-  height: 100%;
-  font-family: $core-font-family;
+  @if ( $core-full-height ) {
+    height: 100%;
+  }
+  @if ( $core-font-family ) {
+    font-family: $core-font-family;
+  }
   @if ( $core-font-color ) {
     color: $core-font-color;
   }

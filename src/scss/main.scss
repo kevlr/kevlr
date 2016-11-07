@@ -3,6 +3,7 @@
 /* Settings */
 @import 'settings/s.functions';
 @import 'settings/s.layout';
+@import 'settings/s.color';
 @import 'settings/s.typography';
 @import 'settings/s.core';
 @import 'settings/s.mixins';
@@ -16,13 +17,13 @@
 @import 'layout/l.grid';
 
 /* Objects */
-// @import 'objects/';
+@import 'objects/**/*';
 
 /* Components */
-// @import 'components/';
+@import 'components/**/*';
 
 /* Plugins */
-// @import 'plugins/';
+@import 'plugins/**/*';
 
 /* Utilities */
 @import 'utilities/u.color';

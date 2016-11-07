@@ -1,16 +1,12 @@
 /* Settings */
 @import '../../../scss/settings/s.functions';
-@import 'settings/s.functions';
-@import 'settings/s.layout';
-@import 'settings/s.typography';
-@import 'settings/s.core';
-@import 'settings/s.mixins';
-
-/* Framework */
-@import '../../../scss/main';
+@import '../../../scss/settings/s.layout';
+@import '../../../scss/settings/s.typography';
+@import '../../../scss/settings/s.color';
+@import '../../../scss/settings/s.core';
+@import '../../../scss/settings/s.mixins';
 
 /* Base */
-// @import 'base/b.';
 @import 'base/b.core';
 
 /* Layout */

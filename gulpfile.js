@@ -72,6 +72,7 @@ gulp.task('styles', function() {
   .pipe(cssnano())
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(path + 'dist/css'))
+  .pipe(gulp.dest(path + 'src/docs/assets/css'))
   .pipe(notify({ message: 'Styles task complete' }));
 });
 
@@ -148,7 +149,7 @@ gulp.task('fonts', function() {
 })
 
 // Default task
-gulp.task('default', ['clean'], function() {
+gulp.task('build', ['clean'], function() {
   gulp.start('styles', 'scripts', 'library', 'images', 'icons', 'fonts');
 });
 
@@ -190,23 +191,20 @@ gulp.task('clean', function() {
   return del([path + 'dist/css', path + 'dist/js', path + 'dist/img']);
 });
 
+gulp.task('default', ['build', 'serve']);
+
 //  ========================================================================  //
 //  Documentation
 //  ========================================================================  //
 
 // Building documentation
-gulp.task('buildDocs', shell.task(['bundle exec jekyll build']));
-
-// Watch source files
-gulp.task('sourceToDocs', function() {
-  gulp.watch(path + 'src/scss/**/*.scss', ['buildDocs']);
-});
+gulp.task('docs:build', shell.task(['bundle exec jekyll build']));
 
 // Watch documentation
-gulp.task('watchDocs', shell.task(['bundle exec jekyll build --watch']));
+gulp.task('docs:watch', shell.task(['bundle exec jekyll build --watch']));
 
 // Serving documentation with Browsersync
-gulp.task('serveDocs', function () {
+gulp.task('docs:serve', function () {
     browserSync.init({
       server: {
         baseDir: 'docs/'
@@ -217,4 +215,4 @@ gulp.task('serveDocs', function () {
 });
 
 // Developing documenttion
-gulp.task('docs', ['watchDocs', 'sourceToDocs', 'serveDocs']);
+gulp.task('docs', ['watch', 'docs:watch', 'docs:serve']);

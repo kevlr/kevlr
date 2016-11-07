@@ -10,9 +10,6 @@
       margin: 0 auto;
       padding-left: $gutter * $container-marge-ratio;
       padding-right: $gutter * $container-marge-ratio;
-      @if ( $container-min-width > 1 ) {
-        min-width: $container-min-width;
-      }
     }
 
   } @else {
