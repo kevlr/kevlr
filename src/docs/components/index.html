@@ -13,8 +13,10 @@ layout: default
     <div class="l-grid__item u-width-9_m">
       <h1>Components</h1>
       {% for component in site.components %}
-    		{% include component.html component=component %}
-    		<a href="{{ component.url }}">View this component in full page</a>
+        <div class="u-margin-bottom-2x">
+      		{% include component.html component=component %}
+      		<a href="{{ component.url }}">View this component in full page</a>
+        </div>
       {% endfor %}
     </div>
   </div>

@@ -16,6 +16,9 @@ body {
   @if ( $core-font-family ) {
     font-family: $core-font-family;
   }
+  @if ( $core-font-size ) {
+    @include font($core-font-size);
+  }
   @if ( $core-font-color ) {
     color: $core-font-color;
   }
@@ -58,6 +61,10 @@ code {
   @if ( $core-code-font-weight ) {
     font-weight: $core-code-font-weight;
   }
+}
+
+pre {
+  overflow: auto;
 }
 
 a {

@@ -1,8 +1,17 @@
 // Custom -----------------------------------
 .highlight {
+  pre {
+    background: $font-color;
+    color: $background-color;
+    @include responsive('padding', $horizontal-unit, 0.5);
+  }
+}
+
+.highlighter-rouge {
   background: $font-color;
-	color: $background-color;
-  @include responsive('padding', $horizontal-unit, 0.5);
+  color: $background-color;
+  border-radius: 3px;
+  padding: 0 5px 3px;
 }
 
 
