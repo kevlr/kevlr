@@ -57,7 +57,7 @@
 }
 
 @each $ratio in $vertical-unit-variation {
-  $suffix: '-' + replace($ratio + '', '.', '') + 'x';
+  $suffix: '-' + replace($ratio + '', '.', '-') + 'x';
   @if ($ratio == 1) {
     $suffix: '';
   }

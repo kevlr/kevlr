@@ -4,7 +4,7 @@ $core-font-smoothing: true;
 $core-font-family: $sans-serif;
 $core-font-size: 'medium';
 $core-font-weight: $normal;
-$core-font-color: $font-color;
+$core-font-color: $color-font;
 
 $core-headings-font-family: $sans-serif;
 $core-headings-font-weight: $bold;
@@ -15,4 +15,4 @@ $core-code-font-weight: $normal;
 $core-link-color: inherit;
 $core-link-decoration: underline;
 
-$core-background: #fff;
+$core-background: $color-background;

@@ -40,22 +40,26 @@
 
     <main class="main" aria-label="Content">
       <div class="l-container">
-  <div class="l-grid">
-    <div class="l-grid__item u-width-3_m">
-      <ul class="o-list-bare">
+  <div class="l-grid l-grid--flex l-grid--align-baseline">
+    <nav class="l-nav l-grid__item u-width-3_m">
+      <ul class="l-nav__list">
         
-          <li><a href="#button">Button</a></li>
+          <li class="l-nav__item">
+            <a class="l-nav__link" href="#button">Button</a>
+          </li>
         
-          <li><a href="#title">Title</a></li>
+          <li class="l-nav__item">
+            <a class="l-nav__link" href="#title">Title</a>
+          </li>
         
       </ul>
-    </div>
+    </nav>
     <div class="l-grid__item u-width-9_m">
-      <h1>Components</h1>
+      <h1 class="o-title u-text-xlarge u-margin-top-0-5x u-margin-bottom">Components</h1>
       
         <div class="u-margin-bottom-2x">
       		<div id="button">
-	<h2>Button</h2>
+	<h2 class="o-title u-text-large u-margin-bottom-0-5x">Button</h2>
 	<p>Use the <code class="highlighter-rouge">o-button</code> class.</p>
 
 	<div class="c-component">
@@ -74,18 +78,20 @@
       
         <div class="u-margin-bottom-2x">
       		<div id="title">
-	<h2>Title</h2>
+	<h2 class="o-title u-text-large u-margin-bottom-0-5x">Title</h2>
 	<p>Use the <code class="highlighter-rouge">o-title</code> class to style any title ouside the body copy. Then add the <code class="highlighter-rouge">u-text-*modifier*</code> class to choose the size wanted.</p>
 
 	<div class="c-component">
 		<div class="c-component__preview">
-			<h2 class="o-title u-text-large">Large title</h2>
+			<h2 class="o-title u-text-xlarge">Extra large title</h2>
+<h2 class="o-title u-text-large">Large title</h2>
 <h2 class="o-title u-text-medium">Medium title</h2>
 <h2 class="o-title u-text-small">Small title</h2>
 
 		</div>
 		<div class="c-component__code">
-			<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"o-title u-text-large"</span><span class="nt">&gt;</span>Large title<span class="nt">&lt;/h2&gt;</span>
+			<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"o-title u-text-xlarge"</span><span class="nt">&gt;</span>Extra large title<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"o-title u-text-large"</span><span class="nt">&gt;</span>Large title<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"o-title u-text-medium"</span><span class="nt">&gt;</span>Medium title<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"o-title u-text-small"</span><span class="nt">&gt;</span>Small title<span class="nt">&lt;/h2&gt;</span></code></pre></figure>
 		</div>

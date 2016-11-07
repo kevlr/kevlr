@@ -465,7 +465,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #fff;
+  background: #FFF;
 }
 
 h1,
@@ -679,6 +679,12 @@ a {
   display: -ms-flexbox;
   display: flex;
   /* 1 */
+}
+
+.l-grid--align-baseline {
+  -webkit-align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
 
 .l-grid--item-spacing-025x {
@@ -907,6 +913,24 @@ a {
   text-decoration: none;
   border: 2px solid #222;
   padding: 10px 30px;
+}
+
+.o-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.o-icon--0-5x {
+  width: 12px;
+  height: 12px;
+}
+
+.o-icon--2x {
+  width: 48px;
+  height: 48px;
 }
 
 .o-list-bare {
@@ -1262,90 +1286,90 @@ a {
   }
 }
 
-.u-margin-top-025x, .u-margin-y-025x {
+.u-margin-top-0-25x, .u-margin-y-0-25x {
   margin-top: 6px;
 }
 
 @media only screen and (min-width: 500px) {
-  .u-margin-top-025x, .u-margin-y-025x {
+  .u-margin-top-0-25x, .u-margin-y-0-25x {
     margin-top: 9px;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .u-margin-top-025x, .u-margin-y-025x {
+  .u-margin-top-0-25x, .u-margin-y-0-25x {
     margin-top: 12px;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .u-margin-top-025x, .u-margin-y-025x {
+  .u-margin-top-0-25x, .u-margin-y-0-25x {
     margin-top: 15px;
   }
 }
 
-.u-margin-bottom-025x, .u-margin-y-025x {
+.u-margin-bottom-0-25x, .u-margin-y-0-25x {
   margin-bottom: 6px;
 }
 
 @media only screen and (min-width: 500px) {
-  .u-margin-bottom-025x, .u-margin-y-025x {
+  .u-margin-bottom-0-25x, .u-margin-y-0-25x {
     margin-bottom: 9px;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .u-margin-bottom-025x, .u-margin-y-025x {
+  .u-margin-bottom-0-25x, .u-margin-y-0-25x {
     margin-bottom: 12px;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .u-margin-bottom-025x, .u-margin-y-025x {
+  .u-margin-bottom-0-25x, .u-margin-y-0-25x {
     margin-bottom: 15px;
   }
 }
 
-.u-margin-top-05x, .u-margin-y-05x {
+.u-margin-top-0-5x, .u-margin-y-0-5x {
   margin-top: 12px;
 }
 
 @media only screen and (min-width: 500px) {
-  .u-margin-top-05x, .u-margin-y-05x {
+  .u-margin-top-0-5x, .u-margin-y-0-5x {
     margin-top: 18px;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .u-margin-top-05x, .u-margin-y-05x {
+  .u-margin-top-0-5x, .u-margin-y-0-5x {
     margin-top: 24px;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .u-margin-top-05x, .u-margin-y-05x {
+  .u-margin-top-0-5x, .u-margin-y-0-5x {
     margin-top: 30px;
   }
 }
 
-.u-margin-bottom-05x, .u-margin-y-05x {
+.u-margin-bottom-0-5x, .u-margin-y-0-5x {
   margin-bottom: 12px;
 }
 
 @media only screen and (min-width: 500px) {
-  .u-margin-bottom-05x, .u-margin-y-05x {
+  .u-margin-bottom-0-5x, .u-margin-y-0-5x {
     margin-bottom: 18px;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .u-margin-bottom-05x, .u-margin-y-05x {
+  .u-margin-bottom-0-5x, .u-margin-y-0-5x {
     margin-bottom: 24px;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .u-margin-bottom-05x, .u-margin-y-05x {
+  .u-margin-bottom-0-5x, .u-margin-y-0-5x {
     margin-bottom: 30px;
   }
 }
@@ -1492,7 +1516,7 @@ a {
 }
 
 .u-text-small {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.5;
 }
 
@@ -1502,6 +1526,11 @@ a {
 }
 
 .u-text-large {
-  font-size: 28px;
+  font-size: 27px;
+  line-height: 1.2;
+}
+
+.u-text-xlarge {
+  font-size: 36px;
   line-height: 1.2;
 }

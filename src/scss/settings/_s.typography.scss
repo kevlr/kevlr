@@ -21,7 +21,7 @@ $bold: 600;
 $fonts: (
   'small': (
     'font-size': (
-      'main': 16px
+      'main': 15px
     ),
     'line-height': 1.5
   ),
@@ -33,7 +33,13 @@ $fonts: (
   ),
   'large': (
     'font-size': (
-      'main': 28px
+      'main': 27px
+    ),
+    'line-height': 1.2
+  ),
+  'xlarge': (
+    'font-size': (
+      'main': 36px
     ),
     'line-height': 1.2
   )

@@ -2,16 +2,18 @@
 layout: default
 ---
 <div class="l-container">
-  <div class="l-grid">
-    <div class="l-grid__item u-width-3_m">
-      <ul class="o-list-bare">
+  <div class="l-grid l-grid--flex l-grid--align-baseline">
+    <nav class="l-nav l-grid__item u-width-3_m">
+      <ul class="l-nav__list">
         {% for component in site.components %}
-          <li><a href="#{{ component.slug }}">{{ component.title }}</a></li>
+          <li class="l-nav__item">
+            <a class="l-nav__link" href="#{{ component.slug }}">{{ component.title }}</a>
+          </li>
         {% endfor %}
       </ul>
-    </div>
+    </nav>
     <div class="l-grid__item u-width-9_m">
-      <h1>Components</h1>
+      <h1 class="o-title u-text-xlarge u-margin-top-0-5x u-margin-bottom">Components</h1>
       {% for component in site.components %}
         <div class="u-margin-bottom-2x">
       		{% include component.html component=component %}

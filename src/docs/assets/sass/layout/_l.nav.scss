@@ -1,0 +1,17 @@
+.l-nav {
+  position: sticky;
+  top: 0;
+  @include responsive('padding-top', $vertical-unit, 0.5);
+}
+
+.l-nav__list {
+  @include list-reset;
+}
+
+.l-nav__link {
+  text-decoration: none;
+
+  &:hover {
+    border-bottom: 2px solid;
+  }
+}
