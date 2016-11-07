@@ -1,0 +1,5 @@
+@each $font-name, $properties in $fonts {
+  .u-text-#{$font-name} {
+    @include font($font-name);
+  }
+}

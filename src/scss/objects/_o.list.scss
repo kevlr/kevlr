@@ -1,0 +1,11 @@
+.o-list-bare {
+  @include list-reset;
+}
+
+.o-list-inline {
+  @include list-reset;
+
+  li {
+    display: inline-block;
+  }
+}

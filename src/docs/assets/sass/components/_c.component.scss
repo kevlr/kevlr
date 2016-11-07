@@ -1,3 +1,16 @@
 .c-component {
-  
+  @include responsive('margin-top', $vertical-unit, 0.5);
+  @include responsive('margin-bottom', $vertical-unit, 0.5);
+}
+
+.c-component__preview {
+  border: 2px solid $font-color;
+  border-bottom: 0;
+  @include responsive('padding', $horizontal-unit, 0.5);
+}
+
+.c-component__code {
+  pre {
+    margin: 0;
+  }
 }

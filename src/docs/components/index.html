@@ -2,9 +2,20 @@
 layout: default
 ---
 <div class="l-container">
-  <h1>Components</h1>
-  {% for component in site.components %}
-		{% include component.html component=component %}
-		<a href="{{ component.url }}">View this component in full page</a>
-  {% endfor %}
+  <div class="l-grid">
+    <div class="l-grid__item u-width-3_m">
+      <ul class="o-list-bare">
+        {% for component in site.components %}
+          <li><a href="#{{ component.slug }}">{{ component.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="l-grid__item u-width-9_m">
+      <h1>Components</h1>
+      {% for component in site.components %}
+    		{% include component.html component=component %}
+    		<a href="{{ component.url }}">View this component in full page</a>
+      {% endfor %}
+    </div>
+  </div>
 </div>
