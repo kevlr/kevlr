@@ -45,3 +45,6 @@ defaults:
       type: components
     values:
       layout: component
+
+gems:
+  - octopress-autoprefixer
