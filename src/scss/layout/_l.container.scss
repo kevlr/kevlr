@@ -1,31 +1,9 @@
-@for $layout from 1 through length($layouts-name) {
-  $layout-name: nth($layouts-name, $layout);
-  $gutter: nth($layouts-column-gutter, $layout);
-  $max-width: nth($layouts-container-max-width, $layout);
-
-  @if ( $layout == 1 ) {
-
-    .l-container {
-      display: block;
-      margin: 0 auto;
-      padding-left: $gutter * $container-marge-ratio;
-      padding-right: $gutter * $container-marge-ratio;
-    }
-
-  } @else {
-    $prev-gutter: nth($layouts-column-gutter, $layout - 1);
-    $prev-max-width: nth($layouts-container-max-width, $layout - 1);
-
-    @include media-query($layout-name) {
-      .l-container {
-        @if $max-width != $prev-max-width {
-          max-width: $max-width;
-        }
-        @if $gutter != $prev-gutter {
-          padding-left: $gutter * $container-marge-ratio;
-          padding-right: $gutter * $container-marge-ratio;
-        }
-      }
-    }
-  }
+.l-container {
+  display: block;
+  margin: 0 auto;
+  @include responsive(
+    ('max-width', lists-to-map($layouts-name, $layouts-container-max-width)),
+    ('padding-left', $gutter-map, $container-marge-ratio),
+    ('padding-right', $gutter-map, $container-marge-ratio)
+  );
 }

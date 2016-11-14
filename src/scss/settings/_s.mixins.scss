@@ -26,17 +26,38 @@
   }
 }
 
-@mixin responsive($property, $value, $multiplier: 1, $adder: 0, $string: '') {
-  @if (type-of($value) == "map") {
-    @each $layout-name in $layouts-name {
-      @if map-has-key($value, $layout-name) {
-        @include media-query($layout-name) {
-          #{$property}: unquote(multiply-all(map-get($value, $layout-name), $multiplier, $adder) + $string);
+@mixin responsive($arglist...) {
+  $last-results: $arglist;
+  $multiplier: 1;
+  @if ( type-of(nth($arglist, 1)) != 'list' ) {
+    $arglist: $arglist,;
+  }
+  @each $layout-name in $layouts-name {
+    @include media-query($layout-name) {
+      @each $args in $arglist {
+        $i: index($arglist, $args);
+        $property: nth($args, 1);
+        $value: nth($args, 2);
+        $multipliers: if( length($args) >= 3, nth($args, 3), 1 );
+        $adder: if( length($args) >= 4, nth($args, 4), 0 );
+        $string: if( length($args) >= 5, nth($args, 5), '' );
+        @if (type-of($value) != "map") {
+          $value: ( nth($layouts-name, 1): $value );
+        }
+        @if map-has-key($value, $layout-name) {
+          @if (type-of($multipliers) == "map") {
+            $multiplier: if( map-get($multipliers, $layout-name), map-get($multipliers, $layout-name), $multiplier );
+          } @else {
+            $multiplier: $multipliers;
+          }
+          $result: unquote(multiply-all(map-get($value, $layout-name), $multiplier, $adder) + $string);
+          @if ( $result != nth($last-results, $i) ) {
+            #{$property}: $result;
+          }
+          $last-results: set-nth($last-results, $i, $result);
         }
       }
     }
-  } @else {
-    #{$property}: multiply-all($value, $multiplier);
   }
 }
 

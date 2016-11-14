@@ -502,6 +502,7 @@ a {
 .l-container {
   display: block;
   margin: 0 auto;
+  max-width: none;
   padding-left: 12px;
   padding-right: 12px;
 }
@@ -528,18 +529,29 @@ a {
   }
 }
 
-/**
-		 * 1. Reset padding and margin so that
-		 *    the grid can be used on HTML elements
-		 *    other than div
-		 */
 .l-grid {
   display: block;
   padding: 0;
-  /* 1 */
   margin: 0;
-  /* 1 */
   margin-left: -24px;
+}
+
+@media only screen and (min-width: 500px) {
+  .l-grid {
+    margin-left: -36px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .l-grid {
+    margin-left: -48px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .l-grid {
+    margin-left: -60px;
+  }
 }
 
 .l-grid:before, .l-grid:after {
@@ -560,41 +572,44 @@ a {
 }
 
 @media only screen and (min-width: 500px) {
-  .l-grid {
-    margin-left: -36px;
-  }
   .l-grid__item {
     padding-left: 36px;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .l-grid {
-    margin-left: -48px;
-  }
   .l-grid__item {
     padding-left: 48px;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .l-grid {
-    margin-left: -60px;
-  }
   .l-grid__item {
     padding-left: 60px;
   }
 }
 
-.l-grid--clear-2 .l-grid__item:nth-child(2n + 1) {
+.l-grid--clear-2_main .l-grid__item:nth-child(n) {
+  clear: none;
+}
+
+.l-grid--clear-2_main .l-grid__item:nth-child(2n + 1) {
   clear: both;
 }
 
-.l-grid--clear-3 .l-grid__item:nth-child(3n + 1) {
+.l-grid--clear-3_main .l-grid__item:nth-child(n) {
+  clear: none;
+}
+
+.l-grid--clear-3_main .l-grid__item:nth-child(3n + 1) {
   clear: both;
 }
 
-.l-grid--clear-4 .l-grid__item:nth-child(4n + 1) {
+.l-grid--clear-4_main .l-grid__item:nth-child(n) {
+  clear: none;
+}
+
+.l-grid--clear-4_main .l-grid__item:nth-child(4n + 1) {
   clear: both;
 }
 

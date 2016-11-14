@@ -9,6 +9,7 @@ $layouts-container-max-width: ( none,       none,       none,       1200px     )
 
 $container-marge-ratio: 0.5;
 $grid-items-clear: (2, 3, 4);
+$gutter-map: lists-to-map($layouts-name, $layouts-column-gutter);
 
 //  ========================================================================  //
 //  Spacing Units
