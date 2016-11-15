@@ -1,0 +1,41 @@
+---
+layout: test-drive
+title: Icons
+---
+
+<svg class="o-icon o-icon--0-5x">
+	<use xlink:href="/assets/img/icons.svg#arrow-right"></use>
+</svg>
+
+<svg class="o-icon">
+	<use xlink:href="/assets/img/icons.svg#arrow-right"></use>
+</svg>
+
+<svg class="o-icon o-icon--2x">
+	<use xlink:href="/assets/img/icons.svg#arrow-right"></use>
+</svg>
+
+<p>
+  Ipsum
+  <svg class="o-icon">
+  	<use xlink:href="/assets/img/icons.svg#arrow-right"></use>
+  </svg>
+</p>
+
+<button class="o-button">
+  Ipsum
+  <svg class="o-icon">
+  	<use xlink:href="/assets/img/icons.svg#arrow-right"></use>
+  </svg>
+</button>
+<ul class="o-list-inline">
+	{% for file in site.static_files %}
+	  {% if file.path contains "/assets/img/icons/" %}
+			<li>
+				<svg class="o-icon">
+					<use xlink:href="/assets/img/icons.svg#{{ file.basename }}"></use>
+				</svg>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>

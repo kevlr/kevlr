@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: page.lang | default: 'en' }}">
+
+  {% include head.html %}
+
+  <body>
+    {% include header.html %}
+
+    <main class="main" aria-label="Content">
+			<div class="l-container">
+				<div class="l-grid">
+				  <div class="l-grid__item u-width-3_m">
+            <nav class="l-nav">
+              <ul class="l-nav__list">
+                {% for docsPage in site.pages %}
+                  {% if docsPage.url contains "test-drive/" %}
+                    {% unless docsPage.path contains "test-drive/index" %}
+                    <li class="l-nav__item">
+                      <a class="l-nav__link" href="{{ docsPage.url }}">{{ docsPage.title }}</a>
+                    </li>
+                    {% endunless %}
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </nav>
+				  </div>
+          <div class="l-grid__item u-width-9_m">
+            {{ content }}
+          </div>
+				</div>
+			</div>
+    </main>
+
+  </body>
+
+</html>

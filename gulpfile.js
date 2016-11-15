@@ -14,6 +14,8 @@ var browers = [
   'bb >= 10'
 ];
 
+var proxy = '';
+
 //  ========================================================================  //
 //  Processes
 //  ========================================================================  //
@@ -38,8 +40,7 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     svgSprite = require('gulp-svg-sprite'),
     shell = require('gulp-shell'),
-    browserSync = require('browser-sync').create(),
-    browserSyncReload = browserSync.reload;
+    browserSync = require('browser-sync').create();
 
 var bounce = function () {
   gutil.beep();
@@ -49,9 +50,12 @@ var bounce = function () {
 // BrowserSync proxy
 gulp.task('browser-sync', function() {
   browserSync.init({
-    proxy: "",
-    port: "3000"
+    proxy: proxy,
+    port: '3000'
   });
+
+  // Watch any files in dist/, reload on change
+  gulp.watch([path + 'dist/**']).on('change', browserSync.reload);
 });
 
 // Styles
@@ -72,7 +76,6 @@ gulp.task('styles', function() {
   .pipe(cssnano())
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(path + 'dist/css'))
-  .pipe(gulp.dest(path + 'src/docs/assets/css'))
   .pipe(notify({ message: 'Styles task complete' }));
 });
 
@@ -173,9 +176,6 @@ gulp.task('watch', function() {
 
   // Watch font files
   gulp.watch(path + 'src/fonts/**/*', ['fonts']);
-
-  // Watch any files in dist/, reload on change
-  gulp.watch([path + 'dist/**']).on('change', browserSyncReload);
 });
 
 // Serve
@@ -186,7 +186,7 @@ gulp.task('cache', function (done) {
   return cache.clearAll(done);
 });
 
-// Empty "dist" directory
+// Empty 'dist' directory
 gulp.task('clean', function() {
   return del([path + 'dist/css', path + 'dist/js', path + 'dist/img']);
 });
@@ -198,10 +198,25 @@ gulp.task('default', ['build', 'serve']);
 //  ========================================================================  //
 
 // Building documentation
-gulp.task('docs:build', shell.task(['bundle exec jekyll build']));
+gulp.task('docs:jekyll-build', shell.task(['bundle exec jekyll build']));
 
 // Watch documentation
-gulp.task('docs:watch', shell.task(['bundle exec jekyll build --watch']));
+gulp.task('docs:jekyll-watch', shell.task(['bundle exec jekyll build --watch']));
+
+gulp.task('docs:assets', function() {
+  return gulp.src(path + 'dist/**/*')
+  .pipe(gulp.dest(path + 'src/docs/assets'))
+  .pipe(notify({ message: 'Assets duplicated to docs' }));
+})
+
+gulp.task('docs:watch', function() {
+  // Watch /dist files
+  gulp.watch(path + 'dist/**/*', ['docs:assets']);
+  gulp.watch('docs/**/*').on('change', browserSync.reload);
+});
+
+// Build documenttion
+gulp.task('docs:build', ['docs:assets', 'docs:jekyll-build']);
 
 // Serving documentation with Browsersync
 gulp.task('docs:serve', function () {
@@ -211,8 +226,7 @@ gulp.task('docs:serve', function () {
       },
       port: 4000
     });
-    gulp.watch('docs/**/*').on('change', browserSync.reload);
 });
 
 // Developing documenttion
-gulp.task('docs', ['watch', 'docs:watch', 'docs:serve']);
+gulp.task('docs', ['watch', 'docs:serve', 'docs:watch', 'docs:jekyll-watch']);

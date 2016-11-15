@@ -1,25 +1,23 @@
 ---
 layout: default
 ---
-<div class="l-container">
-  <div class="l-grid l-grid--flex l-grid--align-baseline">
-    <nav class="l-nav l-grid__item u-width-3_m">
-      <ul class="l-nav__list">
-        {% for component in site.components %}
-          <li class="l-nav__item">
-            <a class="l-nav__link" href="#{{ component.slug }}">{{ component.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
-    <div class="l-grid__item u-width-9_m">
-      <h1 class="o-title u-text-xlarge u-margin-top-0-5x u-margin-bottom">Components</h1>
+<div class="l-grid l-grid--flex l-grid--align-baseline">
+  <nav class="l-nav l-grid__item u-width-3_m">
+    <ul class="l-nav__list">
       {% for component in site.components %}
-        <div class="u-margin-bottom-2x">
-      		{% include component.html component=component %}
-      		<a href="{{ component.url }}">View this component in full page</a>
-        </div>
+        <li class="l-nav__item">
+          <a class="l-nav__link" href="#{{ component.slug }}">{{ component.title }}</a>
+        </li>
       {% endfor %}
-    </div>
+    </ul>
+  </nav>
+  <div class="l-grid__item u-width-9_m">
+    <h1 class="o-title u-text-xlarge u-margin-top-0-5x u-margin-bottom">Components</h1>
+    {% for component in site.components %}
+      <div class="u-margin-bottom-2x">
+    		{% include component.html component=component %}
+    		<a href="{{ component.url }}">View this component in full page</a>
+      </div>
+    {% endfor %}
   </div>
 </div>

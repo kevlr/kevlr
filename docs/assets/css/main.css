@@ -677,10 +677,9 @@ a {
 }
 
 .l-grid--flex {
-  display: -webkit-flex;
   display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
-  -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   /**
@@ -690,16 +689,16 @@ a {
 }
 
 .l-grid--flex:before, .l-grid--flex:after {
-  display: -webkit-flex;
   display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
   /* 1 */
 }
 
 .l-grid--align-baseline {
-  -webkit-align-items: baseline;
   -ms-flex-align: baseline;
-  align-items: baseline;
+  -webkit-box-align: baseline;
+          align-items: baseline;
 }
 
 .l-grid--item-spacing-025x {
