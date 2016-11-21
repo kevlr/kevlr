@@ -204,15 +204,20 @@ gulp.task('docs:jekyll-build', shell.task(['bundle exec jekyll build']));
 gulp.task('docs:jekyll-watch', shell.task(['bundle exec jekyll build --watch']));
 
 gulp.task('docs:assets', function() {
-  return gulp.src(path + 'dist/**/*')
-  .pipe(gulp.dest(path + 'src/docs/assets'))
+  gulp.src(path + 'dist/js/main.min.js')
+  .pipe(gulp.dest(path + 'src/docs/assets/js'));
+
+  gulp.src(path + 'dist/css/main.min.css')
+  .pipe(gulp.dest(path + 'src/docs/assets/css'));
+
+  return gulp.src(path + 'dist/img/**/*')
+  .pipe(gulp.dest(path + 'src/docs/assets/img'))
   .pipe(notify({ message: 'Assets duplicated to docs' }));
 })
 
 gulp.task('docs:watch', function() {
   // Watch /dist files
   gulp.watch(path + 'dist/**/*', ['docs:assets']);
-  gulp.watch('docs/**/*').on('change', browserSync.reload);
 });
 
 // Build documenttion
@@ -220,12 +225,12 @@ gulp.task('docs:build', ['docs:assets', 'docs:jekyll-build']);
 
 // Serving documentation with Browsersync
 gulp.task('docs:serve', function () {
-    browserSync.init({
-      server: {
-        baseDir: 'docs/'
-      },
-      port: 4000
-    });
+  browserSync.init({
+    server: {
+      baseDir: 'docs/'
+    },
+    port: 4000
+  });
 });
 
 // Developing documenttion
