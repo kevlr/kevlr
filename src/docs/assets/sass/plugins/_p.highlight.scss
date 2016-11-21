@@ -1,8 +1,9 @@
 // Custom -----------------------------------
 .highlight {
-  pre {
+  &, & pre {
     background: $color-font;
     @include responsive('padding', $horizontal-unit, 0.5);
+    margin: 0;
   }
 }
 
@@ -53,7 +54,6 @@ $syntax-accent: hsl($syntax-hue, 100%, 66% );
 
   .hll { background: $syntax-bg; }
   .c {  color: $mono-3; font-style: italic;  } /* Comment */
-  .err { color: #960050; background-color: #1e0010 } /* Error */
   .k { color: $hue-3;  } /* Keyword */
   .l { color: $hue-4; } /* Literal */
   .n { color: $mono-1; } /* Name */

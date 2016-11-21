@@ -40,7 +40,37 @@
 
     <main class="main" aria-label="Content">
       <div class="l-container u-margin-top">
-        <h1>Settings</h1>
+        <h1 id="settings">Settings</h1>
+
+<h2 id="variables">Variables</h2>
+
+<p>Variables are all in the <code class="highlighter-rouge">settings</code> folder.</p>
+
+<h3 id="layout">Layout</h3>
+
+<div class="language-sass highlighter-rouge"><pre class="highlight"><code><span class="nv">$layouts-name</span><span class="p">:</span>                <span class="p">(</span> <span class="s1">'main'</span><span class="o">,</span>     <span class="s1">'s'</span><span class="o">,</span>        <span class="s1">'m'</span><span class="o">,</span>        <span class="s1">'l'</span>        <span class="p">)</span><span class="err">;</span>
+<span class="nv">$layouts-break-point</span><span class="p">:</span>         <span class="p">(</span> <span class="m">0</span><span class="o">,</span>          <span class="m">500px</span><span class="o">,</span>      <span class="m">800px</span><span class="o">,</span>      <span class="m">1000px</span>     <span class="p">)</span><span class="err">;</span>
+<span class="nv">$layouts-columns-number</span><span class="p">:</span>      <span class="p">(</span> <span class="m">12</span><span class="o">,</span>         <span class="m">12</span><span class="o">,</span>         <span class="m">12</span><span class="o">,</span>         <span class="m">12</span>         <span class="p">)</span><span class="err">;</span>
+<span class="nv">$layouts-column-gutter</span><span class="p">:</span>       <span class="p">(</span> <span class="m">24px</span><span class="o">,</span>       <span class="m">36px</span><span class="o">,</span>       <span class="m">48px</span><span class="o">,</span>       <span class="m">60px</span>       <span class="p">)</span><span class="err">;</span>
+<span class="nv">$layouts-container-max-width</span><span class="p">:</span> <span class="p">(</span> <span class="nb">none</span><span class="o">,</span>       <span class="nb">none</span><span class="o">,</span>       <span class="nb">none</span><span class="o">,</span>       <span class="m">1200px</span>     <span class="p">)</span><span class="err">;</span>
+</code></pre>
+</div>
+
+<h2 id="mixins">Mixins</h2>
+
+<p>Kevlr comes with a few mixins that will help you to develop faster and make your website more responsive.</p>
+
+<h3 id="media-query">media-query</h3>
+
+<div class="language-sass highlighter-rouge"><pre class="highlight"><code><span class="k">@include</span> <span class="nd">media-query</span><span class="p">(</span><span class="n">from</span><span class="o">,</span> <span class="p">[</span><span class="n">until</span><span class="p">])</span><span class="err">;</span>
+</code></pre>
+</div>
+
+<p><strong>from</strong></p>
+
+<p>string: should be one of the <code class="highlighter-rouge">$layouts-name</code>. In this case <code class="highlighter-rouge">'s'</code>, <code class="highlighter-rouge">'m'</code> or <code class="highlighter-rouge">'l'</code>.</p>
+
+<p><strong>till</strong> (optional)</p>
 
       </div>
     </main>

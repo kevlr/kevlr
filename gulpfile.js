@@ -218,6 +218,7 @@ gulp.task('docs:assets', function() {
 gulp.task('docs:watch', function() {
   // Watch /dist files
   gulp.watch(path + 'dist/**/*', ['docs:assets']);
+  gulp.watch('docs/**/*').on('change', browserSync.reload);
 });
 
 // Build documenttion
