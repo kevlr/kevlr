@@ -62,15 +62,104 @@
 
 <h3 id="media-query">media-query</h3>
 
-<div class="language-sass highlighter-rouge"><pre class="highlight"><code><span class="k">@include</span> <span class="nd">media-query</span><span class="p">(</span><span class="n">from</span><span class="o">,</span> <span class="p">[</span><span class="n">until</span><span class="p">])</span><span class="err">;</span>
+<div class="language-sass highlighter-rouge"><pre class="highlight"><code><span class="k">@include</span> <span class="nd">media-query</span><span class="p">(</span><span class="n">from</span><span class="p">[</span><span class="o">,</span> <span class="n">until</span><span class="p">])</span><span class="err">;</span>
 </code></pre>
 </div>
 
-<p><strong>from</strong></p>
+<p><strong>from</strong>: <em>string</em></p>
 
-<p>string: should be one of the <code class="highlighter-rouge">$layouts-name</code>. In this case <code class="highlighter-rouge">'s'</code>, <code class="highlighter-rouge">'m'</code> or <code class="highlighter-rouge">'l'</code>.</p>
+<p>Should be one of the <code class="highlighter-rouge">$layouts-name</code>. In this case <code class="highlighter-rouge">'s'</code>, <code class="highlighter-rouge">'m'</code> or <code class="highlighter-rouge">'l'</code>.</p>
 
-<p><strong>till</strong> (optional)</p>
+<p><strong>until</strong>: <em>string</em> (optional)</p>
+
+<p>Should be one of the <code class="highlighter-rouge">$layouts-name</code>. In this case <code class="highlighter-rouge">'s'</code>, <code class="highlighter-rouge">'m'</code> or <code class="highlighter-rouge">'l'</code>. If ommited the properties will be applied to all layout above the first mentioned.</p>
+
+<h4 id="description">Description</h4>
+
+<p>Being mobile first the <strong>from</strong> value will always output a <code class="highlighter-rouge">min-width</code> rule and the second one a <code class="highlighter-rouge">max-width</code> rule.</p>
+
+<h4 id="example">Example</h4>
+
+<div class="language-sass highlighter-rouge"><pre class="highlight"><code><span class="k">@include</span> <span class="nd">media-query</span><span class="p">(</span><span class="s1">'s'</span><span class="o">,</span> <span class="s1">'m'</span><span class="p">)</span> <span class="err">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="err">;</span>
+<span class="err">}</span>
+</code></pre>
+</div>
+
+<p>output:</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">500px</span><span class="p">)</span> <span class="n">and</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">799px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="responsive">responsive</h3>
+
+<div class="language-sass highlighter-rouge"><pre class="highlight"><code><span class="k">@include</span> <span class="nd">responsive</span><span class="p">(</span><span class="n">property</span><span class="o">,</span> <span class="n">value</span><span class="p">[</span><span class="o">,</span> <span class="n">multiplier</span><span class="p">][</span><span class="o">,</span> <span class="n">adder</span><span class="p">][</span><span class="o">,</span> <span class="n">suffix</span><span class="p">])</span><span class="err">;</span>
+</code></pre>
+</div>
+
+<p><strong>property</strong>: <em>string</em></p>
+
+<p>Any css property</p>
+
+<p><strong>value</strong>: <em>value</em> or <em>map</em></p>
+
+<p>Could be a simple value or a map with layout name as key and the property value you want for that layout as value.</p>
+
+<p><strong>multiplier</strong>: <em>integer</em> or <em>map</em> (optional)</p>
+
+<p>Will multiply each <strong>value</strong> by this integer. Could be an integer or a map with layout name as key and integer as value.</p>
+
+<p><strong>adder</strong>: <em>units</em> (optional)</p>
+
+<p>Will add this value to the result for each layout</p>
+
+<p><strong>suffix</strong>: <em>string</em> (optional)</p>
+
+<p>Will add a string at the end of the result for each layout. That could be usefull if you need to add an <code class="highlighter-rouge">!imporant</code> for example.</p>
+
+<h4 id="description-1">Description</h4>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-sass highlighter-rouge"><pre class="highlight"><code><span class="nv">$units</span><span class="p">:</span> <span class="p">(</span>
+  <span class="err">'</span><span class="na">main</span><span class="err">'</span><span class="p">:</span> <span class="m">10px</span><span class="o">,</span>
+  <span class="err">'</span><span class="na">s</span><span class="err">'</span><span class="p">:</span> <span class="m">15px</span><span class="o">,</span>
+  <span class="err">'</span><span class="na">m</span><span class="err">'</span><span class="p">:</span> <span class="m">20px</span><span class="o">,</span>
+  <span class="err">'</span><span class="na">l</span><span class="err">'</span><span class="p">:</span> <span class="m">25px</span>
+<span class="o">);</span>
+<span class="k">@include</span> <span class="nd">responsive</span><span class="p">(</span><span class="s1">'margin-left'</span><span class="o">,</span> <span class="nv">$units</span><span class="o">,</span> <span class="m">2</span><span class="p">)</span><span class="err">;</span>
+</code></pre>
+</div>
+
+<p>output:</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nt">margin-left</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">500px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">800px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">1000px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="bonus">Bonus</h4>
+
+<p>To avoid repeating too many <code class="highlighter-rouge">@media</code> rules you can chain the responsive mixin in a list</p>
+
+<div class="language-sass highlighter-rouge"><pre class="highlight"><code><span class="k">@include</span> <span class="nd">responsive</span><span class="p">(</span>
+  <span class="o">(</span><span class="nt">property</span><span class="o">,</span> <span class="nt">value</span><span class="o">[,</span> <span class="nt">multiplier</span><span class="o">][,</span> <span class="nt">adder</span><span class="o">][,</span> <span class="nt">suffix</span><span class="o">]),</span>
+  <span class="o">(</span><span class="nt">property</span><span class="o">,</span> <span class="nt">value</span><span class="o">[,</span> <span class="nt">multiplier</span><span class="o">][,</span> <span class="nt">adder</span><span class="o">][,</span> <span class="nt">suffix</span><span class="o">]),</span>
+  <span class="nc">...</span>
+<span class="o">);</span>
+</code></pre>
+</div>
 
       </div>
     </main>

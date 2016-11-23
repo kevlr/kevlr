@@ -1,8 +1,8 @@
 // Custom -----------------------------------
 .highlight {
-  &, & pre {
+  & {
     background: $color-font;
-    @include responsive('padding', $horizontal-unit, 0.5);
+    @include responsive('padding', $horizontal-unit, 0.25);
     margin: 0;
   }
 }
@@ -11,8 +11,11 @@
   white-space: nowrap;
   background: $color-font;
   color: $color-background;
+}
+
+code.highlighter-rouge {
   border-radius: 3px;
-  padding: 0 5px 3px;
+  padding: 0.05em 0.2em 0.2em;
 }
 
 
