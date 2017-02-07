@@ -105,7 +105,7 @@
     $suffix: '';
   }
 
-  .l-grid--item-spacing#{$suffix} {
+  .l-grid--gap#{$suffix} {
     @include responsive('margin-top', $vertical-unit, $ratio * -1);
 
     .l-grid__item {
