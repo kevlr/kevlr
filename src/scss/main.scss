@@ -7,14 +7,14 @@
 @import 'settings/s.typography';
 @import 'settings/s.core';
 @import 'settings/s.mixins';
+@import 'settings/s.snippets';
 
 /* Base */
 @import 'base/b.normalize';
 @import 'base/b.core';
 
 /* Layout */
-@import 'layout/l.container';
-@import 'layout/l.grid';
+@import 'layout/**/*';
 
 /* Objects */
 @import 'objects/**/*';
@@ -26,6 +26,4 @@
 @import 'plugins/**/*';
 
 /* Utilities */
-@import 'utilities/u.color';
-@import 'utilities/u.layout';
-@import 'utilities/u.typography';
+@import 'utilities/**/*';

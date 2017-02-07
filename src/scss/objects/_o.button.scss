@@ -1,11 +1,8 @@
 .o-button {
-  appearance: none;
+  @include button-reset;
   display: inline-block;
   text-decoration: none;
   border: 2px solid $color-font;
   padding: 10px 30px;
-  background: transparent;
-  cursor: pointer;
   vertical-align: middle;
-  border-radius: 0;
 }

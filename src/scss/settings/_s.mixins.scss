@@ -61,24 +61,6 @@
   }
 }
 
-@mixin list-reset() {
-  margin: 0;
-  padding-left: 0;
-  list-style: none;
-}
-
-@mixin clearfix() {
-  &:before,
-  &:after {
-      content: " ";
-      display: table;
-  }
-
-  &:after {
-      clear: both;
-  }
-}
-
 @mixin font($font-name) {
   $font-settings: map-get($fonts, $font-name);
 
