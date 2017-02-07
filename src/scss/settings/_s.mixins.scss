@@ -1,10 +1,10 @@
 @mixin media-query($from, $until: false) {
   $from-index: index($layouts-name, $from);
-  $from-breakpoint: nth($layouts-break-point, $from-index);
+  $from-breakpoint: if($from-index, nth($layouts-break-point, $from-index), $from);
 
   @if ($until) {
     $until-index: index($layouts-name, $until);
-    $until-breakpoint: nth($layouts-break-point, $until-index) - 1;
+    $until-breakpoint: if($until-index, nth($layouts-break-point, $until-index), $until) - 1;
 
     @if ($from-breakpoint == 0) {
       @media only screen and (max-width: $until-breakpoint) {

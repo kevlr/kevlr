@@ -6,7 +6,7 @@
 var path = '';
 
 // Browser definitions for autoprefixer
-var browers = [
+var browsers = [
   'last 3 versions',
   'ie >= 9',
   'ios >= 7',
@@ -68,7 +68,7 @@ gulp.task('styles', function() {
     outputStyle: 'expanded'
   }).on('error', sass.logError))
   .pipe(autoprefixer({
-    browsers: browers,
+    browsers: browsers,
 		cascade: false
   }))
   .pipe(gulp.dest(path + 'dist/css'))
